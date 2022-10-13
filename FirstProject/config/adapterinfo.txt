@@ -1,0 +1,60 @@
+Driver Description = Intel(R) Dual Band Wireless-AC 3165
+Adapter Guid = {7160B721-807B-4908-A42A-F6A15C36E342}
+Hardware ID = PCI\VEN_8086&DEV_3166&SUBSYS_42108086
+Driver Date = 2-20-2022
+Driver Version = 19.51.40.1
+Driver Provider = Intel
+ExtensibilityDLL = %SystemRoot%\system32\IntelIHVRouter04.dll
+UIExtensibilityCLSID = {1BF6CB2D-2AE0-4879-A7AA-A75834FBD0E3}
+GroupName = Intel IHV Service
+AdapterOUI = 32902
+
+Driver Description = Microsoft Wi-Fi Direct Virtual Adapter
+Adapter Guid = {A5CE0FE6-5607-4691-931D-9AE96114FBE0}
+Hardware ID = {5d624f94-8850-40c3-a3fa-a4fd2080baf3}\vwifimp_wfd
+Driver Date = 6-21-2006
+Driver Version = 10.0.19041.1
+Driver Provider = Microsoft
+
+Driver Description = Microsoft Wi-Fi Direct Virtual Adapter
+Adapter Guid = {F36CC92D-3900-4EDF-8381-E7F0C77314DE}
+Hardware ID = {5d624f94-8850-40c3-a3fa-a4fd2080baf3}\vwifimp_wfd
+Driver Date = 6-21-2006
+Driver Version = 10.0.19041.1
+Driver Provider = Microsoft
+
+Driver Description = Microsoft Kernel Debug Network Adapter
+Adapter Guid = {EC3460D5-C88D-4BA2-A461-0C7F15D7F004}
+Hardware ID = root\kdnic
+Driver Date = 6-21-2006
+Driver Version = 10.0.19041.1
+Driver Provider = Microsoft
+
+Driver Description = Intel(R) Ethernet Connection I219-V
+Adapter Guid = {14B6A543-C8D3-4102-B39E-1FCD4D70F17A}
+Hardware ID = pci\ven_8086&dev_1570&subsys_504817aa
+Driver Date = 11-27-2016
+Driver Version = 12.15.24.1
+Driver Provider = Intel
+
+Driver Description = WAN Miniport (IP)
+Adapter Guid = {AF3F8091-17D2-4962-8A09-584877287BAA}
+Hardware ID = ms_ndiswanip
+Driver Date = 6-21-2006
+Driver Version = 10.0.19041.1
+Driver Provider = Microsoft
+
+Driver Description = WAN Miniport (IPv6)
+Adapter Guid = {CB9DF62A-38AC-4B0D-B9B6-C51C8F98A32A}
+Hardware ID = ms_ndiswanipv6
+Driver Date = 6-21-2006
+Driver Version = 10.0.19041.1
+Driver Provider = Microsoft
+
+Driver Description = WAN Miniport (Network Monitor)
+Adapter Guid = {7C688F3C-90C2-4FB1-8248-9C8E9B2C685A}
+Hardware ID = ms_ndiswanbh
+Driver Date = 6-21-2006
+Driver Version = 10.0.19041.1
+Driver Provider = Microsoft
+

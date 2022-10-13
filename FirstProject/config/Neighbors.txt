@@ -1,0 +1,54 @@
+ARP -A: 
+
+Interface: 10.71.65.181 --- 0x10
+  Internet Address      Physical Address      Type
+  10.71.64.1            00-87-64-44-24-6c     dynamic   
+  10.71.71.255          ff-ff-ff-ff-ff-ff     static    
+  224.0.0.22            01-00-5e-00-00-16     static    
+  224.0.0.251           01-00-5e-00-00-fb     static    
+  224.0.0.252           01-00-5e-00-00-fc     static    
+  239.255.255.250       01-00-5e-7f-ff-fa     static    
+  255.255.255.255       ff-ff-ff-ff-ff-ff     static    
+ 
+NETSH INT IPV6 SHOW NEIGHBORS: 
+
+Interface 16: Wi-Fi
+
+
+Internet Address                              Physical Address   Type
+--------------------------------------------  -----------------  -----------
+ff02::1                                       33-33-00-00-00-01  Permanent 
+ff02::2                                       33-33-00-00-00-02  Permanent 
+ff02::c                                       33-33-00-00-00-0c  Permanent 
+ff02::16                                      33-33-00-00-00-16  Permanent 
+ff02::fb                                      33-33-00-00-00-fb  Permanent 
+ff02::1:2                                     33-33-00-01-00-02  Permanent 
+ff02::1:3                                     33-33-00-01-00-03  Permanent 
+ff02::1:ff87:b248                             33-33-ff-87-b2-48  Permanent 
+
+Interface 1: Loopback Pseudo-Interface 1
+
+
+Internet Address                              Physical Address   Type
+--------------------------------------------  -----------------  -----------
+ff02::c                                                          Permanent 
+ff02::16                                                         Permanent 
+ff02::fb                                                         Permanent 
+ff02::1:2                                                        Permanent 
+
+Interface 20: Local Area Connection* 3
+
+
+Internet Address                              Physical Address   Type
+--------------------------------------------  -----------------  -----------
+ff02::16                                      33-33-00-00-00-16  Permanent 
+ff02::1:2                                     33-33-00-01-00-02  Permanent 
+
+Interface 28: Local Area Connection* 13
+
+
+Internet Address                              Physical Address   Type
+--------------------------------------------  -----------------  -----------
+ff02::16                                      33-33-00-00-00-16  Permanent 
+ff02::1:2                                     33-33-00-01-00-02  Permanent 
+

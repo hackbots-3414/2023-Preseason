@@ -1,0 +1,190 @@
+IPCONFIG /DISPLAYDNS:  
+
+Windows IP Configuration
+
+    static-ecst.licdn.com
+    ----------------------------------------
+    Record Name . . . . . : static-ecst.licdn.com
+    Record Type . . . . . : 5
+    Time To Live  . . . . : 786
+    Data Length . . . . . : 8
+    Section . . . . . . . : Answer
+    CNAME Record  . . . . : cs1404.wpc.epsiloncdn.net
+
+
+    Record Name . . . . . : cs1404.wpc.epsiloncdn.net
+    Record Type . . . . . : 1
+    Time To Live  . . . . : 786
+    Data Length . . . . . : 4
+    Section . . . . . . . : Answer
+    A (Host) Record . . . : 152.199.24.163
+
+
+    camo.githubusercontent.com
+    ----------------------------------------
+    Record Name . . . . . : camo.githubusercontent.com
+    Record Type . . . . . : 1
+    Time To Live  . . . . : 165
+    Data Length . . . . . : 4
+    Section . . . . . . . : Answer
+    A (Host) Record . . . : 185.199.111.133
+
+
+    Record Name . . . . . : camo.githubusercontent.com
+    Record Type . . . . . : 1
+    Time To Live  . . . . : 165
+    Data Length . . . . . : 4
+    Section . . . . . . . : Answer
+    A (Host) Record . . . : 185.199.108.133
+
+
+    Record Name . . . . . : camo.githubusercontent.com
+    Record Type . . . . . : 1
+    Time To Live  . . . . : 165
+    Data Length . . . . . : 4
+    Section . . . . . . . : Answer
+    A (Host) Record . . . : 185.199.109.133
+
+
+    Record Name . . . . . : camo.githubusercontent.com
+    Record Type . . . . . : 1
+    Time To Live  . . . . : 165
+    Data Length . . . . . : 4
+    Section . . . . . . . : Answer
+    A (Host) Record . . . : 185.199.110.133
+
+
+    config.teams.microsoft.com
+    ----------------------------------------
+    Record Name . . . . . : config.teams.microsoft.com
+    Record Type . . . . . : 5
+    Time To Live  . . . . : 20
+    Data Length . . . . . : 8
+    Section . . . . . . . : Answer
+    CNAME Record  . . . . : config.teams.trafficmanager.net
+
+
+    Record Name . . . . . : config.teams.trafficmanager.net
+    Record Type . . . . . : 5
+    Time To Live  . . . . : 20
+    Data Length . . . . . : 8
+    Section . . . . . . . : Answer
+    CNAME Record  . . . . : s-0005-teams.config.skype.com
+
+
+    Record Name . . . . . : s-0005-teams.config.skype.com
+    Record Type . . . . . : 5
+    Time To Live  . . . . : 20
+    Data Length . . . . . : 8
+    Section . . . . . . . : Answer
+    CNAME Record  . . . . : config-teams.s-0005.s-msedge.net
+
+
+    Record Name . . . . . : config-teams.s-0005.s-msedge.net
+    Record Type . . . . . : 5
+    Time To Live  . . . . : 20
+    Data Length . . . . . : 8
+    Section . . . . . . . : Answer
+    CNAME Record  . . . . : s-0005.s-msedge.net
+
+
+    Record Name . . . . . : s-0005.s-msedge.net
+    Record Type . . . . . : 1
+    Time To Live  . . . . : 20
+    Data Length . . . . . : 4
+    Section . . . . . . . : Answer
+    A (Host) Record . . . : 52.113.194.132
+
+
+    avatars.githubusercontent.com
+    ----------------------------------------
+    Record Name . . . . . : avatars.githubusercontent.com
+    Record Type . . . . . : 1
+    Time To Live  . . . . : 3556
+    Data Length . . . . . : 4
+    Section . . . . . . . : Answer
+    A (Host) Record . . . : 185.199.108.133
+
+
+    Record Name . . . . . : avatars.githubusercontent.com
+    Record Type . . . . . : 1
+    Time To Live  . . . . : 3556
+    Data Length . . . . . : 4
+    Section . . . . . . . : Answer
+    A (Host) Record . . . : 185.199.109.133
+
+
+    Record Name . . . . . : avatars.githubusercontent.com
+    Record Type . . . . . : 1
+    Time To Live  . . . . : 3556
+    Data Length . . . . . : 4
+    Section . . . . . . . : Answer
+    A (Host) Record . . . : 185.199.110.133
+
+
+    Record Name . . . . . : avatars.githubusercontent.com
+    Record Type . . . . . : 1
+    Time To Live  . . . . : 3556
+    Data Length . . . . . : 4
+    Section . . . . . . . : Answer
+    A (Host) Record . . . : 185.199.111.133
+
+
+    g.live.com
+    ----------------------------------------
+    Record Name . . . . . : g.live.com
+    Record Type . . . . . : 5
+    Time To Live  . . . . : 34
+    Data Length . . . . . : 8
+    Section . . . . . . . : Answer
+    CNAME Record  . . . . : g.msn.com
+
+
+    Record Name . . . . . : g.msn.com
+    Record Type . . . . . : 5
+    Time To Live  . . . . : 34
+    Data Length . . . . . : 8
+    Section . . . . . . . : Answer
+    CNAME Record  . . . . : g-msn-com-nsatc.trafficmanager.net
+
+
+    Record Name . . . . . : g-msn-com-nsatc.trafficmanager.net
+    Record Type . . . . . : 1
+    Time To Live  . . . . : 34
+    Data Length . . . . . : 4
+    Section . . . . . . . : Answer
+    A (Host) Record . . . : 20.98.236.80
+
+
+    az764295.vo.msecnd.net
+    ----------------------------------------
+    Record Name . . . . . : az764295.vo.msecnd.net
+    Record Type . . . . . : 5
+    Time To Live  . . . . : 108
+    Data Length . . . . . : 8
+    Section . . . . . . . : Answer
+    CNAME Record  . . . . : cs22.wpc.v0cdn.net
+
+
+    Record Name . . . . . : cs22.wpc.v0cdn.net
+    Record Type . . . . . : 1
+    Time To Live  . . . . : 108
+    Data Length . . . . . : 4
+    Section . . . . . . . : Answer
+    A (Host) Record . . . : 152.199.4.33
+
+
+  
+NETSH NAMESPACE SHOW EFFECTIVE: 
+
+DNS Effective Name Resolution Policy Table Settings
+
+Note: DirectAccess settings are inactive when this computer is inside a corporate network.
+
+
+ 
+NETSH NAMESPACE SHOW POLICY: 
+
+DNS Name Resolution Policy Table Settings
+
+

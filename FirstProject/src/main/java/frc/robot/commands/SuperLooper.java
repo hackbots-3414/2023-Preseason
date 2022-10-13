@@ -25,10 +25,7 @@ public class SuperLooper extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    System.out.println("current count:  " + ++count);
-    for (int i = 0;i < 10;i++) {
-      System.out.println("  i=" + i);
-    }
+    System.out.println("current count:  " + count);
     // Increment count, so that we're not ALWAYS running. That would be quite a boring infinite loop.
   }
 
@@ -39,6 +36,6 @@ public class SuperLooper extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return count == 10;
+    return ++count > 10;
   }
 }

@@ -1,0 +1,11 @@
+Teredo Parameters
+---------------------------------------------
+Type                    : disabled
+Server Name             : win1910.ipv6.microsoft.com.
+Client Refresh Interval : 30 seconds
+Client Port             : unspecified
+State                   : offline
+Error                   : none
+
+
+

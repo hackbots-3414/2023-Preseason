@@ -1,0 +1,2019 @@
+Firewall Rules currently enforced : 
+------------------------------------------------------------------------ 
+
+Windows Defender Firewall Rules:
+----------------------------------------------------------------------
+Rule Name:                            Microsoft Edge (mDNS-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Microsoft Edge WebView2 Runtime
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            5353
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Google Chrome (mDNS-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Google Chrome
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            5353
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            OpenJDK Platform binary
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            OpenJDK Platform binary
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            Microsoft Edge (mDNS-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Microsoft Edge
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            5353
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Microsoft Store
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Microsoft Store
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             Any
+Edge traversal:                       Yes
+Action:                               Allow
+
+Rule Name:                            Skype
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             {78E1CD88-49E3-476E-B926-580E596AD309}
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Skype
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             {78E1CD88-49E3-476E-B926-580E596AD309}
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            @{Microsoft.XboxApp_48.88.11001.0_x64__8wekyb3d8bbwe?ms-resource://Microsoft.XboxApp/XboxApp.Resource/Resources/App_Title}
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Xbox Console Companion
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             Any
+Edge traversal:                       Yes
+Action:                               Allow
+
+Rule Name:                            Xbox Game Bar
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Xbox Game Bar
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             Any
+Edge traversal:                       Yes
+Action:                               Allow
+
+Rule Name:                            Cortana
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Cortana
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             Any
+Edge traversal:                       Yes
+Action:                               Allow
+
+Rule Name:                            @{microsoft.windowscommunicationsapps_16005.14326.20858.0_x64__8wekyb3d8bbwe?ms-resource://microsoft.windowscommunicationsapps/hxoutlookintl/AppManifest_OutlookDesktop_DisplayName}
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Mail and Calendar
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             Any
+Edge traversal:                       Yes
+Action:                               Allow
+
+Rule Name:                            FRC Imaging Tool for formatting and installing images on FRC Robot Controllers (roboRIO)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            FRC Imaging Tool for formatting and installing images on FRC Robot Controllers (roboRIO)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            @{Microsoft.Windows.Photos_2021.21090.10008.0_x64__8wekyb3d8bbwe?ms-resource://Microsoft.Windows.Photos/Resources/AppStoreName}
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Microsoft Photos
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             Any
+Edge traversal:                       Yes
+Action:                               Allow
+
+Rule Name:                            NI mDNS Responder
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            5353
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            NI Service Locator
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            3580
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            NI Service Locator
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            3580
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            OpenJDK Platform binary
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            OpenJDK Platform binary
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            @{Microsoft.Win32WebViewHost_10.0.19041.423_neutral_neutral_cw5n1h2txyewy?ms-resource://Windows.Win32WebViewHost/resources/DisplayName}
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Desktop App Web Viewer
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             Any
+Edge traversal:                       Yes
+Action:                               Allow
+
+Rule Name:                            OpenJDK Platform binary
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            OpenJDK Platform binary
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            grip.exe
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            grip.exe
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            FRC Imaging Tool for formatting and installing images on FRC Robot Controllers (roboRIO)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            FRC Imaging Tool for formatting and installing images on FRC Robot Controllers (roboRIO)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            Java(TM) Platform SE binary
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            Java(TM) Platform SE binary
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            FRC Imaging Tool for formatting and installing images on FRC Robot Controllers (roboRIO)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            FRC Imaging Tool for formatting and installing images on FRC Robot Controllers (roboRIO)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Java(TM) Platform SE binary
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            Java(TM) Platform SE binary
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            eclipse
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            eclipse
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            FRC Driver Station for controlling FRC Robots
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            FRC Driver Station for controlling FRC Robots
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            Java(TM) Platform SE binary
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            Java(TM) Platform SE binary
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            @{Windows.ContactSupport_10.0.10586.0_neutral_neutral_cw5n1h2txyewy?ms-resource://Windows.ContactSupport/Resources/appDisplayName}
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             @{Windows.ContactSupport_10.0.10586.0_neutral_neutral_cw5n1h2txyewy?ms-resource://Windows.ContactSupport/Resources/appDisplayName}
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             Any
+Edge traversal:                       Yes
+Action:                               Allow
+
+Rule Name:                            SHAREit.exe
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            SHAREit.exe
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            WiDiApp
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            WiDiAppOld
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            WirelessDisplay
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            SmartAgentTest
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            IntelUSBoverIP:1
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             Any
+Edge traversal:                       Yes
+Action:                               Allow
+
+Rule Name:                            @{Microsoft.Windows.Cortana_1.6.1.52_neutral_neutral_cw5n1h2txyewy?ms-resource://Microsoft.Windows.Cortana/resources/DisplayName}
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             @{Microsoft.Windows.Cortana_1.6.1.52_neutral_neutral_cw5n1h2txyewy?ms-resource://Microsoft.Windows.Cortana/resources/DisplayName}
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             Any
+Edge traversal:                       Yes
+Action:                               Allow
+
+Rule Name:                            Firefox (C:\Program Files (x86)\Mozilla Firefox)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            FRC Driver Station for controlling FRC Robots
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            FRC Driver Station for controlling FRC Robots
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            eclipse
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            eclipse
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            eclipse
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            eclipse
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            HERO LifeBoat
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            HERO LifeBoat
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            @{Microsoft.Windows.Cortana_1.7.0.14393_neutral_neutral_cw5n1h2txyewy?ms-resource://Microsoft.Windows.Cortana/resources/PackageDisplayName}
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             @{Microsoft.Windows.Cortana_1.7.0.14393_neutral_neutral_cw5n1h2txyewy?ms-resource://Microsoft.Windows.Cortana/resources/PackageDisplayName}
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             Any
+Edge traversal:                       Yes
+Action:                               Allow
+
+Rule Name:                            @{Windows.ContactSupport_10.0.14393.0_neutral_neutral_cw5n1h2txyewy?ms-resource://Windows.ContactSupport/Resources/appDisplayName}
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             @{Windows.ContactSupport_10.0.14393.0_neutral_neutral_cw5n1h2txyewy?ms-resource://Windows.ContactSupport/Resources/appDisplayName}
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             Any
+Edge traversal:                       Yes
+Action:                               Allow
+
+Rule Name:                            @{Microsoft.PPIProjection_10.0.14393.0_neutral_neutral_cw5n1h2txyewy?ms-resource://Microsoft.PPIProjection/resources/ProductName}
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             @{Microsoft.PPIProjection_10.0.14393.0_neutral_neutral_cw5n1h2txyewy?ms-resource://Microsoft.PPIProjection/resources/ProductName}
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             Any
+Edge traversal:                       Yes
+Action:                               Allow
+
+Rule Name:                            FRC Imaging Tool for formatting and installing images on FRC Robot Controllers (roboRIO)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            FRC Imaging Tool for formatting and installing images on FRC Robot Controllers (roboRIO)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            Bonjour Service
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Bonjour Service
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Bonjour Service
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Bonjour Service
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Vinyl Express LXI 12_SAi Product Manager
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Vinyl Express LXI 12_SAi Product Manager
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Vinyl Express LXI 12_SAi SAi Flexi
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Vinyl Express LXI 12_SAi SAi Flexi
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Vinyl Express LXI 12 Service1
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Vinyl Express LXI 12 Service1
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            tftp_client.exe
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            tftp_client.exe
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Vinyl Express LXI 12 Service2
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Vinyl Express LXI 12 Service2
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            AmEpsonHTMStub.exe
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            AmEpsonHTMStub.exe
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Vinyl Express LXI 12 Service3
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Vinyl Express LXI 12 Service3
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Configuretor.exe
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Configuretor.exe
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Vinyl Express LXI 12 Service4
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Vinyl Express LXI 12 Service4
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            PrinterSearch.exe
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            PrinterSearch.exe
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Vinyl Express LXI 12 Service5
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Vinyl Express LXI 12 Service5
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            SetupDevice.exe
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            SetupDevice.exe
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Vinyl Express LXI 12 Service6
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Vinyl Express LXI 12 Service6
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            LoaderAICut.exe
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            LoaderAICut.exe
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Vinyl Express LXI 12 Service7
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Vinyl Express LXI 12 Service7
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            LoaderCorelCut.exe
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            LoaderCorelCut.exe
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            ..\Flexi3D\Flexi3D.exe
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            ..\Flexi3D\Flexi3D.exe
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            sparkmax
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            sparkmax
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            Java(TM) Platform SE binary
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Java(TM) Platform SE binary
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            FRC Imaging Tool for formatting and installing images on FRC Robot Controllers (roboRIO)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            FRC Imaging Tool for formatting and installing images on FRC Robot Controllers (roboRIO)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            limelight finder.exe
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            limelight finder.exe
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            OpenJDK Platform binary
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            OpenJDK Platform binary
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Private,Public
+Grouping:                             
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            Any
+RemotePort:                           Any
+Edge traversal:                       Defer to user
+Action:                               Allow
+
+Rule Name:                            Zoom Video Meeting
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Zoom Video Conference
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            7200-17210
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Airhost service for Zoom Video Meetings
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Zoom Video Conference
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            5000,7000,7100,50000,7200-17210,8888
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Airhost service for Zoom Video Meetings
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Zoom Video Conference
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            5353,7200-17210,8889
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            WFD ASP Coordination Protocol (UDP-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             WLAN Service - WFD Application Services Platform Coordination Protocol (Uses UDP)
+LocalIP:                              Any
+RemoteIP:                             LocalSubnet
+Protocol:                             UDP
+LocalPort:                            7235
+RemotePort:                           7235
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            File and Printer Sharing (LLMNR-UDP-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             File and Printer Sharing
+LocalIP:                              Any
+RemoteIP:                             LocalSubnet
+Protocol:                             UDP
+LocalPort:                            5355
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            File and Printer Sharing (Echo Request - ICMPv6-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             File and Printer Sharing
+LocalIP:                              Any
+RemoteIP:                             LocalSubnet
+Protocol:                             ICMPv6
+                                      Type    Code
+                                      128     Any 
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            File and Printer Sharing (Echo Request - ICMPv4-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             File and Printer Sharing
+LocalIP:                              Any
+RemoteIP:                             LocalSubnet
+Protocol:                             ICMPv4
+                                      Type    Code
+                                      8       Any 
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            File and Printer Sharing (Spooler Service - RPC-EPMAP)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             File and Printer Sharing
+LocalIP:                              Any
+RemoteIP:                             LocalSubnet
+Protocol:                             TCP
+LocalPort:                            RPC-EPMap
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            File and Printer Sharing (Spooler Service - RPC)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             File and Printer Sharing
+LocalIP:                              Any
+RemoteIP:                             LocalSubnet
+Protocol:                             TCP
+LocalPort:                            RPC
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            File and Printer Sharing (NB-Datagram-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             File and Printer Sharing
+LocalIP:                              Any
+RemoteIP:                             LocalSubnet
+Protocol:                             UDP
+LocalPort:                            138
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            File and Printer Sharing (NB-Name-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             File and Printer Sharing
+LocalIP:                              Any
+RemoteIP:                             LocalSubnet
+Protocol:                             UDP
+LocalPort:                            137
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            File and Printer Sharing (SMB-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             File and Printer Sharing
+LocalIP:                              Any
+RemoteIP:                             LocalSubnet
+Protocol:                             TCP
+LocalPort:                            445
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            File and Printer Sharing (NB-Session-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             File and Printer Sharing
+LocalIP:                              Any
+RemoteIP:                             LocalSubnet
+Protocol:                             TCP
+LocalPort:                            139
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            @FirewallAPI.dll,-80206
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             @FirewallAPI.dll,-80200
+LocalIP:                              Any
+RemoteIP:                             LocalSubnet
+Protocol:                             UDP
+LocalPort:                            5000-5020
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            @FirewallAPI.dll,-80201
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             @FirewallAPI.dll,-80200
+LocalIP:                              Any
+RemoteIP:                             LocalSubnet
+Protocol:                             TCP
+LocalPort:                            554,8554-8558
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Wireless Display Infrastructure Back Channel (TCP-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Wireless Display
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            7250
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            mDNS (UDP-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Public
+Grouping:                             mDNS
+LocalIP:                              Any
+RemoteIP:                             LocalSubnet
+Protocol:                             UDP
+LocalPort:                            5353
+RemotePort:                           Any
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Core Networking - IPv6 (IPv6-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Core Networking
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             41
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Core Networking - Dynamic Host Configuration Protocol for IPv6(DHCPV6-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Core Networking
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            546
+RemotePort:                           547
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Core Networking - Dynamic Host Configuration Protocol (DHCP-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Core Networking
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            68
+RemotePort:                           67
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Core Networking - Internet Group Management Protocol (IGMP-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Core Networking
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             2
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Core Networking - Destination Unreachable Fragmentation Needed (ICMPv4-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Core Networking
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             ICMPv4
+                                      Type    Code
+                                      3       4   
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Core Networking - Multicast Listener Done (ICMPv6-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Core Networking
+LocalIP:                              Any
+RemoteIP:                             LocalSubnet
+Protocol:                             ICMPv6
+                                      Type    Code
+                                      132     Any 
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Core Networking - Multicast Listener Report v2 (ICMPv6-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Core Networking
+LocalIP:                              Any
+RemoteIP:                             LocalSubnet
+Protocol:                             ICMPv6
+                                      Type    Code
+                                      143     Any 
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Core Networking - Multicast Listener Report (ICMPv6-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Core Networking
+LocalIP:                              Any
+RemoteIP:                             LocalSubnet
+Protocol:                             ICMPv6
+                                      Type    Code
+                                      131     Any 
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Core Networking - Multicast Listener Query (ICMPv6-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Core Networking
+LocalIP:                              Any
+RemoteIP:                             LocalSubnet
+Protocol:                             ICMPv6
+                                      Type    Code
+                                      130     Any 
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Core Networking - Router Solicitation (ICMPv6-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Core Networking
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             ICMPv6
+                                      Type    Code
+                                      133     Any 
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Core Networking - Router Advertisement (ICMPv6-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Core Networking
+LocalIP:                              Any
+RemoteIP:                             fe80::/64
+Protocol:                             ICMPv6
+                                      Type    Code
+                                      134     Any 
+Edge traversal:                       No
+Action:                               Allow
+
+Rule Name:                            Core Networking - Neighbor Discovery Advertisement (ICMPv6-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Core Networking
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             ICMPv6
+                                      Type    Code
+                                      136     Any 
+Edge traversal:                       Yes
+Action:                               Allow
+
+Rule Name:                            Core Networking - Neighbor Discovery Solicitation (ICMPv6-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Core Networking
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             ICMPv6
+                                      Type    Code
+                                      135     Any 
+Edge traversal:                       Yes
+Action:                               Allow
+
+Rule Name:                            Core Networking - Parameter Problem (ICMPv6-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Core Networking
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             ICMPv6
+                                      Type    Code
+                                      4       Any 
+Edge traversal:                       Yes
+Action:                               Allow
+
+Rule Name:                            Core Networking - Time Exceeded (ICMPv6-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Core Networking
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             ICMPv6
+                                      Type    Code
+                                      3       Any 
+Edge traversal:                       Yes
+Action:                               Allow
+
+Rule Name:                            Core Networking - Packet Too Big (ICMPv6-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Core Networking
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             ICMPv6
+                                      Type    Code
+                                      2       Any 
+Edge traversal:                       Yes
+Action:                               Allow
+
+Rule Name:                            Core Networking - Destination Unreachable (ICMPv6-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Core Networking
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             ICMPv6
+                                      Type    Code
+                                      1       Any 
+Edge traversal:                       Yes
+Action:                               Allow
+
+Rule Name:                            Delivery Optimization (UDP-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Delivery Optimization
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             UDP
+LocalPort:                            7680
+RemotePort:                           Any
+Edge traversal:                       Yes
+Action:                               Allow
+
+Rule Name:                            Delivery Optimization (TCP-In)
+----------------------------------------------------------------------
+Enabled:                              Yes
+Direction:                            In
+Profiles:                             Domain,Private,Public
+Grouping:                             Delivery Optimization
+LocalIP:                              Any
+RemoteIP:                             Any
+Protocol:                             TCP
+LocalPort:                            7680
+RemotePort:                           Any
+Edge traversal:                       Yes
+Action:                               Allow
+
+Ok.
+
+Connection Security Rules currently enforced : 
+------------------------------------------------------------------------ 
+
+Connection Security Rules:
+The requested operation requires elevation (Run as administrator).
+

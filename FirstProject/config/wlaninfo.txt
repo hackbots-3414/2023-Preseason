@@ -1,0 +1,101 @@
+-------------------------------------
+-------+ Wireless Display Information +------
+-------------------------------------
+07:21 PM
+
+There is 1 interface on the system: 
+
+    Name                   : Wi-Fi
+    Description            : Intel(R) Dual Band Wireless-AC 3165
+    GUID                   : 7160b721-807b-4908-a42a-f6a15c36e342
+    Physical address       : e0:94:67:da:e2:65
+    State                  : connected
+    SSID                   : FPSGuest
+    BSSID                  : cc:16:7e:69:b8:5e
+    Network type           : Infrastructure
+    Radio type             : 802.11ac
+    Authentication         : Open
+    Cipher                 : None
+    Connection mode        : Profile
+    Channel                : 108
+    Receive rate (Mbps)    : 86.7
+    Transmit rate (Mbps)   : 86.7
+    Signal                 : 83% 
+    Profile                : FPSGuest 
+
+    Hosted network status  : Not available
+
+
+Interface name: Wi-Fi
+
+    Driver                    : Intel(R) Dual Band Wireless-AC 3165
+    Vendor                    : Intel Corporation
+    Provider                  : Intel
+    Date                      : 2/20/2022
+    Version                   : 19.51.40.1
+    INF file                  : oem106.inf
+    Type                      : Native Wi-Fi Driver
+    Radio types supported     : 802.11b 802.11g 802.11n 802.11a 802.11ac
+    FIPS 140-2 mode supported : Yes
+    802.11w Management Frame Protection supported : Yes
+    Hosted network supported  : No
+    Authentication and cipher supported in infrastructure mode:
+                                Open            None
+                                Open            WEP-40bit
+                                Open            WEP-104bit
+                                Open            WEP
+                                WPA-Enterprise  TKIP
+                                WPA-Enterprise  CCMP
+                                WPA-Personal    TKIP
+                                WPA-Personal    CCMP
+                                WPA2-Enterprise TKIP
+                                WPA2-Enterprise CCMP
+                                WPA2-Personal   TKIP
+                                WPA2-Personal   CCMP
+                                Open            Vendor defined
+                                Vendor defined  Vendor defined
+    IHV service present       : Yes
+    IHV adapter OUI           : [00 80 86], type: [00]
+    IHV extensibility DLL path: C:\WINDOWS\system32\IntelIHVRouter04.dll
+    IHV UI extensibility ClSID: {1bf6cb2d-2ae0-4879-a7aa-a75834fbd0e3}
+    IHV diagnostics CLSID     : {00000000-0000-0000-0000-000000000000}
+    Wireless Display Supported: Yes (Graphics Driver: Yes, Wi-Fi Driver: Yes)
+
+
+There is 1 interface on the system: 
+
+    Name                   : Wi-Fi
+    Description            : Intel(R) Dual Band Wireless-AC 3165
+    GUID                   : 7160b721-807b-4908-a42a-f6a15c36e342
+    Physical address       : e0:94:67:da:e2:65
+    State                  : connected
+    SSID                   : FPSGuest
+    BSSID                  : cc:16:7e:69:b8:5e
+    Network type           : Infrastructure
+    Radio type             : 802.11ac
+    Authentication         : Open
+    Cipher                 : None
+    Connection mode        : Profile
+    Channel                : 108
+    Receive rate (Mbps)    : 86.7
+    Transmit rate (Mbps)   : 86.7
+    Signal                 : 83% 
+    Profile                : FPSGuest 
+
+    Hosted network status  : Not available
+
+ 
+Interface name : Wi-Fi 
+There are 1 networks currently visible. 
+
+SSID 1 : FPSGuest
+    Network type            : Infrastructure
+    Authentication          : Open
+    Encryption              : None 
+    BSSID 1                 : cc:16:7e:69:b8:5e
+         Signal             : 99%  
+         Radio type         : 802.11ac
+         Channel            : 108 
+         Basic rates (Mbps) : 12 24
+         Other rates (Mbps) : 18 36 48 54
+

@@ -1,0 +1,82 @@
+NBTSTAT -N: 
+    
+Ethernet:
+Node IpAddress: [0.0.0.0] Scope Id: []
+
+    No names in cache
+    
+Wi-Fi:
+Node IpAddress: [10.71.65.181] Scope Id: []
+
+                NetBIOS Local Name Table
+
+       Name               Type         Status
+    ---------------------------------------------
+    HACKBOTS-NEONTE<20>  UNIQUE      Registered 
+    HACKBOTS-NEONTE<00>  UNIQUE      Registered 
+    WORKGROUP      <00>  GROUP       Registered 
+    
+Local Area Connection* 13:
+Node IpAddress: [0.0.0.0] Scope Id: []
+
+    No names in cache
+    
+Local Area Connection* 3:
+Node IpAddress: [0.0.0.0] Scope Id: []
+
+    No names in cache
+ 
+NBTSTAT -C: 
+    
+Ethernet:
+Node IpAddress: [0.0.0.0] Scope Id: []
+
+    No names in cache
+    
+Wi-Fi:
+Node IpAddress: [10.71.65.181] Scope Id: []
+
+    No names in cache
+    
+Local Area Connection* 13:
+Node IpAddress: [0.0.0.0] Scope Id: []
+
+    No names in cache
+    
+Local Area Connection* 3:
+Node IpAddress: [0.0.0.0] Scope Id: []
+
+    No names in cache
+ 
+NET CONFIG RDR: 
+Computer name                        \\HACKBOTS-NEONTE
+Full Computer name                   hackbots-neonteal
+User name                            Hackbots
+
+Workstation active on                
+	NetBT_Tcpip_{7160B721-807B-4908-A42A-F6A15C36E342} (E09467DAE265)
+
+Software version                     Windows 10 Pro
+
+Workstation domain                   WORKGROUP
+Logon domain                         HACKBOTS-NEONTE
+
+COM Open Timeout (sec)               0
+COM Send Count (byte)                16
+COM Send Timeout (msec)              250
+The command completed successfully.
+
+ 
+NET CONFIG SRV: 
+ 
+NET SHARE: 
+
+Share name   Resource                        Remark
+
+-------------------------------------------------------------------------------
+C$           C:\                             Default share                     
+IPC$                                         Remote IPC                        
+ADMIN$       C:\WINDOWS                      Remote Admin                      
+Users        C:\Users                        
+The command completed successfully.
+
