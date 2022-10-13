@@ -6,6 +6,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.SelectCommand;
@@ -31,6 +32,14 @@ public class RobotContainer {
   // An example selector method for the selectcommand.  Returns the selector that will select
   // which command to run.  Can base this choice on logical conditions evaluated at runtime.
   private CommandSelector select() {
+    double commandNumber = SmartDashboard.getNumber(Constants.AUTON_COMMAND_NUMBER, 1);
+    if (commandNumber >= 1.0 && commandNumber < 2.0) {
+      return CommandSelector.ONE;
+    } else if (commandNumber == 2.0) {
+      return CommandSelector.TWO;
+    } else if (commandNumber == 3.0) {
+      return CommandSelector.THREE;
+    }
     return CommandSelector.CUATRO;
   }
 
@@ -51,6 +60,7 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
+    SmartDashboard.putNumber(Constants.AUTON_COMMAND_NUMBER, 4);
   }
 
   /**
