@@ -26,7 +26,7 @@ public class juliaiLoopCommand extends CommandBase {
     for (int i = 5; i >= 0; i --) {
     int j = 0;
     while (j < 30) { 
-      System.out.println("count " + count + ", i: " + 1 + ", j");
+      System.out.println("count " + count + ", i: " + 1 + ", j: " + 1);
       j ++;
     }
     }
