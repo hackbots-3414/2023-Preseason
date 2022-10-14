@@ -20,6 +20,8 @@ import frc.robot.commands.SuperLooper;
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
+  private XboxController gamepad = new XboxController(0);
+  
   // The enum used as keys for selecting the command to run.
   private enum CommandSelector {
     ONE,
