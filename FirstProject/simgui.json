@@ -6,11 +6,8 @@
     }
   },
   "NetworkTables": {
-    "FMSInfo": {
+    "SmartDashboard": {
       "open": true
     }
-  },
-  "NetworkTables View": {
-    "visible": false
   }
 }

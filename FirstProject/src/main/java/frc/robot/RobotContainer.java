@@ -6,6 +6,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.SelectCommand;
@@ -24,13 +25,29 @@ public class RobotContainer {
     ONE,
     TWO,
     THREE,
-    FOUR
+    FOUR,
+    EMPTY,
+    INVALID
   }
 
   // An example selector method for the selectcommand.  Returns the selector that will select
   // which command to run.  Can base this choice on logical conditions evaluated at runtime.
   private CommandSelector select() {
-    return CommandSelector.FOUR;
+    double selection = SmartDashboard.getNumber(Constants.AUTON_CMD_NAME, 0);
+    if (selection == 0.00) {
+      return CommandSelector.EMPTY;
+    } else if (selection == 1.00) {
+      return CommandSelector.ONE;
+    } else if (selection == 2.00) {
+      return CommandSelector.TWO;
+    } else if (selection == 3.00) {
+      return CommandSelector.THREE; 
+    } else if (selection == 4.00) {
+      return CommandSelector.FOUR;
+    }
+    // anything else is conidered invalid...
+    return CommandSelector.INVALID;
+
   }
 
   // An example selectcommand.  Will select from the three commands based on the value returned
@@ -44,12 +61,15 @@ public class RobotContainer {
               Map.entry(CommandSelector.ONE, new PrintCommand("Command one was selected!")),
               Map.entry(CommandSelector.TWO, new PrintCommand("Command two was selected!")),
               Map.entry(CommandSelector.THREE, new PrintCommand("Command three was selected!")),
-              Map.entry(CommandSelector.FOUR, new SuperLooper())),
+              Map.entry(CommandSelector.FOUR, new SuperLooper()),
+              Map.entry(CommandSelector.EMPTY, new PrintCommand("No command has been selected yet. Perhaps put tomething there?")),
+              Map.entry(CommandSelector.INVALID, new PrintCommand("The option you selected is quite invalid."))),
           this::select);
 
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
+    SmartDashboard.putNumber(Constants.AUTON_CMD_NAME, 0);
   }
 
   /**

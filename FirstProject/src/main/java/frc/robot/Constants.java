@@ -13,9 +13,11 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+
+public final static String AUTON_CMD_NAME = "Autonamous Command Option";
   /**
    * Example of an inner class. One can "import static [...].Constants.OIConstants.*" to gain access
-   * to the constants contained within without having to preface the names with the class, greatly
+* to the constants contained within without having to preface the names with  the class, greatly
    * reducing the amount of text required.
    */
   public static final class OIConstants {
