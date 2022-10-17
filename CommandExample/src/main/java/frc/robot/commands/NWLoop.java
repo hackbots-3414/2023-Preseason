@@ -36,6 +36,6 @@ public class NWLoop extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return counter<1;
+    return counter>20;
   }
 }

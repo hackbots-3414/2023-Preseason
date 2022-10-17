@@ -6,6 +6,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.SelectCommand;
@@ -20,6 +21,7 @@ import java.util.Map;
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
+  private XboxController gamepad = new XboxController(0);
   // The enum used as keys for selecting the command to run.
   private enum CommandSelector {
     ONE,
@@ -31,7 +33,11 @@ public class RobotContainer {
   // An example selector method for the selectcommand.  Returns the selector that will select
   // which command to run.  Can base this choice on logical conditions evaluated at runtime.
   private CommandSelector select() {
-    return CommandSelector.TWENTYNINEANDSIXSEVENTHS;
+    switch ((int) SmartDashboard.getNumber(Constants.AUTON_COMMAND_NUMBER, 1)) {
+      case (1): return CommandSelector.ONE;
+      case (2): return CommandSelector.TWO;
+      case (3): return CommandSelector.THREE;
+    } return CommandSelector.TWENTYNINEANDSIXSEVENTHS;
   }
 
   // An example selectcommand.  Will select from the three commands based on the value returned
@@ -51,6 +57,7 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
+    SmartDashboard.putNumber(Constants.AUTON_COMMAND_NUMBER, 4);
   }
 
   /**
