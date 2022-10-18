@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.SelectCommand;
 import java.util.Map;
 import frc.robot.commands.SuperLooper;
+import frc.robot.subsystem.DriveTrain;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -20,8 +21,11 @@ import frc.robot.commands.SuperLooper;
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-  private XboxController gamepad = new XboxController(0);
-  
+  private  static RobotContainer me = new RobotContainer();
+  private XboxController controller = new XboxController(0);
+  private DriveTrain drvTrain = new DriveTrain();
+ 
+
   // The enum used as keys for selecting the command to run.
   private enum CommandSelector {
     ONE,
@@ -68,10 +72,18 @@ public class RobotContainer {
               Map.entry(CommandSelector.INVALID, new PrintCommand("The option you selected is quite invalid."))),
           this::select);
 
-  public RobotContainer() {
+  private RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
     SmartDashboard.putNumber(Constants.AUTON_CMD_NAME, 0);
+  }
+
+  public static RobotContainer getInstance() {
+    return me;
+  }
+
+  public DriveTrain getDriveTain() {
+    return drvTrain;
   }
 
   /**
@@ -89,5 +101,9 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     return m_exampleSelectCommand;
+  }
+
+  public XboxController getGamePad() {
+    return controller;
   }
 }
