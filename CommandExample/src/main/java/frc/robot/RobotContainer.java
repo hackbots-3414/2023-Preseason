@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.SelectCommand;
 import frc.robot.commands.MrZLoopCommand;
+import frc.robot.subsystems.DriveTrain;
 
 import java.util.Map;
 
@@ -21,7 +22,10 @@ import java.util.Map;
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
+  private static RobotContainer me = new RobotContainer();
   private XboxController gamepad = new XboxController(0);
+  private DriveTrain drvTrain = new DriveTrain();
+
   
   // The enum used as keys for selecting the command to run.
   private enum CommandSelector {
@@ -59,12 +63,19 @@ public class RobotContainer {
               Map.entry(CommandSelector.CUATRO, new MrZLoopCommand())),
           this::select);
 
-  public RobotContainer() {
+  private RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
     SmartDashboard.putNumber(Constants.AUTON_COMMAND_NUMBER, 4);
   }
 
+  public static RobotContainer getInstance(){
+    return me;
+  }
+
+  public DriveTrain getDriveTrain(){
+    return drvTrain;
+  }
   /**
    * Use this method to define your button->command mappings. Buttons can be created by
    * instantiating a {@link GenericHID} or one of its subclasses ({@link
@@ -80,5 +91,9 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     return m_exampleSelectCommand;
+  }
+
+  public XboxController getGamePad(){
+    return gamepad;
   }
 }
