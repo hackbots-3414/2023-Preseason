@@ -40,4 +40,16 @@ public class DriveTrain extends SubsystemBase {
   public void drive(double xSpeed, double zRotation) {
     dfDrive.arcadeDrive(xSpeed, zRotation);
   }
+
+  public void resetEncoders() {
+    left_front_motor.setSelectedSensorPosition(0);
+    right_front_motor.setSelectedSensorPosition(0);
+  }
+
+  public double getDistance() {
+    // this will try to slightly negate any bad motor counting that may happen.
+    double sum =  left_front_motor.getActiveTrajectoryPosition() + right_front_motor.getActiveTrajectoryPosition();
+    return sum / 2;
+  }
+
 } 
