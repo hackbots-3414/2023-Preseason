@@ -41,6 +41,9 @@ public class Drivetrain extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    dfDrive.feed();
+    motorLeftRear.feed();
+    motorRightRear.feed();
   }
   public void drive(double xSpeed,double zRotation){
     dfDrive.arcadeDrive(xSpeed, zRotation);
