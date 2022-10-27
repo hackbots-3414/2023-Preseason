@@ -6,9 +6,12 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.SelectCommand;
+import frc.robot.subsystems.Drivetrain;
+
 import java.util.Map;
 
 /**
@@ -17,18 +20,27 @@ import java.util.Map;
  * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
  * subsystems, commands, and button mappings) should be declared here.
  */
+
 public class RobotContainer {
+  private static RobotContainer me = new RobotContainer();
+  private XboxController gamepad = new XboxController(0);
+  private Drivetrain drvTrain = new Drivetrain();
+
+
+
   // The enum used as keys for selecting the command to run.
   private enum CommandSelector {
     ONE,
     TWO,
-    THREE
+    THREE,
+    CUATRO
   }
 
   // An example selector method for the selectcommand.  Returns the selector that will select
   // which command to run.  Can base this choice on logical conditions evaluated at runtime.
   private CommandSelector select() {
     return CommandSelector.ONE;
+
   }
 
   // An example selectcommand.  Will select from the three commands based on the value returned
@@ -47,8 +59,16 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
+    
   }
 
+  public static RobotContainer getInstance(){
+    return me;
+  }
+
+  public Drivetrain getDrivetrain(){
+    return drvTrain;
+  }
   /**
    * Use this method to define your button->command mappings. Buttons can be created by
    * instantiating a {@link GenericHID} or one of its subclasses ({@link
@@ -64,5 +84,9 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     return m_exampleSelectCommand;
+  }
+
+  public XboxController getGamePad(){
+    return gamepad;
   }
 }
