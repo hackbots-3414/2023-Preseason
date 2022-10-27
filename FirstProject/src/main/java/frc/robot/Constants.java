@@ -15,6 +15,7 @@ package frc.robot;
 public final class Constants {
 
 public final static String AUTON_CMD_NAME = "Autonamous Command Option";
+public final static int LF_MOTOR = 10, RF_MOTOR = 13, LB_MOTOR = 11, RB_MOTOR = 14;
   /**
    * Example of an inner class. One can "import static [...].Constants.OIConstants.*" to gain access
 * to the constants contained within without having to preface the names with  the class, greatly
