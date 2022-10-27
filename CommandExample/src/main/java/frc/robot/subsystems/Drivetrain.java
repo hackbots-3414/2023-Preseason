@@ -10,10 +10,10 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Drivetrain extends SubsystemBase {
-  private WPI_TalonFX motorFL = new WPI_TalonFX(20);
-  private WPI_TalonFX motorFR = new WPI_TalonFX(21);
-  private WPI_TalonFX motorBL = new WPI_TalonFX(22);
-  private WPI_TalonFX motorBR = new WPI_TalonFX(23);
+  private WPI_TalonFX motorFL = new WPI_TalonFX(10);
+  private WPI_TalonFX motorFR = new WPI_TalonFX(13);
+  private WPI_TalonFX motorBL = new WPI_TalonFX(11);
+  private WPI_TalonFX motorBR = new WPI_TalonFX(14);
   private DifferentialDrive dDrive = new DifferentialDrive(motorFL, motorFR);
   /** Creates a new Drivetrain. */
   public Drivetrain() {
@@ -37,4 +37,15 @@ public class Drivetrain extends SubsystemBase {
   public void drive(double speed, double rot) {
     dDrive.arcadeDrive(speed, rot);
   }
+
+  public void resetEncoders() {
+    motorFL.setSelectedSensorPosition(0);
+    motorFR.setSelectedSensorPosition(0);
+  }
+
+  public double getDistance() {
+    // this will try to slightly negate any bad motor counting that may happen.
+    return (motorFL.getActiveTrajectoryPosition() + motorFR.getActiveTrajectoryPosition()) / 2;
+  }
+
 }

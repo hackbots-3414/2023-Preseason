@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.SelectCommand;
+import frc.robot.commands.DriveStraight;
 import frc.robot.commands.NWLoop;
 import frc.robot.subsystems.Drivetrain;
 
@@ -25,6 +26,7 @@ public class RobotContainer {
   private static RobotContainer me = new RobotContainer();
   private XboxController gamepad = new XboxController(0);
   private Drivetrain drvtrain = new Drivetrain();
+  private Command autonCommand = new DriveStraight(drvtrain, 1, .2);
 
 
 
@@ -88,7 +90,7 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return m_exampleSelectCommand;
+    return autonCommand;
   }
 
   public XboxController getGamepad() {
