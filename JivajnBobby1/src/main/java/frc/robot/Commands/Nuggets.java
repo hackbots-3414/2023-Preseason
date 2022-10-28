@@ -31,8 +31,6 @@ public class Nuggets extends CommandBase {
   }
 }
 
-{public void name() {
-  
-}}
+
 
 
