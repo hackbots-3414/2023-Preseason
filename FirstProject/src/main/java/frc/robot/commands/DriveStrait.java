@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.subsystem.DriveTrain;
 
 public class DriveStrait extends CommandBase {
@@ -24,6 +25,7 @@ public class DriveStrait extends CommandBase {
   @Override
   public void initialize() {
     drvtrain.resetEncoders();
+    if (Constants.DEBUG) System.out.println("Driving strait, but first resetting encoders.");
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -36,11 +38,13 @@ public class DriveStrait extends CommandBase {
   @Override
   public void end(boolean interrupted) {
     drvtrain.drive(0, 0);
+    if (Constants.DEBUG) System.out.println("Finished driving strait!");
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+    if (Constants.DEBUG) System.out.println("Distance is " + drvtrain.getDistance());
     return drvtrain.getDistance() >= targetDistance;
   }
 }

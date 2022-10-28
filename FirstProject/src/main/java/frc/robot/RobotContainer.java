@@ -25,13 +25,12 @@ public class RobotContainer {
   private static RobotContainer me = new RobotContainer();
   private XboxController controller = new XboxController(0);
   private DriveTrain drvTrain = new DriveTrain();
-  private DriveStrait auton_command = new DriveStrait(drvTrain, 1, 0.1);
+  private DriveStrait auton_command = new DriveStrait(drvTrain, 10, 1);
 
   private RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
     drvTrain.setDefaultCommand(new DefaultTeleopCommand(drvTrain));
-    SmartDashboard.putNumber(Constants.AUTON_CMD_NAME, 0);
   }
 
   public static RobotContainer getInstance() {
@@ -59,6 +58,7 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
+    if (Constants.DEBUG) System.out.println("Getting autonomous command");
     return auton_command;
   }
 
