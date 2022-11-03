@@ -5,7 +5,6 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
 import frc.robot.subsystem.DriveTrain;
 
 public class DriveStrait extends CommandBase {
@@ -43,8 +42,6 @@ public class DriveStrait extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    double so_far = drvtrain.getDistance();
-
-    return so_far <= targetDistance;
+    return drvtrain.getDistance() > targetDistance;
   }
 }
