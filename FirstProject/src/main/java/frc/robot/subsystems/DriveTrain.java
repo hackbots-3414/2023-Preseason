@@ -50,7 +50,7 @@ public class DriveTrain extends SubsystemBase {
   }
 
   public double getDistance() {
-    double sum =  lfMotor.getActiveTrajectoryPosition() + rfMotor.getActiveTrajectoryPosition();
+    double sum =  lfMotor.getSelectedSensorPosition() + rfMotor.getSelectedSensorPosition();
     return sum / 2;
     }
 }

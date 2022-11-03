@@ -27,7 +27,7 @@ public class RobotContainer {
   private static RobotContainer me = new RobotContainer();
   private XboxController controller = new XboxController(0);
   private DriveTrain drvTrain = new DriveTrain();
-  private DriveStraight auton_command = new DriveStraight(drvTrain, 1, 0.1);
+  private DriveStraight auton_command = new DriveStraight(drvTrain, 10000, 0.5);
 
   private RobotContainer() {
     // Configure the button bindings
