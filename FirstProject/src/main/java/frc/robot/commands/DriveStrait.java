@@ -12,6 +12,7 @@ public class DriveStrait extends CommandBase {
   private DriveTrain drvtrain;
   double targetDistance;
   double drvspeed;
+
   /** Creates a new DriveStrait. */
   public DriveStrait(DriveTrain driveTrain, double distanceToDrive, double speed) {
     // Use addRequirements() here to declare subsystem dependencies.
@@ -25,7 +26,6 @@ public class DriveStrait extends CommandBase {
   @Override
   public void initialize() {
     drvtrain.resetEncoders();
-    if (Constants.DEBUG) System.out.println("Driving strait, but first resetting encoders.");
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -38,13 +38,13 @@ public class DriveStrait extends CommandBase {
   @Override
   public void end(boolean interrupted) {
     drvtrain.drive(0, 0);
-    if (Constants.DEBUG) System.out.println("Finished driving strait!");
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (Constants.DEBUG) System.out.println("Distance is " + drvtrain.getDistance());
-    return drvtrain.getDistance() >= targetDistance;
+    double so_far = drvtrain.getDistance();
+
+    return so_far <= targetDistance;
   }
 }

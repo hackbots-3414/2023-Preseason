@@ -6,7 +6,6 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.DefaultTeleopCommand;
 import frc.robot.commands.DriveStrait;
@@ -25,7 +24,7 @@ public class RobotContainer {
   private static RobotContainer me = new RobotContainer();
   private XboxController controller = new XboxController(0);
   private DriveTrain drvTrain = new DriveTrain();
-  private DriveStrait auton_command = new DriveStrait(drvTrain, 10, 1);
+  private DriveStrait auton_command = new DriveStrait(drvTrain, 10000, 1);
 
   private RobotContainer() {
     // Configure the button bindings
@@ -58,7 +57,6 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    if (Constants.DEBUG) System.out.println("Getting autonomous command");
     return auton_command;
   }
 

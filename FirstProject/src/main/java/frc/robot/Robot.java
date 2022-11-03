@@ -56,9 +56,7 @@ public class Robot extends TimedRobot {
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
   public void autonomousInit() {
-    if (Constants.DEBUG) System.out.println("\n\n\nI will now be starting. CROSSING MY FINGERS!\n\n\n");
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
-    if (Constants.DEBUG) System.out.println("Autonomous mode has initiated! this will be fun...");
 
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector",
