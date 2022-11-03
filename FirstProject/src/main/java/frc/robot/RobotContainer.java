@@ -5,15 +5,18 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.SelectCommand;
 import java.util.Map;
+
+import frc.robot.commands.DefaultTeleopCommand;
 import frc.robot.commands.SuperLooper;
 import frc.robot.subsystem.DriveTrain;
-
+import frc.robot.commands.DriveStraight;
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
  * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
@@ -24,6 +27,7 @@ public class RobotContainer {
   private  static RobotContainer me = new RobotContainer();
   private XboxController controller = new XboxController(0);
   private DriveTrain drvTrain = new DriveTrain();
+  private DriveStraight drvStr = new DriveStraight(drvTrain, 10000.0, 0.5);
  
 
   // The enum used as keys for selecting the command to run.
@@ -76,6 +80,7 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
     SmartDashboard.putNumber(Constants.AUTON_CMD_NAME, 0);
+    drvTrain.setDefaultCommand(new DefaultTeleopCommand(drvTrain)); 
   }
 
   public static RobotContainer getInstance() {
@@ -99,8 +104,9 @@ public class RobotContainer {
    *
    * @return the command to run in autonomous
    */
-  public Command getAutonomousCommand() {
-    return m_exampleSelectCommand;
+  public Command getAutonomousCommand(){
+
+    return drvStr;
   }
 
   public XboxController getGamePad() {

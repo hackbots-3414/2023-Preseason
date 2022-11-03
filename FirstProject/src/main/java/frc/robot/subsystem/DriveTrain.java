@@ -37,6 +37,16 @@ public class DriveTrain extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
+  public void resetEncoders() {
+    right_front_motor.setSelectedSensorPosition(0);
+    left_front_motor.setSelectedSensorPosition(0);
+  }
+
+  public double getAverageSensorPosition() {
+   double average = Math.abs((right_front_motor.getSelectedSensorPosition() + left_front_motor.getSelectedSensorPosition())/2);
+   return average;
+  }
+
   public void drive(double xSpeed, double zRotation) {
     dfDrive.arcadeDrive(xSpeed, zRotation);
   }
