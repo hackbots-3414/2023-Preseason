@@ -4,39 +4,48 @@
 
 package frc.robot.subsystems;
 
-import javax.management.loading.PrivateMLet;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Drivetrain extends SubsystemBase {
-private WPI_TalonFX moterLeftFront;
-private WPI_TalonFX moterLeftRear;
-private WPI_TalonFX moterRightfront;
-private WPI_TalonFX moterRightRear;
-  
-}
+  private WPI_TalonFX motorLeftFront;
+  private WPI_TalonFX motorLeftRear;
+  private WPI_TalonFX motorRightFront;
+  private WPI_TalonFX motorRightRear;
+  private DifferentialDrive drive;
+
+
   /** Creates a new Drivetrain. */
   public Drivetrain() {
-    moterLeftFront = new WPI_TalonFX(20);
-    moterLeftRear = new WPI_TalonFX(21);
-    moterRightfront = new WPI_TalonFX(22);
-    moterRightRear = new WPI_TalonFX(23);
-  
+    motorLeftFront = new WPI_TalonFX(10);
+    motorLeftRear = new WPI_TalonFX(11);
+    motorRightFront = new WPI_TalonFX(13);
+    motorRightRear = new WPI_TalonFX(14);
 
-    moterRightfront.follow(moterLeftFront);
-    moterRightRear.follow(moterRightfront);
+    motorRightRear.follow(motorRightFront); 
+    motorLeftRear.follow(motorLeftFront);
 
-    
-    moterRightfront .setInverted(true);
-    moterLeftRear .setInverted(true);
+    motorLeftFront.setInverted(false);
+    motorLeftRear.setInverted(false);
+    motorRightFront.setInverted(true);
+    motorRightRear.setInverted(true);
 
+    drive = new DifferentialDrive(motorLeftFront, motorRightFront);
+
+  }
 
   @Override
   public void periodic() {
-    
-  
+
     // This method will be called once per scheduler run
   }
-}
+
+  public void function(double speed, double rotation) {
+    drive.arcadeDrive(speed, rotation);
+  } 
+
+} 
+

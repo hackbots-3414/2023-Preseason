@@ -9,6 +9,9 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.SelectCommand;
+import frc.robot.commands.DefaultTeleopCommand;
+import frc.robot.subsystems.Drivetrain;
+
 import java.util.Map;
 
 /**
@@ -18,6 +21,8 @@ import java.util.Map;
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
+  private Drivetrain drivetrain = new Drivetrain(); 
+  private XboxController joysController = new XboxController(0);
   // The enum used as keys for selecting the command to run.
   private enum CommandSelector {
     ONE,
@@ -45,7 +50,8 @@ public class RobotContainer {
           this::select);
 
   public RobotContainer() {
-    // Configure the button bindings
+    drivetrain.setDefaultCommand(new DefaultTeleopCommand(drivetrain, joysController));
+    // Configure the button bindings 
     configureButtonBindings();
   }
 
