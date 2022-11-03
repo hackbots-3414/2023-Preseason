@@ -19,9 +19,9 @@ package frc.robot;
 public final class Constants {
 
   public final static int LF_MOTOR = 10,
-      LB_MOTOR = 11,
-      RF_MOTOR = 13,
-      RB_MOTOR = 14;
+                          LB_MOTOR = 11,
+                          RF_MOTOR = 13,
+                          RB_MOTOR = 14;
 
   public final static boolean DEBUG = true;
 

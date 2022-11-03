@@ -8,8 +8,11 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import frc.robot.Constants;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import com.kauailabs.navx.frc.AHRS;
 
 public class DriveTrain extends SubsystemBase {
+
+  private AHRS my_ahrs = new AHRS();
 
   private WPI_TalonFX left_front_motor = new WPI_TalonFX(Constants.LF_MOTOR);
   private WPI_TalonFX right_front_motor = new WPI_TalonFX(Constants.RF_MOTOR);
@@ -50,6 +53,14 @@ public class DriveTrain extends SubsystemBase {
     // this will try to slightly negate any bad motor counting that may happen.
     double sum = left_front_motor.getSelectedSensorPosition() + right_front_motor.getSelectedSensorPosition();
     return sum / 2;
+  }
+
+  public void resetNavX() {
+    my_ahrs.reset();
+  }
+
+  public double getZ() {
+    return my_ahrs.getAngleAdjustment();
   }
 
 }
