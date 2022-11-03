@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.DefaultTeleopCommand;
-import frc.robot.commands.DriveStrait;
+import frc.robot.commands.DriveStraight;
 import frc.robot.subsystem.DriveTrain;
 
 /**
@@ -24,7 +24,7 @@ public class RobotContainer {
   private static RobotContainer me = new RobotContainer();
   private XboxController controller = new XboxController(0);
   private DriveTrain drvTrain = new DriveTrain();
-  private DriveStrait auton_command = new DriveStrait(drvTrain, 10000, 1);
+  private DriveStraight auton_command = new DriveStraight(drvTrain, 10000, 1);
 
   private RobotContainer() {
     // Configure the button bindings

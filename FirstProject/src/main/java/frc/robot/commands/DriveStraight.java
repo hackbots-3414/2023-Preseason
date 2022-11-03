@@ -3,17 +3,16 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot.commands;
-
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystem.DriveTrain;
 
-public class DriveStrait extends CommandBase {
+public class DriveStraight extends CommandBase {
   private DriveTrain drvtrain;
   double targetDistance;
   double drvspeed;
 
-  /** Creates a new DriveStrait. */
-  public DriveStrait(DriveTrain driveTrain, double distanceToDrive, double speed) {
+  /** Creates a new DriveStraight. */
+  public DriveStraight(DriveTrain driveTrain, double distanceToDrive, double speed) {
     // Use addRequirements() here to declare subsystem dependencies.
     targetDistance = distanceToDrive;
     drvtrain = driveTrain;
