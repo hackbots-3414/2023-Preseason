@@ -12,35 +12,35 @@ public class DriveTurn extends CommandBase {
   double targetAngle;
   double drvspeed;
   /** Creates a new DriveTurn. */
-  public DriveTurn(DriveTrain driveTrain, double target, double speed) {
+  public DriveTurn(DriveTrain drvtrain, double targetAngle, double drvspeed) {
     // Use addRequirements() here to declare subsystem dependencies.
-    targetAngle = target;
-    drvtrain = driveTrain;
-    drvspeed = speed;
-    addRequirements(drvtrain);
+    this.targetAngle = targetAngle;
+    this.drvtrain = drvtrain;
+    this.drvspeed = drvspeed;
+    addRequirements(this.drvtrain);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    drvtrain.resetNavX();
+    this.drvtrain.resetNavX();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    drvtrain.drive(0, drvspeed); // NOTE: Does this work? Can i put 0 as a speed?
+    this.drvtrain.drive(0, this.drvspeed);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    drvtrain.drive(0,0);
+    this.drvtrain.drive(0,0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return drvtrain.getZ() > targetAngle;
+    return this.drvtrain.getZ() > this.targetAngle;
   }
 }
