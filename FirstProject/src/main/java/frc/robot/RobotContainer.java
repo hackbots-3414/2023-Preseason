@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.commands.DefaultTeleopCommand;
 import frc.robot.commands.DriveStraight;
+import frc.robot.commands.DriveTurn;
 
 //import java.util.Map;
 
@@ -27,7 +28,8 @@ public class RobotContainer {
   private static RobotContainer me = new RobotContainer();
   private XboxController controller = new XboxController(0);
   private DriveTrain drvTrain = new DriveTrain();
-  private DriveStraight auton_command = new DriveStraight(drvTrain, 10000, 0.5);
+  private DriveStraight drive_command = new DriveStraight(drvTrain, 10000, 0.5);
+//  private DriveTurn turn_command = new DriveTurn(drvTrain, 10000, .5);
 
   private RobotContainer() {
     // Configure the button bindings
@@ -61,7 +63,7 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return auton_command;
+    return drive_command;
   }
 
   public XboxController getGamePad() {
