@@ -8,6 +8,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import frc.robot.Constants;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import com.kauailabs.navx.frc.AHRS;
 
 public class DriveTrain extends SubsystemBase {
   private WPI_TalonFX lfMotor = new WPI_TalonFX(Constants.LF_MOTOR);  //lf = left front
@@ -15,7 +16,8 @@ public class DriveTrain extends SubsystemBase {
   private WPI_TalonFX lbMotor = new WPI_TalonFX(Constants.LB_MOTOR);  //lb = left back
   private WPI_TalonFX rbMotor = new WPI_TalonFX(Constants.RB_MOTOR);  //rb = right back
   private DifferentialDrive dfDrive = new DifferentialDrive(lfMotor, rfMotor);
-
+  private AHRS ahrs = new AHRS();
+  
   /** Creates a new DriveTrain. */
   public DriveTrain() {
 
@@ -44,13 +46,17 @@ public class DriveTrain extends SubsystemBase {
     dfDrive.arcadeDrive(xSpeed, zRotation);
   }
 
-  public void resetEncoders(){
-    lfMotor.setSelectedSensorPosition(0);
-    rfMotor.setSelectedSensorPosition(0);
-  }
-
   public double getDistance() {
     double sum =  lfMotor.getSelectedSensorPosition() + rfMotor.getSelectedSensorPosition();
     return sum / 2;
     }
+
+  public void resetEncoders(){
+    ahrs.reset();
+  }
+
+  public double getRotation() {
+    return ahrs.getAngleAdjustment();
+  }
+
 }
