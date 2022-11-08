@@ -44,13 +44,15 @@ public class DriveStraight extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    //Turn this to 2-3 if statements: If target is less than 0, if target is greater than 0, and if target is zero (Return true)
+
     if (targetDistance > 0) {
-        return drvtrain.getDistance() >= targetDistance;
-    } else if (targetDistance < 0) {
-        return drvtrain.getDistance() <= targetDistance;
-    } else 
-        return true;
-    //return drvtrain.getDistance() >= targetDistance;
+      return drvtrain.getDistance() >= targetDistance;
+    }
+    else if (targetDistance < 0) {
+      return drvtrain.getDistance() <= targetDistance;
+    }
+    else 
+      return true;
+        
   }
 }
