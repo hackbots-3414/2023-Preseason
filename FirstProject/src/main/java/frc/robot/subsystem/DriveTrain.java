@@ -10,7 +10,12 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.kauailabs.navx.frc.AHRS;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class DriveTrain extends SubsystemBase {
+  
+  private static final Logger LOG = LoggerFactory.getLogger(DriveTrain.class);
 
   private AHRS my_ahrs = new AHRS();
 
@@ -60,7 +65,7 @@ public class DriveTrain extends SubsystemBase {
   }
 
   public double getZ() {
-    return my_ahrs.getAngleAdjustment();
+    return my_ahrs.getAngle();
   }
 
 }
