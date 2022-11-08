@@ -43,6 +43,13 @@ public class Drivetrain extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
+public void clearEncoder(){
+  motorRightRear.setSelectedSensorPosition(0, 0, 10);
+}
+public double getEncoderValue(){
+  return motorRightRear.getSelectedSensorPosition();
+}
+
   public void function(double speed, double rotation) {
     drive.arcadeDrive(speed, rotation);
   } 
