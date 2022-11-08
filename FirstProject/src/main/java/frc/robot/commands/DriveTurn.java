@@ -26,6 +26,7 @@ public class DriveTurn extends CommandBase {
   @Override
   public void initialize() {
     drvtrain.resetEncoders();
+    drvtrain.resetGyro();
   }
 
   // Called every time the scheduler runs while the command is scheduled.

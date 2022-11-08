@@ -40,6 +40,8 @@ public class DriveTrain extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    lbMotor.feed();
+    rbMotor.feed();
   }
 
   public void drive(double xSpeed, double zRotation){
@@ -52,6 +54,11 @@ public class DriveTrain extends SubsystemBase {
     }
 
   public void resetEncoders(){
+    lfMotor.setSelectedSensorPosition(0);
+    rfMotor.setSelectedSensorPosition(0);
+  }
+
+  public void resetGyro(){
     ahrs.reset();
   }
 

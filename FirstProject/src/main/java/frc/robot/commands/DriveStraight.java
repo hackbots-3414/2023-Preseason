@@ -13,6 +13,9 @@ public class DriveStraight extends CommandBase {
   double drvspeed;
   /** Creates a new DriveStraight. */
   public DriveStraight(DriveTrain drvtrain1, double distanceToDrive, double speed) {
+    if (Math.signum(distanceToDrive) != Math.signum(speed)){
+      throw new IllegalArgumentException("distanceToDrive and speed must have the same sign");
+    }
     targetDistance = distanceToDrive;
     drvtrain = drvtrain1;
     drvspeed = speed;
@@ -41,6 +44,13 @@ public class DriveStraight extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return drvtrain.getDistance() >= targetDistance;
+    //Turn this to 2-3 if statements: If target is less than 0, if target is greater than 0, and if target is zero (Return true)
+    if (targetDistance > 0) {
+        return drvtrain.getDistance() >= targetDistance;
+    } else if (targetDistance < 0) {
+        return drvtrain.getDistance() <= targetDistance;
+    } else 
+        return true;
+    //return drvtrain.getDistance() >= targetDistance;
   }
 }
