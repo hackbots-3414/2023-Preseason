@@ -28,8 +28,8 @@ public class RobotContainer {
   private static RobotContainer me = new RobotContainer();
   private XboxController controller = new XboxController(0);
   private DriveTrain drvTrain = new DriveTrain();
-  private DriveStraight drive_command = new DriveStraight(drvTrain, 20000, 0.5);
-//  private DriveTurn turn_command = new DriveTurn(drvTrain, 10000, .5);
+  private DriveStraight auton_command = new DriveStraight(drvTrain, 20000, 0.5);
+//  private DriveTurn turn_command = new DriveTurn(drvTrain, 90, .5);
 
   private RobotContainer() {
     // Configure the button bindings
@@ -63,7 +63,7 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return drive_command;
+    return auton_command;
   }
 
   public XboxController getGamePad() {

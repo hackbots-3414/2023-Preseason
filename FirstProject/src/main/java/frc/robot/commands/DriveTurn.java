@@ -25,7 +25,6 @@ public class DriveTurn extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    drvtrain.resetEncoders();
     drvtrain.resetGyro();
   }
 
@@ -44,6 +43,13 @@ public class DriveTurn extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return drvtrain.getDistance() >= targetDistance;
+        if (targetDistance > 0) {
+      return drvtrain.getDistance() >= targetDistance;
+    }
+    else if (targetDistance < 0) {
+      return drvtrain.getDistance() <= targetDistance;
+    }
+    else 
+      return true;
   }
 }
