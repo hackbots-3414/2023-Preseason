@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.SelectCommand;
 import frc.robot.Commands.DefaultTeleopCommand;
+import frc.robot.Commands.driveStraight;
 import frc.robot.subsystems.Drivetrain;
 
 import java.util.Map;
@@ -25,7 +26,7 @@ import java.util.Map;
 public class RobotContainer {
   private static RobotContainer me = new RobotContainer();
   private XboxController gamepad = new XboxController(0);
-  private Drivetrain drvTrain = new Drivetrain();
+  private Drivetrain drivetrain = new Drivetrain();
 
 
 
@@ -34,13 +35,14 @@ public class RobotContainer {
     ONE,
     TWO,
     THREE,
-    CUATRO
+    CUATRO,
+    DRIVE_STRAIGHT
   }
 
   // An example selector method for the selectcommand.  Returns the selector that will select
   // which command to run.  Can base this choice on logical conditions evaluated at runtime.
   private CommandSelector select() {
-    return CommandSelector.ONE;
+    return CommandSelector.DRIVE_STRAIGHT;
 
   }
 
@@ -48,18 +50,19 @@ public class RobotContainer {
   // by the selector method at runtime.  Note that selectcommand works on Object(), so the
   // selector does not have to be an enum; it could be any desired type (string, integer,
   // boolean, double...)
-  private final Command m_exampleSelectCommand =
-      new SelectCommand(
+  private final Command m_exampleSelectCommand = new driveStraight(drivetrain, 0.5, 20000);
+     /* new SelectCommand(
           // Maps selector values to commands
           Map.ofEntries(
               Map.entry(CommandSelector.ONE, new PrintCommand("Command one was selected!")),
               Map.entry(CommandSelector.TWO, new PrintCommand("Command two was selected!")),
-              Map.entry(CommandSelector.THREE, new PrintCommand("Command three was selected!"))),
-          this::select);
+              Map.entry(CommandSelector.THREE, new PrintCommand("Command three was selected!")),
+              Map.entry(CommandSelector.DRIVE_STRAIGHT, new driveStraight(drivetrain, 0.5, 10000))),
+          this::select);*/
 
   public RobotContainer() {
     // Configure the button bindings
-    drvTrain.setDefaultCommand(new DefaultTeleopCommand(drvTrain));
+    drivetrain.setDefaultCommand(new DefaultTeleopCommand(drivetrain));
     configureButtonBindings();
     
   }
@@ -69,7 +72,7 @@ public class RobotContainer {
   }
 
   public Drivetrain getDrivetrain(){
-    return drvTrain;
+    return drivetrain;
   }
   /**
    * Use this method to define your button->command mappings. Buttons can be created by

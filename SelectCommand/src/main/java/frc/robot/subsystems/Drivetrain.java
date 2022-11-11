@@ -48,4 +48,12 @@ public class Drivetrain extends SubsystemBase {
   public void drive(double xSpeed,double zRotation){
     dfDrive.arcadeDrive(xSpeed, zRotation);
   }
+  public void resetEncoders(){
+  //  motorLeftRear.setSelectedSensorPosition(0);
+
+  }
+  public double getEncoderPosition(){
+    return 5;
+   // return motorLeftRear.getSelectedSensorPosition();
+  }
 }
