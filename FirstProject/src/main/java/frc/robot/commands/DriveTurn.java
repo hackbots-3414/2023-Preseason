@@ -35,7 +35,7 @@ public class DriveTurn extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    drvtrain.drive(drvspeed,targetRotation);
+    drvtrain.drive(0,drvspeed);
   }
 
   // Called once the command ends or is interrupted.
