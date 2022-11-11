@@ -14,7 +14,7 @@ import frc.robot.commands.HeidiLoopyCommand;*/
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.commands.DefaultTeleopCommand;
 import frc.robot.commands.DriveStraight;
-//import frc.robot.commands.DriveTurn;
+import frc.robot.commands.DriveTurn;
 
 //import java.util.Map;
 
@@ -28,8 +28,9 @@ public class RobotContainer {
   private static RobotContainer me = new RobotContainer();
   private XboxController controller = new XboxController(0);
   private DriveTrain drvTrain = new DriveTrain();
-  private DriveStraight auton_command = new DriveStraight(drvTrain, 20000, 0.5);
-//  private DriveTurn turn_command = new DriveTurn(drvTrain, 90, .5);
+//  Only one of the following 2 lines can be un-commented at a time.
+//  private DriveStraight auton_command = new DriveStraight(drvTrain, -200000, -0.5);
+  private DriveTurn auton_command = new DriveTurn(drvTrain, 90, 0.2);
 
   private RobotContainer() {
     // Configure the button bindings

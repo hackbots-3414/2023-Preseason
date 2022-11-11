@@ -9,14 +9,18 @@ import frc.robot.subsystems.DriveTrain;
 
 public class DriveTurn extends CommandBase {
   private DriveTrain drvtrain;
-  double targetDistance;
+  double targetRotation;
   double drvspeed;
-  double drvrotation;
   /** Creates a new DriveStraight. */
   public DriveTurn(DriveTrain drvtrain1, double rotation, double speed) {
     drvtrain = drvtrain1;
     drvspeed = speed;
-    drvrotation = rotation;
+    targetRotation = rotation;
+    addRequirements(drvtrain);
+
+    if (Math.signum(targetRotation) != Math.signum(speed)){
+      throw new IllegalArgumentException("targetRotation and speed must have the same sign");
+    }
 
     addRequirements(drvtrain);
     // Use addRequirements() here to declare subsystem dependencies.
@@ -31,7 +35,7 @@ public class DriveTurn extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    drvtrain.drive(drvspeed,drvrotation);
+    drvtrain.drive(drvspeed,targetRotation);
   }
 
   // Called once the command ends or is interrupted.
@@ -43,11 +47,11 @@ public class DriveTurn extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-        if (targetDistance > 0) {
-      return drvtrain.getDistance() >= targetDistance;
+    if (targetRotation > 0) {
+      return drvtrain.getRotation() >= targetRotation;
     }
-    else if (targetDistance < 0) {
-      return drvtrain.getDistance() <= targetDistance;
+    else if (targetRotation < 0) {
+      return drvtrain.getRotation() <= targetRotation;
     }
     else 
       return true;
