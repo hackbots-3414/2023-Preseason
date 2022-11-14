@@ -32,6 +32,8 @@ public class Drivetrain extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    motorBR.feed();
+    motorBL.feed();
   }
 
   public void drive(double speed, double rot) {
