@@ -9,6 +9,9 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.SelectCommand;
+import frc.robot.Commands.DefaultTeleopCommand;
+import frc.robot.subsystems.Drivetrain;
+
 import java.util.Map;
 
 /**
@@ -18,7 +21,12 @@ import java.util.Map;
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
+
+  private static RobotContainer me = new RobotContainer();
+  private static XboxController gamepad = new XboxController(0);
+  public Drivetrain drvTrain = new Drivetrain();
   // The enum used as keys for selecting the command to run.
+
   private enum CommandSelector {
     ONE,
     TWO,
@@ -45,10 +53,25 @@ public class RobotContainer {
           this::select);
 
   public RobotContainer() {
+
+    drvTrain.setDefaultCommand( new DefaultTeleopCommand(drvTrain));
     // Configure the button bindings
     configureButtonBindings();
   }
+ 
+  public static RobotContainer getInstance() { 
+    return me;
+  } 
+   
+  public XboxController getGamePad() { 
+    return gamepad;
+  }
+  
+public Drivetrain getDriveTrain() { 
 
+  return drvTrain; 
+}
+  
   /**
    * Use this method to define your button->command mappings. Buttons can be created by
    * instantiating a {@link GenericHID} or one of its subclasses ({@link

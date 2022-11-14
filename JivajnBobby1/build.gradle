@@ -64,9 +64,11 @@ dependencies {
     nativeRelease wpi.java.deps.wpilibJniRelease(wpi.platforms.desktop)
     nativeRelease wpi.java.vendor.jniRelease(wpi.platforms.desktop)
     simulationRelease wpi.sim.enableRelease()
-
+implementation "org.slf4j:slf4j-api:1.7.30"
+implementation "ch.qos.logback:logback-classic:${logbackVersion}"
     testImplementation 'junit:junit:4.13.1'
 }
+// Add logging from StrykeForce example
 
 // Simulation configuration (e.g. environment variables).
 wpi.sim.addGui().defaultEnabled = true
