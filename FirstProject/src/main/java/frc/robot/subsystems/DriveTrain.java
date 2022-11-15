@@ -9,14 +9,19 @@ import frc.robot.Constants;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.kauailabs.navx.frc.AHRS;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 public class DriveTrain extends SubsystemBase {
+//  private static final Logger LOG = LoggerFactory.getLogger(DriveTrain.class);
+
   private WPI_TalonFX lfMotor = new WPI_TalonFX(Constants.LF_MOTOR);  //lf = left front
   private WPI_TalonFX rfMotor = new WPI_TalonFX(Constants.RF_MOTOR);  //rf = right front
   private WPI_TalonFX lbMotor = new WPI_TalonFX(Constants.LB_MOTOR);  //lb = left back
   private WPI_TalonFX rbMotor = new WPI_TalonFX(Constants.RB_MOTOR);  //rb = right back
   private DifferentialDrive dfDrive = new DifferentialDrive(lfMotor, rfMotor);
   private AHRS ahrs = new AHRS();
+  
   
   /** Creates a new DriveTrain. */
   public DriveTrain() {
@@ -60,9 +65,11 @@ public class DriveTrain extends SubsystemBase {
 
   public void resetGyro(){
     ahrs.reset();
+//    LOG.trace("resetGyr(): resetGyro{}", getRotation());
   }
 
   public double getRotation() {
+//    LOG.trace("getRotation(): getRotation{}", getRotation());
     return ahrs.getAngleAdjustment();
   }
 

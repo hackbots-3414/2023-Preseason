@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 /*import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.SelectCommand;
 import frc.robot.commands.HeidiLoopyCommand;*/
@@ -25,12 +26,13 @@ import frc.robot.commands.DriveTurn;
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
+//  private SequentialCommandGroup commandGroup = new SequentialCommandGroup();
   private static RobotContainer me = new RobotContainer();
   private XboxController controller = new XboxController(0);
   private DriveTrain drvTrain = new DriveTrain();
-//  Only one of the following 2 lines can be un-commented at a time.
-//  private DriveStraight auton_command = new DriveStraight(drvTrain, -200000, -0.5);
-  private DriveTurn auton_command = new DriveTurn(drvTrain, 90, 0.2);
+//  private DriveStraight drive_command = new DriveStraight(drvTrain, -200000, -0.5);
+//  private DriveTurn auton_command = new DriveTurn(drvTrain, 90, 0.5);
+  private SequentialCommandGroup sequence_command = new SequentialCommandGroup(new DriveStraight(drvTrain, 200000, .4), new DriveTurn(drvTrain, -70, -.35), new DriveStraight(drvTrain, 550000, .4));
 
   private RobotContainer() {
     // Configure the button bindings
@@ -64,10 +66,11 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return auton_command;
+    return sequence_command;
   }
 
   public XboxController getGamePad() {
     return controller;
   }
+
 }

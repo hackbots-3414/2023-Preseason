@@ -7,7 +7,13 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveTrain;
 
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
+
 public class DriveTurn extends CommandBase {
+
+//  private static final Logger LOG = LoggerFactory.getLogger(DriveTurn.class);
+
   private DriveTrain drvtrain;
   double targetRotation;
   double drvspeed;
@@ -47,11 +53,14 @@ public class DriveTurn extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+
+//    LOG.trace("isFinished(): getRotation() {}, targetRotation: {}", drvtrain.getRotation(), targetRotation);
+
     if (targetRotation > 0) {
-      return drvtrain.getRotation() >= targetRotation;
+      return drvtrain.getRotation() > targetRotation;
     }
     else if (targetRotation < 0) {
-      return drvtrain.getRotation() <= targetRotation;
+      return drvtrain.getRotation() < targetRotation;
     }
     else 
       return true;
