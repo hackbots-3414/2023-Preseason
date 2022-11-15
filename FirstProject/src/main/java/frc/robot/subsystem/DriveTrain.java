@@ -46,13 +46,12 @@ public class DriveTrain extends SubsystemBase {
   }
 
   public void drive(double xSpeed, double zRotation) {
-    dfDrive.arcadeDrive(xSpeed, zRotation);
+    dfDrive.arcadeDrive(xSpeed, 0 - zRotation);
   }
 
   public void resetEncoders() {
     left_front_motor.setSelectedSensorPosition(0);
-    right_front_motor.setSelectedSensorPosition(0);
-  }
+    right_front_motor.setSelectedSensorPosition(0);  }
 
   public double getDistance() {
     // this will try to slightly negate any bad motor counting that may happen.
@@ -65,7 +64,7 @@ public class DriveTrain extends SubsystemBase {
   }
 
   public double getZ() {
-    return my_ahrs.getAngle();
+    double angle =  my_ahrs.getAngle();
+    return angle;
   }
-
 }

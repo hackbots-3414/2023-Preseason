@@ -8,8 +8,10 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.DefaultTeleopCommand;
+import frc.robot.commands.DriveStraight;
 import frc.robot.commands.DriveTurn;
 import frc.robot.subsystem.DriveTrain;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -24,7 +26,7 @@ public class RobotContainer {
   private static RobotContainer me = new RobotContainer();
   private XboxController controller = new XboxController(0);
   private DriveTrain drvTrain = new DriveTrain();
-  private DriveTurn auton_command = new DriveTurn(drvTrain, 90, 0.5);
+  private SequentialCommandGroup auton_command = new SequentialCommandGroup(new DriveStraight(drvTrain, 200000, 0.4), new DriveTurn(drvTrain, -70, 0.35), new DriveStraight(drvTrain, 550000, 0.4), new DriveTurn(drvTrain, 180, 0.4), new DriveStraight(drvTrain, 1000000, 0.4), new DriveTurn(drvTrain, 90, 0.4), new DriveStraight(drvTrain, 2160000, 0.4));
 
   private RobotContainer() {
     // Configure the button bindings

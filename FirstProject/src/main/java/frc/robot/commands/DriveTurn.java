@@ -11,6 +11,7 @@ public class DriveTurn extends CommandBase {
   private DriveTrain drvtrain;
   double targetAngle;
   double drvspeed;
+  boolean counter_clockwise;
   /** Creates a new DriveTurn. */
   public DriveTurn(DriveTrain drvtrain, double targetAngle, double drvspeed) {
     // Use addRequirements() here to declare subsystem dependencies.
@@ -24,12 +25,22 @@ public class DriveTurn extends CommandBase {
   @Override
   public void initialize() {
     this.drvtrain.resetNavX();
+    if (0 > targetAngle) {
+      this.counter_clockwise = true;
+    } else {
+      this.counter_clockwise = false;
+    }
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    this.drvtrain.drive(0, this.drvspeed);
+    if (this.counter_clockwise) {
+      this.drvtrain.drive(0, 0 - this.drvspeed);
+    } else {
+      this.drvtrain.drive(0, this.drvspeed);
+    }
+    
   }
 
   // Called once the command ends or is interrupted.
@@ -41,6 +52,10 @@ public class DriveTurn extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return this.drvtrain.getZ() > this.targetAngle;
+    if (this.counter_clockwise) {
+      return this.targetAngle >= this.drvtrain.getZ();
+    } else {
+      return this.drvtrain.getZ() >= this.targetAngle;
+    }
   }
 }

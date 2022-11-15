@@ -30,6 +30,7 @@ public class DriveStraight extends CommandBase {
   @Override
   public void execute() {
     drvtrain.drive(drvspeed, 0);
+    System.out.println("Ticks: " + drvtrain.getDistance());
   }
 
   // Called once the command ends or is interrupted.
