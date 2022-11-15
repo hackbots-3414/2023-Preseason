@@ -18,6 +18,9 @@ import java.util.Map;
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
+  private static final RobotContainer me = new RobotContainer(); 
+  private XboxController gamePad = new XboxController(0);
+
   // The enum used as keys for selecting the command to run.
   private enum CommandSelector {
     ONE,
@@ -44,7 +47,7 @@ public class RobotContainer {
               Map.entry(CommandSelector.THREE, new PrintCommand("Command three was selected!"))),
           this::select);
 
-  public RobotContainer() {
+  private RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
   }
@@ -57,6 +60,12 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {}
 
+  public static RobotContainer getInstance() {
+    return me; 
+  }
+  public XboxController getGamePad() {
+    return gamePad;
+  }
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
