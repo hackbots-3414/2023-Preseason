@@ -22,4 +22,9 @@ public final class Constants {
     // Example: the port of the driver's controller
     public static final int kDriverControllerPort = 0;
   }
+//TODO this is not done donw below
+  public static final class RobotConstants {
+    public static final kInchesPerTick = (5*3.14159)/2048;
+  }
 }
+
