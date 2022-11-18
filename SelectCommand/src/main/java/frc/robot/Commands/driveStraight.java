@@ -45,10 +45,11 @@ public class driveStraight extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    System.out.println("DRIVE_STRAIGHT is finished");
     if (drivetrain.getEncoderPosition() < distance){
+      System.out.println("DRIVE_STRAIGHT is not finished " + drivetrain.getEncoderPosition());
       return false;
     }
+    System.out.println("DRIVE_STRAIGHT is finished");
     return true;
   }
 }

@@ -50,7 +50,7 @@ public class RobotContainer {
   // by the selector method at runtime.  Note that selectcommand works on Object(), so the
   // selector does not have to be an enum; it could be any desired type (string, integer,
   // boolean, double...)
-  private final Command m_exampleSelectCommand = new driveStraight(drivetrain, 0.5, 20000);
+  private final Command m_exampleSelectCommand = new driveStraight(drivetrain, 0.5, 30000);
      /* new SelectCommand(
           // Maps selector values to commands
           Map.ofEntries(
@@ -60,10 +60,11 @@ public class RobotContainer {
               Map.entry(CommandSelector.DRIVE_STRAIGHT, new driveStraight(drivetrain, 0.5, 10000))),
           this::select);*/
 
-  public RobotContainer() {
+  private RobotContainer() {
     // Configure the button bindings
     drivetrain.setDefaultCommand(new DefaultTeleopCommand(drivetrain));
     configureButtonBindings();
+    System.out.println("in robot container constructor");
     
   }
 

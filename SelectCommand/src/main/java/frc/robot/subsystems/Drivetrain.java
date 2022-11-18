@@ -46,14 +46,17 @@ public class Drivetrain extends SubsystemBase {
     motorRightRear.feed();
   }
   public void drive(double xSpeed,double zRotation){
+  //  System.out.println("drive method, speed; " + xSpeed + ", zRotation; " + zRotation);
+    if (xSpeed == 0){
+     // Thread.dumpStack();
+    }
     dfDrive.arcadeDrive(xSpeed, zRotation);
   }
   public void resetEncoders(){
-  //  motorLeftRear.setSelectedSensorPosition(0);
+   motorLeftRear.setSelectedSensorPosition(0);
 
   }
   public double getEncoderPosition(){
-    return 5;
-   // return motorLeftRear.getSelectedSensorPosition();
+   return motorLeftRear.getSelectedSensorPosition();
   }
 }
