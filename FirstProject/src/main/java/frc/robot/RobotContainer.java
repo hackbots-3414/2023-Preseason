@@ -30,9 +30,15 @@ public class RobotContainer {
   private static RobotContainer me = new RobotContainer();
   private XboxController controller = new XboxController(0);
   private DriveTrain drvTrain = new DriveTrain();
-//  private DriveStraight drive_command = new DriveStraight(drvTrain, -200000, -0.5);
+//  private DriveStraight drive_command = new DriveStraight(drvTrain, -200000, -0.3);
 //  private DriveTurn auton_command = new DriveTurn(drvTrain, 90, 0.5);
-  private SequentialCommandGroup sequence_command = new SequentialCommandGroup(new DriveStraight(drvTrain, 200000, .4), new DriveTurn(drvTrain, -70, -.35), new DriveStraight(drvTrain, 550000, .4));
+  private SequentialCommandGroup sequence_command = new SequentialCommandGroup(
+                                                    new DriveStraight(drvTrain, 200000, 0.4), 
+                                                    new DriveTurn(drvTrain, -70, -0.35),
+                                                    new DriveStraight(drvTrain, 550000, 0.4), 
+                                                    new DriveStraight(drvTrain, -550000, -0.4), 
+                                                    new DriveTurn(drvTrain, 70, 0.35), 
+                                                    new DriveStraight(drvTrain, -200000, -0.4));
 
   private RobotContainer() {
     // Configure the button bindings

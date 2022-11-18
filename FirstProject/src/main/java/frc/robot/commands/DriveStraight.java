@@ -11,10 +11,11 @@ public class DriveStraight extends CommandBase {
   private DriveTrain drvtrain;
   double targetDistance;
   double drvspeed;
+
   /** Creates a new DriveStraight. */
   public DriveStraight(DriveTrain drvtrain1, double distanceToDrive, double speed) {
     if (Math.signum(distanceToDrive) != Math.signum(speed)){
-      throw new IllegalArgumentException("distanceToDrive and speed must have the same sign");
+      throw new IllegalArgumentException("DriveStraight: distanceToDrive and speed must have the same sign");
     }
     targetDistance = distanceToDrive;
     drvtrain = drvtrain1;
