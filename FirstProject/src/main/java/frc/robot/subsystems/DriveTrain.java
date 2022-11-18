@@ -65,7 +65,7 @@ public class DriveTrain extends SubsystemBase {
 
   public void resetGyro(){
     ahrs.reset();
-//    LOG.trace("resetGyr(): resetGyro{}", getRotation());
+//    LOG.trace("resetGyro(): resetGyro{}", getRotation());
   }
 
   public double getRotation() {
