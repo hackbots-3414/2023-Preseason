@@ -49,6 +49,10 @@ public class driveStraight extends CommandBase {
       System.out.println("DRIVE_STRAIGHT is not finished " + drivetrain.getEncoderPosition());
       return false;
     }
+    else if (drivetrain.getEncoderPosition() > distance){
+    return false;
+    }
+
     System.out.println("DRIVE_STRAIGHT is finished");
     return true;
   }
