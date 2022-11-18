@@ -25,7 +25,7 @@ public class DriveTurn extends CommandBase {
   @Override
   public void initialize() {
     this.drvtrain.resetNavX();
-    if (0 > targetAngle) {
+    if (0 < targetAngle) {
       this.counter_clockwise = true;
     } else {
       this.counter_clockwise = false;

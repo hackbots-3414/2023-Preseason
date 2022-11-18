@@ -18,6 +18,9 @@ public class DriveStraight extends CommandBase {
     drvtrain = driveTrain;
     drvspeed = speed;
     addRequirements(drvtrain);
+    if (distanceToDrive * speed < 0) {
+      throw new IllegalArgumentException("DriveStright: distanceToDrive and speed should have the same sign.");
+    }
   }
 
   // Called when the command is initially scheduled.
@@ -30,7 +33,6 @@ public class DriveStraight extends CommandBase {
   @Override
   public void execute() {
     drvtrain.drive(drvspeed, 0);
-    System.out.println("Ticks: " + drvtrain.getDistance());
   }
 
   // Called once the command ends or is interrupted.
@@ -42,6 +44,12 @@ public class DriveStraight extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return drvtrain.getDistance() > targetDistance;
+    if (targetDistance > 0) {
+      return drvtrain.getDistance() >= targetDistance;
+    } else if (targetDistance < 0) {
+      return drvtrain.getDistance() <= targetDistance;
+    } else {
+      return true;
+    }
   }
 }
