@@ -24,21 +24,21 @@ public class DriveTurn extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    this.drvtrain.resetNavX();
+    drvtrain.resetNavX();
     if (0 < targetAngle) {
-      this.counter_clockwise = true;
+      counter_clockwise = false;
     } else {
-      this.counter_clockwise = false;
+      counter_clockwise = true;
     }
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (this.counter_clockwise) {
-      this.drvtrain.drive(0, 0 - this.drvspeed);
+    if (counter_clockwise) {
+      drvtrain.drive(0, drvspeed);
     } else {
-      this.drvtrain.drive(0, this.drvspeed);
+      drvtrain.drive(0, 0 - drvspeed);
     }
     
   }
@@ -46,16 +46,18 @@ public class DriveTurn extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    this.drvtrain.drive(0,0);
+    drvtrain.drive(0,0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (this.counter_clockwise) {
-      return this.targetAngle >= this.drvtrain.getZ();
+    double z = drvtrain.getZ();
+    System.out.println("Current Angle: " + z);
+    if (counter_clockwise) {
+      return targetAngle >= z;
     } else {
-      return this.drvtrain.getZ() >= this.targetAngle;
+      return z >= targetAngle;
     }
   }
 }

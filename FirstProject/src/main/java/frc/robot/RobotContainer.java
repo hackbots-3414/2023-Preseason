@@ -26,13 +26,15 @@ public class RobotContainer {
   private static RobotContainer me = new RobotContainer();
   private XboxController controller = new XboxController(0);
   private DriveTrain drvTrain = new DriveTrain();
+  
   private SequentialCommandGroup auton_command = 
-  new SequentialCommandGroup(new DriveStraight(drvTrain, 180000, 0.4),
-                             new DriveTurn(drvTrain, -70, 0.35),
-                             new DriveStraight(drvTrain, 550000, 0.4),
-                             new DriveStraight(drvTrain, -550000, -0.4),
-                             new DriveTurn(drvTrain, 70, 0.35),
-                             new DriveStraight(drvTrain, -200000, -0.4));
+  new SequentialCommandGroup(new DriveStraight(drvTrain, 170000, 0.35),
+                             new DriveTurn(drvTrain, -80, 0.35),
+                             new DriveStraight(drvTrain, 550000, 0.35),
+                             new DriveStraight(drvTrain, -550000, -0.35),
+                             new DriveTurn(drvTrain, 80, 0.35),
+                             new DriveStraight(drvTrain, -180000, -0.3));
+  // private DriveTurn auton_command = new DriveTurn(drvTrain, -90, 0.35);
   
                              // private DriveStraight auton_command = new DriveStraight(drvTrain, 100000, 0.4);
   private RobotContainer() {

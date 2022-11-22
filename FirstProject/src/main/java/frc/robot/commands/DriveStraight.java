@@ -10,6 +10,7 @@ public class DriveStraight extends CommandBase {
   private DriveTrain drvtrain;
   double targetDistance;
   double drvspeed;
+  double turnAdjust;
 
   /** Creates a new DriveStraight. */
   public DriveStraight(DriveTrain driveTrain, double distanceToDrive, double speed) {
@@ -17,6 +18,7 @@ public class DriveStraight extends CommandBase {
     targetDistance = distanceToDrive;
     drvtrain = driveTrain;
     drvspeed = speed;
+    turnAdjust = 0;
     addRequirements(drvtrain);
     if (distanceToDrive * speed < 0) {
       throw new IllegalArgumentException("DriveStright: distanceToDrive and speed should have the same sign.");
@@ -27,12 +29,27 @@ public class DriveStraight extends CommandBase {
   @Override
   public void initialize() {
     drvtrain.resetEncoders();
+    drvtrain.resetNavX();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    drvtrain.drive(drvspeed, 0);
+    drvtrain.drive(drvspeed, turnAdjust);
+    // check to make sure that the robot is NOT turning.
+    double angle = drvtrain.off_by_how_much();
+    if (-1025 >= angle) {
+      turnAdjust += 0.03;
+      if (turnAdjust > 1) turnAdjust = 1;
+      System.out.println("ADJUSTING POSITIVE");
+    } else if (1024 <= angle) {
+      turnAdjust -= 0.03;
+      if (turnAdjust < -1) turnAdjust = -1;
+      System.out.println("ADJUSTING NEGATIVE");
+    } else {
+      turnAdjust = 0;
+    }
+    System.out.println("Ticks: " + drvtrain.getDistance());
   }
 
   // Called once the command ends or is interrupted.

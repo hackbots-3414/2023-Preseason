@@ -65,8 +65,8 @@ public class DriveTrain extends SubsystemBase {
     /*
     A function to get how off the encoders are (which encoder, if any, is farther ahead). Left - right.
     If zero, no difference.
-    If positive, then left value is bigger.
-    If negative, then right value is bigger.
+    If positive, then left value is bigger. (turning counter-clockwise)
+    If negative, then right value is bigger. (turning counter clockwise)
     */
     return left_front_motor.getSelectedSensorPosition() - right_front_motor.getSelectedSensorPosition();
   }
@@ -76,7 +76,7 @@ public class DriveTrain extends SubsystemBase {
   }
 
   public double getZ() {
-    double angle =  my_ahrs.getAngle();
+    double angle =  my_ahrs.getYaw();
     return angle;
   }
 }
