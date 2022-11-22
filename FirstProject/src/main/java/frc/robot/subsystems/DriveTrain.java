@@ -70,7 +70,7 @@ public class DriveTrain extends SubsystemBase {
 
   public double getRotation() {
 //    LOG.trace("getRotation(): getRotation{}", getRotation());
-    return ahrs.getAngleAdjustment();
+    return ahrs.getYaw();
   }
 
 }

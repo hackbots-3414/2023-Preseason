@@ -19,10 +19,10 @@ public class DriveTurn extends CommandBase {
   double drvspeed;
   /** Creates a new DriveStraight. */
   public DriveTurn(DriveTrain drvtrain1, double rotation, double speed) {
-    drvtrain = drvtrain1;
-    drvspeed = speed;
-    targetRotation = rotation;
-    addRequirements(drvtrain);
+    this.drvtrain = drvtrain1;
+    this.drvspeed = speed;
+    this.targetRotation = rotation;
+    addRequirements(this.drvtrain);
 
     if (Math.signum(targetRotation) != Math.signum(speed)){
       throw new IllegalArgumentException("targetRotation and speed must have the same sign");
