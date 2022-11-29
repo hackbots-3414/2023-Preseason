@@ -24,9 +24,12 @@ public class DriveStraight extends CommandBase {
     
 
     m_drivetrain = subsystem; 
+   
+        addRequirements(subsystem);
+   
     // Use addRequirements() here to declare subsystem dependencies.
   }
-
+    
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
@@ -58,7 +61,7 @@ public class DriveStraight extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (Math.abs(m_drivetrain.getEncoderPosition()) <= this.distance) {
+    if (Math.abs(m_drivetrain.getEncoderPosition()) < Math.abs(this.distance)) {
       return false;
   } else {
       return true;
