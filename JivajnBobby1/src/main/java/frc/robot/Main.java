@@ -20,6 +20,9 @@ public final class Main {
    * <p>If you change your main robot class, change the parameter type.
    */
   public static void main(String... args) {
+    char spaceChar = ' ';
+    int space = (int) ' ';
+    System.out.println(space);
     RobotBase.startRobot(Robot::new);
   }
 }

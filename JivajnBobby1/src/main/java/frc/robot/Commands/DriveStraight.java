@@ -17,10 +17,11 @@ public class DriveStraight extends CommandBase {
 
   private final Drivetrain m_drivetrain;
   /** Creates a new DriveStraight. */
-  public DriveStraight(Drivetrain subsystem, double distance) {
-    this.distance = distance;
-    this.speed = 0.6;
-    this.requestedDistance = distance;
+  public DriveStraight(Drivetrain subsystem, double ipdistance) {
+    distance = ipdistance;
+    speed = 0.6;
+    this.requestedDistance = ipdistance;
+    
 
     m_drivetrain = subsystem; 
     // Use addRequirements() here to declare subsystem dependencies.
@@ -34,7 +35,7 @@ public class DriveStraight extends CommandBase {
     m_drivetrain.resetEncoders();
 
     this.speed = Math.copySign(this.speed, this.distance);
-    this.distance = Math.abs(this.distance / Constants.RobotConstants.kInchesPerTick);
+    this.distance = Math.abs(this.distance / Constants.RobotConstants.kTicksperInch);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -57,7 +58,7 @@ public class DriveStraight extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (Math.abs(m_drivetrain.getAverageEncoderPosition()) <= this.distance) {
+    if (Math.abs(m_drivetrain.getEncoderPosition()) <= this.distance) {
       return false;
   } else {
       return true;
@@ -66,5 +67,5 @@ public class DriveStraight extends CommandBase {
 @Override
 public boolean runsWhenDisabled() {
     return false;
-}
+ }
 }

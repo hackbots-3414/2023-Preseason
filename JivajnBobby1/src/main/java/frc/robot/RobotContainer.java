@@ -1,6 +1,6 @@
 // Copyright (c) FIRST and other WPILib contributors.
-// Open Source Software; you can modify and/or share it under the terms of
-// the WPILib BSD license file in the root directory of this project.
+// Open Source Software;license you can modify and/or share it under the terms of
+// the WPILib BSD  file in the root directory of this project.
 
 package frc.robot;
 
@@ -22,9 +22,9 @@ import java.util.Map;
  */
 public class RobotContainer {
 
-  private static RobotContainer me = new RobotContainer();
+  private static final RobotContainer me = new RobotContainer();
   private static XboxController gamepad = new XboxController(0);
-  public Drivetrain drvTrain = new Drivetrain();
+  public Drivetrain drvTrain = new Drivetrain  ();
   // The enum used as keys for selecting the command to run.
 
   private enum CommandSelector {
@@ -52,7 +52,7 @@ public class RobotContainer {
               Map.entry(CommandSelector.THREE, new PrintCommand("Command three was selected!"))),
           this::select);
 
-  public RobotContainer() {
+  private RobotContainer() {
 
     drvTrain.setDefaultCommand( new DefaultTeleopCommand(drvTrain));
     // Configure the button bindings

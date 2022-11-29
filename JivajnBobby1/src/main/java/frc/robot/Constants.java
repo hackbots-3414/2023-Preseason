@@ -24,7 +24,7 @@ public final class Constants {
   }
 //TODO this is not done donw below
   public static final class RobotConstants {
-    public static final kInchesPerTick = (5*3.14159)/2048;
+    public static final double kTicksperInch = 2048/(5*Math.PI);
   }
 }
 
