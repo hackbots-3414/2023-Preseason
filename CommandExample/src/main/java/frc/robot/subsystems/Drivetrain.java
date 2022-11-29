@@ -47,7 +47,7 @@ public class Drivetrain extends SubsystemBase {
 
   public double getDistance() {
     // this will try to slightly negate any bad motor counting that may happen.
-    return (motorFL.getActiveTrajectoryPosition() + motorFR.getActiveTrajectoryPosition()) / 2;
+    return (motorFL.getSelectedSensorPosition() + motorFR.getSelectedSensorPosition()) / 2;
   }
 
 }

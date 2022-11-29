@@ -16,7 +16,7 @@ public class DriveStraight extends CommandBase {
     // Use addRequirements() here to declare subsystem dependencies.
     targetDistance = distanceToDrive;
     drvtrain = drvtrain1;
-    drvspeed = speed;
+    drvspeed = -speed;
     addRequirements(drvtrain);
   }
 
@@ -41,6 +41,7 @@ public class DriveStraight extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return drvtrain.getDistance() >= targetDistance;
+    if ( targetDistance == 0 ) return true;
+    return Math.abs(drvtrain.getDistance()) >= Math.abs(targetDistance);
   }
 }

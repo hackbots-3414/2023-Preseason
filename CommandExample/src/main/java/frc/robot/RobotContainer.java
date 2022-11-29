@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.SelectCommand;
 import frc.robot.commands.DefaultTeleopCommand;
 import frc.robot.commands.DriveStraight;
-import frc.robot.commands.NWLoop;
 import frc.robot.subsystems.Drivetrain;
 
 import java.util.Map;
@@ -27,7 +26,7 @@ public class RobotContainer {
   private static RobotContainer me = new RobotContainer();
   private XboxController gamepad = new XboxController(0);
   private Drivetrain drvtrain = new Drivetrain();
-  private Command autonCommand = new DriveStraight(drvtrain, 1, .2);
+  private Command autonCommand = new DriveStraight(drvtrain, 65536, 0.4);
 
 
 
@@ -35,8 +34,7 @@ public class RobotContainer {
   private enum CommandSelector {
     ONE,
     TWO,
-    THREE,
-    TWENTYNINEANDSIXSEVENTHS
+    THREE
   }
 
   public Drivetrain getDriveTrain() {
@@ -49,8 +47,7 @@ public class RobotContainer {
     switch ((int) SmartDashboard.getNumber(Constants.AUTON_COMMAND_NUMBER, 1)) {
       case (1): return CommandSelector.ONE;
       case (2): return CommandSelector.TWO;
-      case (3): return CommandSelector.THREE;
-    } return CommandSelector.TWENTYNINEANDSIXSEVENTHS;
+    } return CommandSelector.THREE;
   }
 
   // An example selectcommand.  Will select from the three commands based on the value returned
@@ -63,8 +60,7 @@ public class RobotContainer {
           Map.ofEntries(
               Map.entry(CommandSelector.ONE, new PrintCommand("Command one was selected!")),
               Map.entry(CommandSelector.TWO, new PrintCommand("Command two was selected!")),
-              Map.entry(CommandSelector.THREE, new PrintCommand("Command three was selected!")),
-              Map.entry(CommandSelector.TWENTYNINEANDSIXSEVENTHS, new NWLoop())),
+              Map.entry(CommandSelector.THREE, new PrintCommand("Command three was selected!"))),
           this::select);
 
   private RobotContainer() {
