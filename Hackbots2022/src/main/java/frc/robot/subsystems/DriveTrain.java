@@ -33,7 +33,16 @@ public class DriveTrain extends SubsystemBase {
 
     diffDrive = new DifferentialDrive(motorLeftFront,motorRightFront);
   }
+  public void resetEncoders(){
+    motorLeftBack.setSelectedSensorPosition(0);
 
+  }
+
+  public double getDistance(){
+    return motorLeftBack.getSelectedSensorPosition();
+  }
+  
+  
   public void drive(double xSpeed, double zRotation) {
     diffDrive.arcadeDrive(xSpeed, zRotation);
   }

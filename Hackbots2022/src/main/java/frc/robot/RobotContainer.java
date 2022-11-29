@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.SelectCommand;
+import frc.robot.commands.DefaultTeleopCommand;
 import frc.robot.subsystems.DriveTrain;
 
 import java.util.Map;
@@ -27,6 +28,7 @@ public class RobotContainer {
     THREE
   }
   private DriveTrain drivetrain = new DriveTrain();
+  private XboxController xbox = new XboxController(0);
 
   // An example selector method for the selectcommand.  Returns the selector that will select
   // which command to run.  Can base this choice on logical conditions evaluated at runtime.
@@ -48,6 +50,7 @@ public class RobotContainer {
           this::select);
 
   public RobotContainer() {
+    drivetrain.setDefaultCommand(new DefaultTeleopCommand(drivetrain, xbox));
     // Configure the button bindings
     configureButtonBindings();
   }
