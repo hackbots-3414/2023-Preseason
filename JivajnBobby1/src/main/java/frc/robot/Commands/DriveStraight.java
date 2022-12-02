@@ -20,6 +20,10 @@ public class DriveStraight extends CommandBase {
   public DriveStraight(Drivetrain subsystem, double ipdistance) {
     distance = ipdistance;
     speed = 0.6;
+    if (ipdistance < 0) {
+      speed = -speed;
+    }
+
     this.requestedDistance = ipdistance;
     
 
@@ -51,11 +55,7 @@ public class DriveStraight extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_drivetrain.arcadeDrive(speed * -1, 0);
-    Timer.delay(0.01);
     m_drivetrain.arcadeDrive(0, 0);
-    m_drivetrain.resetEncoders();
-
   }
 
   // Returns true when the command should end.
@@ -67,8 +67,4 @@ public class DriveStraight extends CommandBase {
       return true;
   }
 }
-@Override
-public boolean runsWhenDisabled() {
-    return false;
- }
 }
