@@ -5,32 +5,35 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants.RobotConstants;
 import frc.robot.subsystems.Drivetrain;
 
-public class DriveStraight extends CommandBase {
+public class DriveTurn extends CommandBase {
   private Drivetrain drvtrain;
-  double targetDistance;
+  double targetAngle;
   double drvspeed;
+  boolean clockwise = false;
   /** Creates a new DriveStraight. */
-  public DriveStraight(Drivetrain drvtrainPeram, double meters, double speed) {
+  public DriveTurn(Drivetrain drvtrainPeram, double Angle, double speed) {
     // Use addRequirements() here to declare subsystem dependencies.
-    targetDistance = (meters * RobotConstants.kTicks * RobotConstants.kGearRatio) / RobotConstants.kWheelCircomference;
+    targetAngle = Math.max(-180, Math.min(180, -Angle)); // clamp value to [-180, 180]
     drvtrain = drvtrainPeram;
     drvspeed = -speed;
     addRequirements(drvtrain);
   }
 
+
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    drvtrain.resetEncoders();
+    drvtrain.AHRSReset();
+    clockwise = targetAngle > 0;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    drvtrain.drive(drvspeed, 0);
+    if (clockwise) drvtrain.drive(0, targetAngle);
+    else drvtrain.drive(0, -targetAngle);
   }
 
   // Called once the command ends or is interrupted.
@@ -42,6 +45,7 @@ public class DriveStraight extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return targetDistance == 0 || Math.abs(drvtrain.getDistance()) >= Math.abs(targetDistance);
+    double rot = drvtrain.getRot();
+    return (rot < targetAngle && clockwise) ? (true) : ((rot > targetAngle && !clockwise) ? (true) : (false));
   }
 }

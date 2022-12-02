@@ -13,6 +13,13 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+  public static final class RobotConstants {
+    public static final double kWheelDiameter = 0.15915; // in meters
+    public static final double kWheelCircomference = 0.49999; // in meters
+    public static final double kTicks = 2048; // ticks per motor rotation
+    public static final double kGearRatio = 12; // 12 : 1
+  }
+  
   public static final String AUTON_COMMAND_NUMBER = "Auton Command";
   /**
    * Example of an inner class. One can "import static [...].Constants.OIConstants.*" to gain access

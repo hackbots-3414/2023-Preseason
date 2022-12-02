@@ -3,13 +3,19 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot.subsystems;
+import frc.robot.RobotContainer;
+import frc.robot.Constants.RobotConstants;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Drivetrain extends SubsystemBase {
+
+  private AHRS ahrs = new AHRS();
+
   private WPI_TalonFX motorFL = new WPI_TalonFX(10);
   private WPI_TalonFX motorFR = new WPI_TalonFX(13);
   private WPI_TalonFX motorBL = new WPI_TalonFX(11);
@@ -47,7 +53,17 @@ public class Drivetrain extends SubsystemBase {
 
   public double getDistance() {
     // this will try to slightly negate any bad motor counting that may happen.
-    return (motorFL.getSelectedSensorPosition() + motorFR.getSelectedSensorPosition()) / 2;
+    // returns distance in meters
+    return ((motorFL.getSelectedSensorPosition() + motorFR.getSelectedSensorPosition()) *
+      RobotConstants.kWheelCircomference) / (RobotConstants.kTicks * RobotConstants.kGearRatio * 2);
+  }
+
+  public void AHRSReset() {
+    ahrs.reset();
+  }
+
+  public double getRot() {
+    return ahrs.getYaw();
   }
 
 }
