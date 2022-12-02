@@ -29,6 +29,7 @@ public class DriveStraight extends CommandBase {
   @Override
   public void execute() {
     drivetrain.drive(0.3, 0);
+
   }
 
   // Called once the command ends or is interrupted.
@@ -37,14 +38,13 @@ public class DriveStraight extends CommandBase {
 
   // Returns true when the command should end.
   @Override
-  public boolean isFinished() {
+  public boolean isFinished() { 
     double currentDistance = drivetrain.getDistance();
     if(distance >= 0 && currentDistance < distance){
-      return false;
-    }
-    else if(distance < 0 && currentDistance >= distance){
+      return false;}
+    
+    else if(distance < 0 && drivetrain.getDistance() >= distance){
       return false;
     }
     return true;
-  }
-}
+  }}
