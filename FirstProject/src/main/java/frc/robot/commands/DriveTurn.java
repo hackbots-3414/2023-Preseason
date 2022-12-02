@@ -25,16 +25,13 @@ public class DriveTurn extends CommandBase {
   @Override
   public void initialize() {
     drvtrain.resetNavX();
-    if (0 < targetAngle) {
-      counter_clockwise = false;
-    } else {
-      counter_clockwise = true;
-    }
+    counter_clockwise = (0 > targetAngle);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+
     if (counter_clockwise) {
       drvtrain.drive(0, drvspeed);
     } else {
@@ -52,6 +49,11 @@ public class DriveTurn extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+    // if this if statemtent is true, then someone's trying to break my code. unaccceptable.
+    if (targetAngle == 0) {
+      return true;
+    }
+
     double z = drvtrain.getZ();
     System.out.println("Current Angle: " + z);
     if (counter_clockwise) {
