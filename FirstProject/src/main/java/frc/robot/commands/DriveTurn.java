@@ -7,12 +7,12 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveTrain;
 
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class DriveTurn extends CommandBase {
 
-//  private static final Logger LOG = LoggerFactory.getLogger(DriveTurn.class);
+  private static final Logger LOG = LoggerFactory.getLogger(DriveTurn.class);
 
   private DriveTrain drvtrain;
   double targetRotation;
@@ -41,7 +41,7 @@ public class DriveTurn extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    drvtrain.drive(0,drvspeed);
+    drvtrain.drive(0,0-drvspeed);
   }
 
   // Called once the command ends or is interrupted.
@@ -54,7 +54,7 @@ public class DriveTurn extends CommandBase {
   @Override
   public boolean isFinished() {
 
-//    LOG.trace("isFinished(): getRotation() {}, targetRotation: {}", drvtrain.getRotation(), targetRotation);
+    LOG.trace("isFinished(): getRotation() {}, targetRotation: {}", drvtrain.getRotation(), targetRotation);
 
     if (targetRotation > 0) {
       return drvtrain.getRotation() > targetRotation;

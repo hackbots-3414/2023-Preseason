@@ -11,6 +11,7 @@ public class DriveStraight extends CommandBase {
   private DriveTrain drvtrain;
   double targetDistance;
   double drvspeed;
+  double adjustment;
 
   /** Creates a new DriveStraight. */
   public DriveStraight(DriveTrain drvtrain1, double distanceToDrive, double speed) {
@@ -20,6 +21,7 @@ public class DriveStraight extends CommandBase {
     targetDistance = distanceToDrive;
     drvtrain = drvtrain1;
     drvspeed = speed;
+    adjustment = 0;
     addRequirements(drvtrain);
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -34,6 +36,21 @@ public class DriveStraight extends CommandBase {
   @Override
   public void execute() {
     drvtrain.drive(drvspeed,0);
+    // double angle = drvtrain.offByHowMuch();
+    // if (-1025 >= angle){
+    //   adjustment+= 0.03;
+    // }
+    //   else if (1024<=angle){
+    //     adjustment -= 0.03;
+    //   if (adjustment > 1) adjustment = 1;
+    //   System.out.println("ADJUSTING POSITIVE");
+    // } else if (1024 <= angle) {
+    //   adjustment -= 0.03;
+    //   if (adjustment < -1) adjustment = -1;
+    //   System.out.println("ADJUSTING NEGATIVE");
+    // } else {
+    //   adjustment = 0;
+    // }
   }
 
   // Called once the command ends or is interrupted.

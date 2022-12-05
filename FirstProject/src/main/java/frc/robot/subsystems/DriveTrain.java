@@ -72,5 +72,8 @@ public class DriveTrain extends SubsystemBase {
 //    LOG.trace("getRotation(): getRotation{}", getRotation());
     return ahrs.getYaw();
   }
+  public double offByHowMuch() {
+    return lfMotor.getSelectedSensorPosition() - rfMotor.getSelectedSensorPosition();
+  }
 
 }
