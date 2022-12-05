@@ -35,7 +35,7 @@ public class DriveStraight extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    drvtrain.drive(drvspeed,0);
+    drvtrain.drive(-drvspeed,0);
     // double angle = drvtrain.offByHowMuch();
     // if (-1025 >= angle){
     //   adjustment+= 0.03;
