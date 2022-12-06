@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.SelectCommand;
 import frc.robot.commands.DefaultTeleopCommand;
+import frc.robot.commands.DriveStraight;
 import frc.robot.subsystems.DriveTrain;
 
 import java.util.Map;
@@ -25,7 +26,8 @@ public class RobotContainer {
   private enum CommandSelector {
     ONE,
     TWO,
-    THREE
+    THREE,
+    FOUR
   }
   private DriveTrain drivetrain = new DriveTrain();
   private XboxController xbox = new XboxController(0);
@@ -33,7 +35,7 @@ public class RobotContainer {
   // An example selector method for the selectcommand.  Returns the selector that will select
   // which command to run.  Can base this choice on logical conditions evaluated at runtime.
   private CommandSelector select() {
-    return CommandSelector.ONE;
+    return CommandSelector.FOUR;
   }
 
   // An example selectcommand.  Will select from the three commands based on the value returned
@@ -46,7 +48,8 @@ public class RobotContainer {
           Map.ofEntries(
               Map.entry(CommandSelector.ONE, new PrintCommand("Command one was selected!")),
               Map.entry(CommandSelector.TWO, new PrintCommand("Command two was selected!")),
-              Map.entry(CommandSelector.THREE, new PrintCommand("Command three was selected!"))),
+              Map.entry(CommandSelector.THREE, new PrintCommand("Command three was selected!")),
+              Map.entry(CommandSelector.FOUR, new DriveStraight(drivetrain, 100000))),
           this::select);
 
   public RobotContainer() {
