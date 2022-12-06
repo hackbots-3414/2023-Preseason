@@ -42,13 +42,13 @@ public class DriveStraight extends CommandBase {
     m_drivetrain.resetEncoders();
 
     this.speed = Math.copySign(this.speed, this.distance);
-    this.distance = Math.abs(this.distance / Constants.RobotConstants.kTicksperInch);
+    this.distance = Math.abs(this.distance * Constants.RobotConstants.kTicksperInch);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_drivetrain.arcadeDrive(speed, 0);
+    m_drivetrain.arcadeDrive(-speed, 0);
 
   }
 

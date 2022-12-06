@@ -28,8 +28,8 @@ public void initialize() {
 public void execute() { 
     double xSpeed = RobotContainer.getInstance().getGamePad().getLeftY();
     double zRotation = RobotContainer.getInstance().getGamePad().getRightX();
-    driveTrain.drive(xSpeed, zRotation);
-    LOG.trace("execute(): xSpeed: {}, zRotation: {}" , xSpeed, zRotation); 
+    driveTrain.drive(-xSpeed, zRotation);
+    LOG.trace("execute(): xSpeed: {}, zRotation: {}" , -xSpeed, zRotation); 
 
 
 

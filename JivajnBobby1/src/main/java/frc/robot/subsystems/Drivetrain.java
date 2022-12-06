@@ -15,7 +15,7 @@ public class Drivetrain extends SubsystemBase {
   private WPI_TalonFX rf = new WPI_TalonFX(13);
   private WPI_TalonFX rr = new WPI_TalonFX(14);
   private DifferentialDrive df = new DifferentialDrive(lf,rf);
-  /** Creates a new Drivetrain. */
+  /** Creates a new Drivetrain. */ 
   public Drivetrain() {
     lf.setSafetyEnabled(true);
     lr.setSafetyEnabled(true);
@@ -36,7 +36,7 @@ public class Drivetrain extends SubsystemBase {
   }
 
  public void drive(double xSpeed, double zRotaion) {
-   df.arcadeDrive(xSpeed, -zRotaion);
+   df.arcadeDrive(-xSpeed, -zRotaion);
   }
   public void arcadeDrive(double throttle, double steering) {
     df.arcadeDrive(throttle, steering);

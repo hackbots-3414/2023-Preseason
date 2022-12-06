@@ -52,7 +52,7 @@ public class RobotContainer {
               Map.entry(CommandSelector.ONE, new PrintCommand("Command one was selected!")),
               Map.entry(CommandSelector.TWO, new PrintCommand("Command two was selected!")),
               Map.entry(CommandSelector.THREE, new PrintCommand("Command three was selected!")),
-              Map.entry(CommandSelector.FOUR, new DriveStraight(drvTrain, 24))),
+              Map.entry(CommandSelector.FOUR, new DriveStraight(drvTrain, 2400))),
               
           this::select);
 
