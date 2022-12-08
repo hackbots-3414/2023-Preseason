@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+<<<<<<< HEAD
 import frc.robot.subsystem.DriveTrain;
 
 public class DriveTurn extends CommandBase {
@@ -19,6 +20,32 @@ public class DriveTurn extends CommandBase {
     this.drvtrain = drvtrain;
     this.drvspeed = drvspeed;
     addRequirements(this.drvtrain);
+    
+import frc.robot.subsystems.DriveTrain;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class DriveTurn extends CommandBase {
+
+  private static final Logger LOG = LoggerFactory.getLogger(DriveTurn.class);
+
+  private DriveTrain drvtrain;
+  double targetRotation;
+  double drvspeed;
+  /** Creates a new DriveStraight. */
+  public DriveTurn(DriveTrain drvtrain1, double rotation, double speed) {
+    this.drvtrain = drvtrain1;
+    this.drvspeed = speed;
+    this.targetRotation = rotation;
+    addRequirements(this.drvtrain);
+
+    if (Math.signum(targetRotation) != Math.signum(speed)){
+      throw new IllegalArgumentException("targetRotation and speed must have the same sign");
+    }
+
+    addRequirements(drvtrain);
+    // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
@@ -41,6 +68,7 @@ public class DriveTurn extends CommandBase {
       drvtrain.drive(0, 0 - drvspeed);
     }
     
+
   }
 
   // Called once the command ends or is interrupted.

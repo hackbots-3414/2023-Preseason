@@ -19,11 +19,13 @@ public class DefaultTeleopCommand extends CommandBase {
   public DefaultTeleopCommand(DriveTrain drvTrain) {
     driveTrain = drvTrain;
     addRequirements(driveTrain);
+
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {}
+
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
@@ -31,6 +33,7 @@ public class DefaultTeleopCommand extends CommandBase {
     double xSpeed = RobotContainer.getInstance().getGamePad().getLeftY();
     double zRotation = RobotContainer.getInstance().getGamePad().getRightX();
     LOG.info("execute(): xSpeed: {}, zRotation: {}", xSpeed, zRotation);
+
     driveTrain.drive(xSpeed, zRotation);
   }
 

@@ -7,36 +7,38 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+/*import edu.wpi.first.wpilibj2.command.PrintCommand;
+import edu.wpi.first.wpilibj2.command.SelectCommand;
+import frc.robot.commands.HeidiLoopyCommand;*/
+import frc.robot.subsystems.DriveTrain;
 import frc.robot.commands.DefaultTeleopCommand;
 import frc.robot.commands.DriveStraight;
 import frc.robot.commands.DriveTurn;
-import frc.robot.subsystem.DriveTrain;
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+
+//import java.util.Map;
 
 /**
- * This class is where the bulk of the robot should be declared. Since
- * Command-based is a
- * "declarative" paradigm, very little robot logic should actually be handled in
- * the {@link Robot}
- * periodic methods (other than the scheduler calls). Instead, the structure of
- * the robot (including
+ * This class is where the bulk of the robot should be declared. Since Command-based is a
+ * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
+ * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
+//  private SequentialCommandGroup commandGroup = new SequentialCommandGroup();
   private static RobotContainer me = new RobotContainer();
   private XboxController controller = new XboxController(0);
   private DriveTrain drvTrain = new DriveTrain();
-  
-  private SequentialCommandGroup auton_command = 
-  new SequentialCommandGroup(new DriveStraight(drvTrain, 170000, 0.35),
-                             new DriveTurn(drvTrain, -80, 0.35),
-                             new DriveStraight(drvTrain, 550000, 0.35),
-                             new DriveStraight(drvTrain, -550000, -0.35),
-                             new DriveTurn(drvTrain, 80, 0.35),
-                             new DriveStraight(drvTrain, -180000, -0.3));
-  // private DriveTurn auton_command = new DriveTurn(drvTrain, -90, 0.35);
-  
-                             // private DriveStraight auton_command = new DriveStraight(drvTrain, 100000, 0.4);
+//  private DriveStraight drive_command = new DriveStraight(drvTrain, -200000, -0.3);
+//  private DriveTurn auton_command = new DriveTurn(drvTrain, 90, 0.5);
+  private SequentialCommandGroup sequence_command = new SequentialCommandGroup(
+                                                    new DriveStraight(drvTrain, 180000, 0.35), 
+                                                    new DriveTurn(drvTrain, -80, -0.35),
+                                                    new DriveStraight(drvTrain, 550000, 0.35), 
+                                                    new DriveStraight(drvTrain, -550000, -0.35), 
+                                                    new DriveTurn(drvTrain, 80, 0.35), 
+                                                    new DriveStraight(drvTrain, -180000, -0.35));
+
   private RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
