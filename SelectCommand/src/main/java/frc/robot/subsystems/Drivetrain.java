@@ -4,7 +4,6 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.BaseMotorController;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import com.kauailabs.navx.frc.AHRS;
 
@@ -62,11 +61,14 @@ public class Drivetrain extends SubsystemBase {
   
 
   }
+  public void resetGyro(){
+    turn.reset();
+  }
   public double getEncoderPosition(){
    return motorLeftRear.getSelectedSensorPosition();
   }
   public double getAHRSPosition(){
-    return turn.getAngle();
+    return turn.getYaw();
     
   }
 }

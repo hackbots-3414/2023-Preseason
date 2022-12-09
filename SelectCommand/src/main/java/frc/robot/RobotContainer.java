@@ -8,13 +8,10 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.PrintCommand;
-import edu.wpi.first.wpilibj2.command.SelectCommand;
 import frc.robot.Commands.DefaultTeleopCommand;
 import frc.robot.Commands.driveStraight;
+import frc.robot.Commands.turnCommand;
 import frc.robot.subsystems.Drivetrain;
-
-import java.util.Map;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -50,7 +47,9 @@ public class RobotContainer {
   // by the selector method at runtime.  Note that selectcommand works on Object(), so the
   // selector does not have to be an enum; it could be any desired type (string, integer,
   // boolean, double...)
-  private final Command m_exampleSelectCommand = new driveStraight(drivetrain, -0.45, -15000);
+
+  //private final Command m_exampleSelectCommand = new driveStraight(drivetrain, -0.45, -15000);
+  private final Command m_exampleSelectCommand = new turnCommand(drivetrain, -0.3, 90);
      /* new SelectCommand(
           // Maps selector values to commands
           Map.ofEntries(
