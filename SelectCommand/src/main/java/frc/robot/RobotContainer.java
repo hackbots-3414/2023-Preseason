@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Commands.DefaultTeleopCommand;
 import frc.robot.Commands.driveStraight;
 import frc.robot.Commands.turnCommand;
@@ -49,7 +50,13 @@ public class RobotContainer {
   // boolean, double...)
 
   //private final Command m_exampleSelectCommand = new driveStraight(drivetrain, -0.45, -15000);
-  private final Command m_exampleSelectCommand = new turnCommand(drivetrain, -0.3, 90);
+  //private final Command m_exampleSelectCommand = new turnCommand(drivetrain, -0.3, 90);
+  private final Command m_exampleSelectCommand = new SequentialCommandGroup(new driveStraight(drivetrain, 0.4, 175000), 
+  new turnCommand(drivetrain, 0, 0), 
+  new driveStraight(drivetrain, 0, 0), 
+  new turnCommand(drivetrain, 0.3, 90));
+ // private final Command m_exampleSelectCommand = new SequentialCommandGroup(new driveStraight(drivetrain, 0, 0), 
+  //new turnCommand(drivetrain, 0.3, 90));
      /* new SelectCommand(
           // Maps selector values to commands
           Map.ofEntries(
