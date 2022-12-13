@@ -22,13 +22,14 @@ public class RobotContainer {
   private enum CommandSelector {
     ONE,
     TWO,
-    THREE
+    THREE,
+    FOUR
   }
 
   // An example selector method for the selectcommand.  Returns the selector that will select
   // which command to run.  Can base this choice on logical conditions evaluated at runtime.
   private CommandSelector select() {
-    return CommandSelector.ONE;
+    return CommandSelector.FOUR;
   }
 
   // An example selectcommand.  Will select from the three commands based on the value returned
