@@ -22,6 +22,20 @@ public final class Constants {
   public final static boolean DEBUG = true;
 
   public static final class RobotConstants {
+    /*For Powerup robot:
+        public static final double kTrackwidthMeters = 0.69;
+    public static final DifferentialDriveKinematics kDriveKinematics =
+      new DifferentialDriveKinematics(kTrackwidthMeters);  
+    public static final double ksVolts = 0.58701;
+    public static final double kvVoltSecondsPerMeter = 1.2854;
+    public static final double kaVoltSecondsSquaredPerMeter = 0.23564;
+    public static final double kPDriveVel = 1.8283;
+    public static final double kMaxSpeedMetersPerSecond = 6;
+    public static final double kMaxAccelerationMetersPerSecondSquared = 1.38;
+    public static final double kRamseteB = 2;
+    public static final double kRamseteZeta = 0.7;
+    Not yet updated to real numbers*/
+    /*For Venus robot:*/
     public static final double kTrackwidthMeters = 0.69;
     public static final DifferentialDriveKinematics kDriveKinematics =
       new DifferentialDriveKinematics(kTrackwidthMeters);  
