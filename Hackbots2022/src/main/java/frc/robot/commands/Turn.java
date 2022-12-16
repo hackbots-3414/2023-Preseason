@@ -7,14 +7,13 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveTrain;
 
-public class DriveStraight extends CommandBase {
-  private DriveTrain drivetrain; 
-  private double distance;
-  /** Creates a new DriveStraight. */
-  public DriveStraight(DriveTrain drivetrain, double distance) {
+public class Turn extends CommandBase {
+private DriveTrain drivetrain;
+private double turn;
+  /** Creates a new Turn. */
+  public Turn(DriveTrain drivetrain, double turn) {
     this.drivetrain = drivetrain;
-    this.distance = distance;
-    
+    this.turn = turn;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(drivetrain);
   }
@@ -22,13 +21,13 @@ public class DriveStraight extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    drivetrain.resetEncoders();
+    drivetrain.resetAHRS();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    drivetrain.drive(0.3, 0);
+    drivetrain.drive(0, 0.3);
   }
 
   // Called once the command ends or is interrupted.
@@ -41,12 +40,12 @@ public class DriveStraight extends CommandBase {
   @Override
   public boolean isFinished() {
     double currentDistance = drivetrain.getDistance();
-    if(distance >= 0 && currentDistance < distance){
+    if(turn >= 0 && currentDistance < turn){
       return false;
     }
-    else if(distance < 0 && currentDistance >= distance){
+    else if (turn < 0 && currentDistance >= turn){
       return false;
     }
     return true;
-  } 
+  }
 }
