@@ -50,12 +50,19 @@ public class RobotContainer {
   // boolean, double...)
 
   //private final Command m_exampleSelectCommand = new driveStraight(drivetrain, -0.45, -15000);
-  //private final Command m_exampleSelectCommand = new turnCommand(drivetrain, -0.3, 90);
-  private final Command m_exampleSelectCommand = new SequentialCommandGroup(new driveStraight(drivetrain, 0.4, 175000), 
-  new turnCommand(drivetrain, 0, 0), 
+ // private final Command m_exampleSelectCommand = new turnCommand(drivetrain, 0.3, 90);
+ private final Command m_exampleSelectCommand = 
+ new turnCommand(drivetrain, 0, 0), 
   new driveStraight(drivetrain, 0, 0), 
-  new turnCommand(drivetrain, 0.3, 90));
- // private final Command m_exampleSelectCommand = new SequentialCommandGroup(new driveStraight(drivetrain, 0, 0), 
+  new turnCommand(drivetrain, -0.3, -90),
+  new driveStraight(drivetrain, 0, 0),
+  new driveStraight(drivetrain, 0.5, 400000),
+  new turnCommand(drivetrain, 0, 0),
+  new driveStraight(drivetrain, 0, 0),
+  new turnCommand(drivetrain, 0.3, 90),
+  new driveStraight(drivetrain, 0, 0),
+  new turnCommand(drivetrain, 0.5, 300000)); 
+  // private final Command m_exampleSelectCommand = new SequentialCommandGroup(new driveStraight(drivetrain, 0, 0), 
   //new turnCommand(drivetrain, 0.3, 90));
      /* new SelectCommand(
           // Maps selector values to commands

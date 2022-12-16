@@ -11,6 +11,7 @@ public class turnCommand extends CommandBase {
   private Drivetrain drivetrain;
   private double speed;
   private double angle;
+
   /** Creates a new turnCommand. */
   public turnCommand(Drivetrain drivetrain, double speed, double angle) {
     this.drivetrain = drivetrain;
@@ -20,21 +21,18 @@ public class turnCommand extends CommandBase {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
-
-
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
     drivetrain.getAHRSPosition();
+    drivetrain.resetGyro();
   }
-
-
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-System.out.println("TURN is executed; " + speed);
-drivetrain.drive(0, speed);
+    // System.out.println("TURN is executed; " + speed);
+    drivetrain.drive(0, speed);
   }
 
   // Called once the command ends or is interrupted.
@@ -47,14 +45,15 @@ drivetrain.drive(0, speed);
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (angle > 0 && drivetrain.getAHRSPosition() < angle){
-      System.out.println("TURN is not finished " + drivetrain.getAHRSPosition());
-    return false;
+    double currentPosition = drivetrain.getAHRSPosition();
+    if (angle > 0 && currentPosition < angle) {
+    System.out.println("TURN is not finished " + currentPosition);
+      return false;
+    } else if (angle < 0 && currentPosition > angle) {
+     System.out.println("TURN is not finished " + currentPosition);
+      return false;
+    }
+    System.out.println("TURN is finished" + currentPosition);
+    return true;
   }
-  else if (angle < 0 && drivetrain.getAHRSPosition() > angle){
-    return false;
-  }
-  System.out.println("TURN is finished");
-  return true;
-}
 }
