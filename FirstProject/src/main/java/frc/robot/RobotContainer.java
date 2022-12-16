@@ -7,11 +7,11 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+//import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.commands.DefaultTeleopCommand;
-import frc.robot.commands.DriveStraight;
+//import frc.robot.commands.DriveStraight;
 import frc.robot.subsystem.DriveTrain;
-import frc.robot.commands.DriveTurn;
+//import frc.robot.commands.DriveTurn;
 
 //import java.util.Map;
 
@@ -28,13 +28,13 @@ public class RobotContainer {
   private DriveTrain drvTrain = new DriveTrain();
 //  private DriveStraight drive_command = new DriveStraight(drvTrain, -200000, -0.3);
 //  private DriveTurn auton_command = new DriveTurn(drvTrain, 90, 0.5);
-  private SequentialCommandGroup auton_command = new SequentialCommandGroup(
+  /*private SequentialCommandGroup auton_command = new SequentialCommandGroup(
                                                     new DriveStraight(drvTrain, 180000, 0.35), 
                                                     new DriveTurn(drvTrain, -80, -0.35),
                                                     new DriveStraight(drvTrain, 550000, 0.35), 
                                                     new DriveStraight(drvTrain, -550000, -0.35), 
                                                     new DriveTurn(drvTrain, 80, 0.35), 
-                                                    new DriveStraight(drvTrain, -180000, -0.35));
+                                                    new DriveStraight(drvTrain, -180000, -0.35));*/
 
   private RobotContainer() {
     // Configure the button bindings
@@ -67,7 +67,8 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return auton_command;
+    return null;
+    //return auton_command;
   }
 
   public XboxController getGamePad() {
