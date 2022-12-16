@@ -27,7 +27,7 @@ private double turn;
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    drivetrain.drive(0, 0.3);
+    drivetrain.drive(0.25, Math.copySign(0.3, turn));
   }
 
   // Called once the command ends or is interrupted.
@@ -39,11 +39,11 @@ private double turn;
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    double currentDistance = drivetrain.getDistance();
-    if(turn >= 0 && currentDistance < turn){
+    double currentAngle = drivetrain.getYaw();
+    if(turn >= 0 && currentAngle < turn){
       return false;
     }
-    else if (turn < 0 && currentDistance >= turn){
+    else if (turn < 0 && currentAngle >= turn){
       return false;
     }
     return true;
