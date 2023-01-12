@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.SelectCommand;
 import frc.robot.commands.CamPrintcommand;
+import frc.robot.subsystems.DriveTrain;
 
 import java.util.Map;
 
@@ -20,6 +21,7 @@ import java.util.Map;
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
+  private DriveTrain driveTrain = new DriveTrain();
   // The enum used as keys for selecting the command to run.
   private enum CommandSelector {
     ONE,
