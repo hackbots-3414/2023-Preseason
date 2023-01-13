@@ -6,10 +6,12 @@ package frc.robot.commands;
 
 import frc.robot.subsystems.Camera;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import org.photonvision.targeting.PhotonPipelineResult;
 
 /** An example command that uses an example subsystem. */
 public class PhotonCamera extends CommandBase {
   private boolean done;
+  private PhotonPipelineResult result;
   public PhotonCamera(Camera subsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
@@ -24,8 +26,12 @@ public class PhotonCamera extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Camera.getLatestResult();
-    done = true;
+    result = Camera.getLatestResult();
+    boolean hasTargets = result.hasTargets();
+    if (hasTargets == true) {
+      done = true;
+      System.out.println("Done is true");
+    }
   }
 
   // Called once the command ends or is interrupted.

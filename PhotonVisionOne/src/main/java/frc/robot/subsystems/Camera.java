@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
 public class Camera extends SubsystemBase {
-  private static PhotonCamera camera = new PhotonCamera ("Integrated_Camera");
+  private static PhotonCamera camera = new PhotonCamera("Integrated_Camera");
   /** Creates a new ExampleSubsystem. */
   public Camera() {
   
