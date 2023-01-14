@@ -4,9 +4,14 @@
 
 package frc.robot;
 
+import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.math.controller.RamseteController;
+import edu.wpi.first.math.controller.SimpleMotorFeedforward;
+import edu.wpi.first.math.trajectory.Trajectory;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.RamseteCommand;
 //import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.commands.DefaultTeleopCommand;
 //import frc.robot.commands.DriveStraight;
@@ -66,8 +71,23 @@ public class RobotContainer {
    *
    * @return the command to run in autonomous
    */
-  public Command getAutonomousCommand() {
-    return null;
+  public Command getAutonomousCommand(Trajectory trajectory) {
+    drvTrain.resetOdometry(trajectory.getInitialPose());
+    RamseteCommand ramsetecommand = new RamseteCommand(
+    trajectory,
+    drvTrain::getPose,
+    new RamseteController(Constants.RobotConstants.kRamseteZeta, Constants.RobotConstants.kRamseteB),
+      new SimpleMotorFeedforward(Constants.RobotConstants.ksVolts, Constants.RobotConstants.kvVoltSecondsPerMeter, Constants.RobotConstants.kaVoltSecondsSquaredPerMeter),
+      Constants.RobotConstants.kDriveKinematics,
+      drvTrain::getWheelSpeeds,
+      new PIDController(Constants.RobotConstants.kPDriveVel, 0, 0),
+      new PIDController(Constants.RobotConstants.kPDriveVel, 0, 0),
+      drvTrain::tankDriveVolts,
+      drvTrain);
+
+    
+
+    return ramsetecommand;
     //return auton_command;
   }
 

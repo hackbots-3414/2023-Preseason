@@ -10,6 +10,7 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
+import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.math.trajectory.constraint.DifferentialDriveVoltageConstraint;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -113,5 +114,25 @@ public class DriveTrain extends SubsystemBase {
   public void resetOdometry(Pose2d pose) {
     resetEncoders();
     m_odometry.resetPosition(pose, my_ahrs.getRotation2d());
-    }
+  }
+
+  public double getLeftEncoderVelocity() {
+    return left_front_motor.getSelectedSensorPosition();
+  }
+
+  public double getRightEncoderVelocity() {
+    return right_front_motor.getSelectedSensorPosition();
+  }
+
+  public double getLeftMetersPerSecond() {
+    return getLeftEncoderVelocity() * Constants.RobotConstants.kDistancePerTick * 10;
+  }
+
+  public double getRightMetersPerSecond() {
+    return getRightEncoderVelocity() * Constants.RobotConstants.kDistancePerTick * 10;
+  }
+
+  public DifferentialDriveWheelSpeeds getWheelSpeeds() {
+    return new DifferentialDriveWheelSpeeds(getLeftMetersPerSecond(), getRightMetersPerSecond());
+  }
 }

@@ -32,7 +32,6 @@ public class DefaultTeleopCommand extends CommandBase {
   public void execute() {
     double xSpeed = RobotContainer.getInstance().getGamePad().getLeftY();
     double zRotation = RobotContainer.getInstance().getGamePad().getRightX();
-    LOG.info("execute(): xSpeed: {}, zRotation: {}", xSpeed, zRotation);
 
     driveTrain.drive(xSpeed, zRotation);
   }

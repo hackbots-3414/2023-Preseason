@@ -23,10 +23,15 @@ public final class Constants {
 
   public static final class RobotConstants {
     //For Powerup robot:
-        public static final double kTrackwidthMeters = 0.69;
-    public static final DifferentialDriveKinematics kDriveKinematics =
-      new DifferentialDriveKinematics(kTrackwidthMeters);  
-    public static final double ksVolts = 0.59493;
+
+    
+    public static final double kTrackwidthMeters = 0.69;
+    public static final double kWheelDiameter = 0.1585; // in meters, cm: 15.85, mm: 158.5
+    public static final double kTicks = 2048;
+    public static final double kGearRatio = 12; // 12 : 1
+    public static final double kDistancePerTick = kWheelDiameter * Math.PI / kTicks / kGearRatio; // in meters
+    public static final DifferentialDriveKinematics kDriveKinematics = new DifferentialDriveKinematics(kTrackwidthMeters);  
+    public static final double ksVolts = 0.25;
     public static final double kvVoltSecondsPerMeter = 1.2898;
     public static final double kaVoltSecondsSquaredPerMeter = 0.10442;
     public static final double kPDriveVel = 1.512;
