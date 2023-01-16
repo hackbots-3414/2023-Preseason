@@ -29,15 +29,16 @@ public class Camera extends SubsystemBase {
     // System.out.println("Distance is currently: " + getDistanceToTarget());
   }
   /**
-   * Finds distance to best target. PLEASE check to make sure that the result is NOT negative.
+   * Finds distance to best target. PLEASE check to make sure that the result is NOT negative. Please ensure that the camera is calibrated, and in 3D mode.
    * @return Distance to target, if target is present. Otherwise, returns -1 for failure.
    */
-  public static double getDistanceToTarget() {
+  public static double getDistanceToTarget(PhotonPipelineResult result) {
 
-    if (camera.getLatestResult().hasTargets() == false) {
+    if (result.hasTargets() == false) {
       return -1; // failure
     }
-    PhotonTrackedTarget target = camera.getLatestResult().getBestTarget();
+
+    PhotonTrackedTarget target = result.getBestTarget();
     Transform3d pose = target.getBestCameraToTarget();
     Translation3d targetTranslation = pose.getTranslation();
     Translation3d camera = new Translation3d();
