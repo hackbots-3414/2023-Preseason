@@ -16,10 +16,22 @@ public class Camera extends SubsystemBase {
   private static PhotonCamera camera = new PhotonCamera("Microsoft_LifeCam_HD-3000");
   /** Creates a new ExampleSubsystem. */
   public Camera() {
-  
+    
   }
   public static PhotonPipelineResult getLatestResult(){
     return camera.getLatestResult();
+  }
+
+  public static PhotonTrackedTarget getBestTarget() {
+    return camera.getLatestResult().getBestTarget();
+  }
+
+  public static int getID(PhotonTrackedTarget target) { // with a specific target
+    return target.getFiducialId();
+  }
+
+  public static int getID() { // automatically pick target
+    return camera.getLatestResult().getBestTarget().getFiducialId();
   }
 
 
