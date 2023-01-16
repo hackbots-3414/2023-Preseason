@@ -30,17 +30,28 @@ public class TargetDistance extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double currentDistance = photonvision.getDistanceToTarget();
+    double currentDistance = Camera.getDistanceToTarget(Camera.getLatestResult());
     if (currentDistance < 0) {
       driveTrain.drive(0, 0);
-      return;
+    }
+    else if (currentDistance > 2.3) { 
+      driveTrain.drive(.3,0);
+    }
+    else if (currentDistance < 1.9) {
+      driveTrain.drive(-.3,0);
+    }
+    else {
+      driveTrain.drive(0,0);
     }
   }
 
-  // Called once the command ends or is interrupted.
+    // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    driveTrain.drive(0,0);
+    done = true;
   }
+
 
   // Returns true when the command should end.
   private boolean distance() {
