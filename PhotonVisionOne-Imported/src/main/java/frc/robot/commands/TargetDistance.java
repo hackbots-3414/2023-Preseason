@@ -8,6 +8,9 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Camera;
 import frc.robot.subsystems.DriveTrain;
 
+/**
+ * robot can follow the target (distance in meters) forwards and backwards
+ */
 public class TargetDistance extends CommandBase {
   private boolean done;
   private Camera photonvision;
@@ -30,22 +33,24 @@ public class TargetDistance extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double currentDistance = Camera.getDistanceToTarget(Camera.getLatestResult());
+    double currentAngle = photonvision.getAngleToTargetRounded(1)/360;
+
+    double currentDistance = photonvision.getDistanceToTarget();
     if (currentDistance < 0) {
-      driveTrain.tankDrive(0, 0);
+      driveTrain.arcadeDrive(0, 0);
     } else if (currentDistance > 2.3) {
-      driveTrain.tankDrive(.3, 0);
+      driveTrain.arcadeDrive(.3, currentAngle);
     } else if (currentDistance < 1.9) {
-      driveTrain.tankDrive(-.3, 0);
+      driveTrain.arcadeDrive(-.3, -.3);
     } else {
-      driveTrain.tankDrive(0, 0);
+      driveTrain.arcadeDrive(0, currentAngle);
     }
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    driveTrain.tankDrive(0, 0);
+    driveTrain.arcadeDrive(0, 0);
     done = true;
   }
 

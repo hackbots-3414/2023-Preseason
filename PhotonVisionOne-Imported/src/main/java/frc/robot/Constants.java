@@ -23,7 +23,7 @@ public final class Constants {
   public final static boolean DEBUG = true;
 
   public static final class RobotConstants {
-    //For Powerup robot:
+    /*For Powerup robot:
 
     
     public static final double kTrackwidthMeters = 0.69;
@@ -39,11 +39,16 @@ public final class Constants {
     public static final double kMaxSpeedMetersPerSecond = 2;
     public static final double kMaxAccelerationMetersPerSecondSquared = 1.38;
     public static final double kRamseteB = 2;
-    public static final double kRamseteZeta = 0.7;
-    /*For Venus robot:
-    public static final double kTrackwidthMeters = 0.69;
+    public static final double kRamseteZeta = 0.7;*/
+
+    //For Venus robot:
+    public static final double kTrackWidthMeters = 0.6096;
+    public static final double kWheelDiameter = 0.15915; // in meters //0.15965
+    public static final double kTicks = 2048;
+    public static final double kGearRatio = 12; // 12 : 1
     public static final DifferentialDriveKinematics kDriveKinematics =
-      new DifferentialDriveKinematics(kTrackwidthMeters);  
+      new DifferentialDriveKinematics(kTrackWidthMeters);  
+    public static final double kDistancePerTick = kWheelDiameter * Math.PI / kTicks / kGearRatio; // in meters
     public static final double ksVolts = 0.58701;
     public static final double kvVoltSecondsPerMeter = 1.2854;
     public static final double kaVoltSecondsSquaredPerMeter = 0.23564;
@@ -51,7 +56,7 @@ public final class Constants {
     public static final double kMaxSpeedMetersPerSecond = 6;
     public static final double kMaxAccelerationMetersPerSecondSquared = 1.38;
     public static final double kRamseteB = 2;
-    public static final double kRamseteZeta = 0.7;*/
+    public static final double kRamseteZeta = 0.7;
   }
 
   public static final class DriveConstants {
