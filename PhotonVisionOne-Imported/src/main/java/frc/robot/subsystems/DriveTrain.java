@@ -25,33 +25,6 @@ public class DriveTrain extends SubsystemBase {
 
     // private static final Logger LOG = LoggerFactory.getLogger(DriveTrain.class);
 
-    private boolean controlsReversed = false;
-
-
-    private boolean wantLow = true;
-
-
-    private class EncoderOffsets {
-        public double frontLeft;
-        public double backLeft;
-        public double frontRight;
-        public double backRight;
-
-        EncoderOffsets() {
-            frontLeft = 0;
-            backLeft = 0;
-            frontRight = 0;
-            backRight = 0;
-        }
-
-        public void setOffsets(WPI_TalonFX frontLeft, WPI_TalonFX backLeft, WPI_TalonFX frontRight, WPI_TalonFX backRight) {
-            this.frontLeft = frontLeft.getSelectedSensorPosition();
-            this.backLeft = backLeft.getSelectedSensorPosition();
-            this.frontRight = frontRight.getSelectedSensorPosition();
-            this.backRight = backRight.getSelectedSensorPosition();
-        }
-    };
-
     private EncoderOffsets encoderOffsets = new EncoderOffsets();
 
     private AHRS ahrs = new AHRS(Port.kMXP);
@@ -62,8 +35,16 @@ public class DriveTrain extends SubsystemBase {
     private WPI_TalonFX frontRight;
     private DifferentialDrive differentialDrive;
     private DifferentialDriveOdometry m_odometry;
+    private boolean controlsReversed = false;
 
-    private SupplyCurrentLimitConfiguration frontSupplyLimit = new SupplyCurrentLimitConfiguration(false, DriveConstants.driveLowCurrentLimit, DriveConstants.driveLowCurrentLimit, DriveConstants.triggerThresholdTime);
+    private boolean wantLow = true;
+
+    
+
+
+    private SupplyCurrentLimitConfiguration frontSupplyLimit = new SupplyCurrentLimitConfiguration(false,
+            DriveConstants.driveLowCurrentLimit, DriveConstants.driveLowCurrentLimit,
+            DriveConstants.triggerThresholdTime);
 
     public DriveTrain() {
         frontLeft = createTalonFX(DriveConstants.kLeftMotorFrontPort, TalonFXInvertType.Clockwise);
@@ -83,34 +64,36 @@ public class DriveTrain extends SubsystemBase {
         differentialDrive.setExpiration(0.1);
         differentialDrive.setMaxOutput(1.0);
 
-        m_odometry = new DifferentialDriveOdometry(ahrs.getRotation2d(),0,0);
+        m_odometry = new DifferentialDriveOdometry(ahrs.getRotation2d(), 0, 0);
     }
-    
+
     private WPI_TalonFX createTalonFX(int deviceID, TalonFXInvertType direction) {
         WPI_TalonFX motor = new WPI_TalonFX(deviceID);
         motor.configFactoryDefault();
         motor.configOpenloopRamp(DriveConstants.voltageRampRate);
-        motor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, DriveConstants.driveCurrentLimit, DriveConstants.driveCurrentLimit, DriveConstants.triggerThresholdTime));
+        motor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, DriveConstants.driveCurrentLimit,
+                DriveConstants.driveCurrentLimit, DriveConstants.triggerThresholdTime));
         motor.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor, 0, 10);
         motor.setSelectedSensorPosition(0, 0, 10);
         motor.setInverted(direction);
-
-
-
         return motor;
     }
 
-    public void setLowCurrentLimit(){
+    public void setLowCurrentLimit() {
 
         frontLeft.configSupplyCurrentLimit(frontSupplyLimit);
         frontRight.configSupplyCurrentLimit(frontSupplyLimit);
-       }
+    }
 
     public void setHighCurrentLimit() {
-        frontRight.configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, DriveConstants.driveCurrentLimit, DriveConstants.driveCurrentLimit, DriveConstants.triggerThresholdTime));
-        backRight.configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, DriveConstants.driveCurrentLimit, DriveConstants.driveCurrentLimit, DriveConstants.triggerThresholdTime));
-        backLeft.configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, DriveConstants.driveCurrentLimit, DriveConstants.driveCurrentLimit, DriveConstants.triggerThresholdTime));
-        frontLeft.configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, DriveConstants.driveCurrentLimit, DriveConstants.driveCurrentLimit, DriveConstants.triggerThresholdTime));
+        frontRight.configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, DriveConstants.driveCurrentLimit,
+                DriveConstants.driveCurrentLimit, DriveConstants.triggerThresholdTime));
+        backRight.configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, DriveConstants.driveCurrentLimit,
+                DriveConstants.driveCurrentLimit, DriveConstants.triggerThresholdTime));
+        backLeft.configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, DriveConstants.driveCurrentLimit,
+                DriveConstants.driveCurrentLimit, DriveConstants.triggerThresholdTime));
+        frontLeft.configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, DriveConstants.driveCurrentLimit,
+                DriveConstants.driveCurrentLimit, DriveConstants.triggerThresholdTime));
     }
 
     public boolean isLowLimitEnabled() {
@@ -123,7 +106,7 @@ public class DriveTrain extends SubsystemBase {
     }
 
     public void requestCurrentLimit(boolean wantLow) {
-    this.wantLow = wantLow;
+        this.wantLow = wantLow;
 
     }
 
@@ -131,7 +114,6 @@ public class DriveTrain extends SubsystemBase {
         return wantLow;
 
     }
-
 
     public void setBrakeMode() {
         frontLeft.setNeutralMode(NeutralMode.Brake);
@@ -168,7 +150,8 @@ public class DriveTrain extends SubsystemBase {
     }
 
     public double getLeftEncoderPosition() {
-        return ((frontLeft.getSelectedSensorPosition() + backLeft.getSelectedSensorPosition()) / 2D) - encoderOffsets.frontLeft;
+        return ((frontLeft.getSelectedSensorPosition() + backLeft.getSelectedSensorPosition()) / 2D)
+                - encoderOffsets.frontLeft;
     }
 
     public double getLeftEncoderDistance() {
@@ -185,7 +168,8 @@ public class DriveTrain extends SubsystemBase {
     }
 
     public double getRightEncoderPosition() {
-        return ((frontRight.getSelectedSensorPosition() + backRight.getSelectedSensorPosition()) / 2D) - encoderOffsets.frontRight;
+        return ((frontRight.getSelectedSensorPosition() + backRight.getSelectedSensorPosition()) / 2D)
+                - encoderOffsets.frontRight;
     }
 
     public double getRightEncoderDistance() {
@@ -210,7 +194,8 @@ public class DriveTrain extends SubsystemBase {
     }
 
     public void arcadeDrive(double throttle, double steering) {
-        // LOG.trace("Throttle = {}, Steering = {}, ControlsReversed = {}", throttle, steering, controlsReversed);
+        // LOG.trace("Throttle = {}, Steering = {}, ControlsReversed = {}", throttle,
+        // steering, controlsReversed);
         differentialDrive.arcadeDrive(throttle, steering);
     }
 
@@ -223,7 +208,7 @@ public class DriveTrain extends SubsystemBase {
     }
 
     public void tankDriveVolts(double leftVolts, double rightVolts) {
-        frontLeft.setVoltage(leftVolts);    
+        frontLeft.setVoltage(leftVolts);
         frontRight.setVoltage(rightVolts);
     }
 
@@ -248,6 +233,28 @@ public class DriveTrain extends SubsystemBase {
 
     public void resetOdometry(Pose2d pose) {
         resetEncoders();
-        m_odometry.resetPosition(ahrs.getRotation2d(),0, 0, pose);
+        m_odometry.resetPosition(ahrs.getRotation2d(), 0, 0, pose);
     }
+    private class EncoderOffsets {
+        public double frontLeft;
+        public double backLeft;
+        public double frontRight;
+        public double backRight;
+
+        EncoderOffsets() {
+            frontLeft = 0;
+            backLeft = 0;
+            frontRight = 0;
+            backRight = 0;
+        }
+
+        public void setOffsets(WPI_TalonFX frontLeft, WPI_TalonFX backLeft, WPI_TalonFX frontRight,
+                WPI_TalonFX backRight) {
+            this.frontLeft = frontLeft.getSelectedSensorPosition();
+            this.backLeft = backLeft.getSelectedSensorPosition();
+            this.frontRight = frontRight.getSelectedSensorPosition();
+            this.backRight = backRight.getSelectedSensorPosition();
+        }
+    };
+
 }

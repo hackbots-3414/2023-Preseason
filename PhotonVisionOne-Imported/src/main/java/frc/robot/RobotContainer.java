@@ -9,7 +9,9 @@ package frc.robot;
 // import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.PhotonCamera;
+import frc.robot.commands.TargetDistance;
 import frc.robot.subsystems.Camera;
+import frc.robot.subsystems.DriveTrain;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -18,11 +20,16 @@ import frc.robot.subsystems.Camera;
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
+  private DriveTrain drive;
+  private Camera photonvision;
   //SendableChooser<Command> m_chooser = new SendableChooser<>();
   // The robot's subsystems and commands are defined here...
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+    drive = new DriveTrain();
+    photonvision = new Camera();
+    drive.setDefaultCommand(new TargetDistance(drive, photonvision));
     // Configure the button bindings
     //configureButtonBindings();
   }

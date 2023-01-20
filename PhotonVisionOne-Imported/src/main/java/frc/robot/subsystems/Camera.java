@@ -44,7 +44,9 @@ public class Camera extends SubsystemBase {
    * Finds distance to best target. PLEASE check to make sure that the result is NOT negative. Please ensure that the camera is calibrated, and in 3D mode.
    * @return Distance to target, if target is present. Otherwise, returns -1 for failure.
    */
-  public static double getDistanceToTarget(PhotonPipelineResult result) {
+  public double getDistanceToTarget() {
+
+    PhotonPipelineResult result = camera.getLatestResult();
 
     if (result.hasTargets() == false) {
       return -1; // failure
