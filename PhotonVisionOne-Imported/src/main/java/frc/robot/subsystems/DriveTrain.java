@@ -235,6 +235,7 @@ public class DriveTrain extends SubsystemBase {
         resetEncoders();
         m_odometry.resetPosition(ahrs.getRotation2d(), 0, 0, pose);
     }
+
     private class EncoderOffsets {
         public double frontLeft;
         public double backLeft;
@@ -249,7 +250,7 @@ public class DriveTrain extends SubsystemBase {
         }
 
         public void setOffsets(WPI_TalonFX frontLeft, WPI_TalonFX backLeft, WPI_TalonFX frontRight,
-                WPI_TalonFX backRight) {
+                WPI_TalonFX backRight) { 
             this.frontLeft = frontLeft.getSelectedSensorPosition();
             this.backLeft = backLeft.getSelectedSensorPosition();
             this.frontRight = frontRight.getSelectedSensorPosition();

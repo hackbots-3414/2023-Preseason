@@ -44,4 +44,8 @@ public class PhotonCamera extends CommandBase {
   public boolean isFinished() {
     return done;
   }
+
+public Object getLatestResult() {
+    return null;
+}
 }

@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
@@ -77,4 +78,7 @@ public final class Constants {
     // Example: the port of the driver's controller
     public static final int kDriverControllerPort = 0;
   }
+
+public static String kCamName;
+public static Transform3d kCameraToRobot;
 }
