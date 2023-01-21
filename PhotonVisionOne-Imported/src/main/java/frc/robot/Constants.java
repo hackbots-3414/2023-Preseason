@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import org.photonvision.SimVisionTarget;
+
 import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 /**
@@ -86,4 +88,6 @@ public final class Constants {
 
 public static String kCamName;
 public static Transform3d kCameraToRobot;
+public static SimVisionTarget kFarTarget;
+public static Object kFarTargetPose;
 }
