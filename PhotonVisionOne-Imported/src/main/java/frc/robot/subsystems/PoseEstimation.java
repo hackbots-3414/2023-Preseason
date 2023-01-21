@@ -14,7 +14,7 @@ public class PoseEstimation {
     
     public void update (double frontLeft , double frontRight) {
         PhotonCamera m_PoseEstiPhotonCamera;
-        m_PoseEstiPhotonCamera.update(gyro.getRotation2d(), frontLeft , frontRight);
+        //m_PoseEstiPhotonCamera.update(gyro.getRotation2d(), frontLeft , frontRight);
         var res = cam.getLatestResult();
         
     }
