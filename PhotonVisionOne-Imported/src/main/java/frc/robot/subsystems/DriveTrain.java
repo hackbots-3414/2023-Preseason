@@ -27,7 +27,7 @@ public class DriveTrain extends SubsystemBase {
 
     private EncoderOffsets encoderOffsets = new EncoderOffsets();
 
-    private AHRS ahrs = new AHRS(Port.kMXP);
+    //private AHRS ahrs = new AHRS(Port.kMXP);
 
     private WPI_TalonFX backLeft;
     private WPI_TalonFX backRight;
@@ -64,7 +64,7 @@ public class DriveTrain extends SubsystemBase {
         differentialDrive.setExpiration(0.1);
         differentialDrive.setMaxOutput(1.0);
 
-        m_odometry = new DifferentialDriveOdometry(ahrs.getRotation2d(), 0, 0);
+       // m_odometry = new DifferentialDriveOdometry(ahrs.getRotation2d(), 0, 0);
     }
 
     private WPI_TalonFX createTalonFX(int deviceID, TalonFXInvertType direction) {
@@ -136,7 +136,7 @@ public class DriveTrain extends SubsystemBase {
     @Override
     public void periodic() {
         differentialDrive.feed();
-        m_odometry.update(ahrs.getRotation2d(), getLeftEncoderDistance(), getRightEncoderDistance());
+       // m_odometry.update(ahrs.getRotation2d(), getLeftEncoderDistance(), getRightEncoderDistance());
         super.periodic();
     }
 
@@ -196,7 +196,11 @@ public class DriveTrain extends SubsystemBase {
     public void arcadeDrive(double throttle, double steering) {
         // LOG.trace("Throttle = {}, Steering = {}, ControlsReversed = {}", throttle,
         // steering, controlsReversed);
-        differentialDrive.arcadeDrive(throttle, steering);
+        differentialDrive.arcadeDrive(throttle, steering, false);
+    }
+
+    public void arcadeDriveSquared(double throttle, double steering) {
+        arcadeDrive(throttle, steering);
     }
 
     public void curvatureDrive(double throttle, double rotation, boolean turnInPlace) {
@@ -214,13 +218,14 @@ public class DriveTrain extends SubsystemBase {
 
     public void resetHeading() {
         // LOG.info("Reseting Heading...");
-        ahrs.reset();
+        // ahrs.reset();
     }
 
     public double getHeading() {
-        double angle = ahrs.getYaw();
+        //double angle = ahrs.getYaw();
         // LOG.info("NavX Heading: {}", angle);
-        return angle;
+        //return angle;
+        return 0;
     }
 
     public void stopDriving() {
@@ -233,7 +238,7 @@ public class DriveTrain extends SubsystemBase {
 
     public void resetOdometry(Pose2d pose) {
         resetEncoders();
-        m_odometry.resetPosition(ahrs.getRotation2d(), 0, 0, pose);
+        //m_odometry.resetPosition(ahrs.getRotation2d(), 0, 0, pose);
     }
 
     private class EncoderOffsets {

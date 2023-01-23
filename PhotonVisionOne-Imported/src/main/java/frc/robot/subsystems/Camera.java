@@ -75,19 +75,13 @@ public class Camera extends SubsystemBase {
   public double getAngleToTarget() {
     PhotonPipelineResult result = camera.getLatestResult();
 
-    if (result .hasTargets() == false) {
+    if (result.hasTargets() == false) {
       return 360; // failure
     }
 
-    Translation3d targetTranslation = getTranslation3d(result.getBestTarget());
-    double x = targetTranslation.getX();
-    double y = targetTranslation.getY();
+    double angle = result.getBestTarget().getYaw();
 
-    // BORING MATH TIME
-
-    double angle = Math.tan(x / y);
-    
-    if (x < 0) angle *= -1;
+    System.out.println("angle=" + angle);
 
     return angle;
   }

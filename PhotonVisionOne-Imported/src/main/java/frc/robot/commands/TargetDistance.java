@@ -26,6 +26,7 @@ public class TargetDistance extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    done = false;
   }
 
   boolean DistanceToTarget = false;
@@ -33,17 +34,29 @@ public class TargetDistance extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double currentAngle = photonvision.getAngleToTargetRounded(1)/360;
+    double currentAngle = photonvision.getAngleToTargetRounded(7);
+    double turnSpeed;
+    if (currentAngle > 0) {
+      turnSpeed = -0.3;
+    } else if (currentAngle < 0) {
+      turnSpeed = 0.3
+      ;
+    } else {
+      turnSpeed = 0;
+    }
 
     double currentDistance = photonvision.getDistanceToTarget();
     if (currentDistance < 0) {
       driveTrain.arcadeDrive(0, 0);
     } else if (currentDistance > 2.3) {
-      driveTrain.arcadeDrive(.3, currentAngle);
+      driveTrain.arcadeDrive(.3, turnSpeed);
     } else if (currentDistance < 1.9) {
       driveTrain.arcadeDrive(-.3, -.3);
+    } else if (turnSpeed != 0) {
+      driveTrain.arcadeDrive(0, turnSpeed);
     } else {
-      driveTrain.arcadeDrive(0, currentAngle);
+      done = true;
+
     }
   }
 
@@ -56,6 +69,6 @@ public class TargetDistance extends CommandBase {
 
   @Override
   public boolean isFinished() {
-    return false;
+    return done;
   }
 }
