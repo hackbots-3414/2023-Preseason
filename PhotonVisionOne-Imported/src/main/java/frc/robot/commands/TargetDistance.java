@@ -37,10 +37,9 @@ public class TargetDistance extends CommandBase {
     double currentAngle = photonvision.getAngleToTargetRounded(7);
     double turnSpeed;
     if (currentAngle > 0) {
-      turnSpeed = -0.3;
+      turnSpeed = -0.1;
     } else if (currentAngle < 0) {
-      turnSpeed = 0.3
-      ;
+      turnSpeed = 0.1;
     } else {
       turnSpeed = 0;
     }
@@ -49,9 +48,9 @@ public class TargetDistance extends CommandBase {
     if (currentDistance < 0) {
       driveTrain.arcadeDrive(0, 0);
     } else if (currentDistance > 2.3) {
-      driveTrain.arcadeDrive(.3, turnSpeed);
+      driveTrain.arcadeDrive(0.15, turnSpeed);
     } else if (currentDistance < 1.9) {
-      driveTrain.arcadeDrive(-.3, -.3);
+      driveTrain.arcadeDrive(-0.15, turnSpeed);
     } else if (turnSpeed != 0) {
       driveTrain.arcadeDrive(0, turnSpeed);
     } else {
