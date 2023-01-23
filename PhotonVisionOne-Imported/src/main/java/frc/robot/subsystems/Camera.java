@@ -4,6 +4,8 @@
 
 package frc.robot.subsystems;
 
+import java.util.List;
+
 import org.photonvision.PhotonCamera;
 import org.photonvision.targeting.PhotonPipelineResult;
 import org.photonvision.targeting.PhotonTrackedTarget;
@@ -18,8 +20,25 @@ public class Camera extends SubsystemBase {
   public Camera() {
     
   }
+
   public static PhotonPipelineResult getLatestResult(){
     return camera.getLatestResult();
+  }
+
+  public PhotonTrackedTarget getTargetByID(int id) {
+    List<PhotonTrackedTarget> targets = getLatestResult().targets;
+    if (targets.size() == 0) {
+      // there are no targets, return null
+      return null;
+    }
+    for (int target_num = 0;target_num < targets.size();target_num++) {
+      PhotonTrackedTarget this_target = targets.get(target_num); // TODO: Check validity of the method.
+      if (this_target.getFiducialId() == id) {
+        // This is the target we want!
+        return this_target;
+      }
+    }
+    return null; // we were unable to find that target. :(
   }
 
   public static PhotonTrackedTarget getBestTarget() {
@@ -44,10 +63,18 @@ public class Camera extends SubsystemBase {
    * @param result the PhotonPipelineResult that should be used.
    * @return A translation3d object that has the translations for the robot.
    */
-  private Translation3d getTranslation3d(PhotonTrackedTarget result) {
-    Transform3d pose = result.getBestCameraToTarget();
+  private Translation3d getTranslation3d(PhotonTrackedTarget target) {
+    Transform3d pose = target.getBestCameraToTarget();
     Translation3d targetTranslation = pose.getTranslation();
     return targetTranslation;
+  }
+
+  public Transform3d getTransform3d(int id) {
+    PhotonTrackedTarget target = getTargetByID(id);
+    if (target == null) {
+      return new Transform3d();
+    }
+    return target.getBestCameraToTarget();
   }
   /**
    * Finds distance to best target. PLEASE check to make sure that the result is NOT negative. Please ensure that the camera is calibrated, and in 3D mode.
@@ -72,32 +99,50 @@ public class Camera extends SubsystemBase {
    * Find the robot's angle relative to the April Tag.
    * @return the angle to the April Tag.
    */
-  public double getAngleToTarget() {
+  private double getAngleToTarget(PhotonTrackedTarget target) {
     PhotonPipelineResult result = camera.getLatestResult();
 
     if (result.hasTargets() == false) {
       return 360; // failure
     }
 
-    double angle = result.getBestTarget().getYaw();
-
-    System.out.println("angle=" + angle);
+    double angle = target.getYaw();
 
     return angle;
+  }
+
+  public double getAngleToTarget(int id) {
+    PhotonTrackedTarget target = getTargetByID(id);
+    return getAngleToTarget(target);
+  }
+
+  public double getAngleToTarget() {
+    PhotonTrackedTarget target = getLatestResult().getBestTarget();
+    return getAngleToTarget(target);
   }
   /**
    * Finds the angle to the April Tag, then returns zero if that angle is within a specified amount. Otherwise, returns the normal angle.
    * @param zeroAtOrig the amount of degrees you will let getAngleToTargetRounded be off by. It doesn't matter if it's positive or negative, the method will account for both.
    * @return The angle that the robot is facing relative to the AprilTag, but zero if the angle is within zeroAt degrees.
    */
-  public double getAngleToTargetRounded(double zeroAtOrig) {
+  private double getAngleToTargetRounded(PhotonTrackedTarget target, double zeroAtOrig) {
     double zeroAt = Math.abs(zeroAtOrig);
-    double angle = getAngleToTarget();
+    double angle = getAngleToTarget(target);
     if (angle < zeroAt && angle > 0 - zeroAt) {
       return 0;
     } else {
       return angle;
     }
+  }
+
+  public double getAngleToTargetRounded(int id, double zeroAtOrig) {
+    PhotonTrackedTarget target = getTargetByID(id);
+    return getAngleToTargetRounded(target, zeroAtOrig);
+  }
+
+  public double getAngleToTargetRounded(double zeroAtOrig) {
+    PhotonTrackedTarget target = getLatestResult().getBestTarget();
+    return getAngleToTargetRounded(target, zeroAtOrig);
   }
 
 }
