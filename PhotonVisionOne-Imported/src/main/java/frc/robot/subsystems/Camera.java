@@ -80,20 +80,28 @@ public class Camera extends SubsystemBase {
    * Finds distance to best target. PLEASE check to make sure that the result is NOT negative. Please ensure that the camera is calibrated, and in 3D mode.
    * @return Distance to target, if target is present. Otherwise, returns -1 for failure.
    */
-  public double getDistanceToTarget() {
-
-    PhotonPipelineResult result = camera.getLatestResult();
-
-    if (result.hasTargets() == false) {
-      return -1; // failure
-    }
-
-    PhotonTrackedTarget target = result.getBestTarget();
+  private double getDistanceToTarget(PhotonTrackedTarget target) {
     Translation3d targetTranslation = getTranslation3d(target);
     Translation3d camera = new Translation3d();
     // initialize a Translation3d with X, Y, and Z values of 0. The camera never will move away from where it is.
     double distance = camera.getDistance(targetTranslation);
     return distance;
+  }
+
+  public double getDistanceToTarget(int id) {
+    PhotonTrackedTarget target = getTargetByID(id);
+    if (target == null) {
+      return -1; // for error
+    }
+    return getDistanceToTarget(target);
+  }
+
+  public double getDistanceToTarget() {
+    PhotonTrackedTarget target = getLatestResult().getBestTarget();
+    if (target == null) {
+      return -1; // error
+    }
+    return getDistanceToTarget(target);
   }
   /**
    * Find the robot's angle relative to the April Tag.
