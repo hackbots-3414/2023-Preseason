@@ -16,28 +16,28 @@ public class DistanceConverter extends SubsystemBase {
 
   public DistanceConverter() {}
 
-  public double feetToInches(double a) {
-    return a * FEET_TO_INCHES;
+  public double feetToInches(double feet) {
+    return feet * FEET_TO_INCHES;
   }
 
-  public double inchesToFeet(double a) {
-    return a * INCHES_TO_FEET;
+  public double inchesToFeet(double inches) {
+    return inches * INCHES_TO_FEET;
   }
 
-  public double feetToMeters(double a) {
-    return a * FEET_TO_METERS;
+  public double feetToMeters(double feet) {
+    return feet * FEET_TO_METERS;
   }
 
-  public double metersToFeet(double a) {
-    return a * METERS_TO_FEET;
+  public double metersToFeet(double meters) {
+    return meters * METERS_TO_FEET;
   }
 
-  public double inchesToMeters(double a) {
-    return a * INCHES_TO_FEET * FEET_TO_METERS;
+  public double inchesToMeters(double inches) {
+    return inches * INCHES_TO_FEET * FEET_TO_METERS;
   }
 
-  public double metersToInches(double a) {
-    return a * METERS_TO_FEET * FEET_TO_INCHES;
+  public double metersToInches(double meters) {
+    return meters * METERS_TO_FEET * FEET_TO_INCHES;
   }
 
 
