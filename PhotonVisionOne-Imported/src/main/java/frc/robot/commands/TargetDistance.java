@@ -15,6 +15,7 @@ public class TargetDistance extends CommandBase {
   private boolean done;
   private Camera photonvision;
   private DriveTrain driveTrain;
+  private boolean targetOne;
 
   public TargetDistance(DriveTrain driveTrain, Camera photonvision) {
     this.photonvision = photonvision;
@@ -70,4 +71,10 @@ public class TargetDistance extends CommandBase {
   public boolean isFinished() {
     return done;
   }
+  while (targetOne < 2){
+    if getDistanceToTarget =< 2;
+    else if 
+  }
+
+  
 }
