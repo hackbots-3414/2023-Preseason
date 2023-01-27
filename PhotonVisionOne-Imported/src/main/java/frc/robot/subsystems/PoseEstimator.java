@@ -4,53 +4,56 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.math.estimator.DifferentialDrivePoseEstimator;
-import edu.wpi.first.math.geometry.Pose2d;
-import edu.wpi.first.wpilibj.AnalogGyro;
-import frc.robot.Constants;
+import javax.naming.directory.InvalidSearchControlsException;
 
-import org.photonvision.PhotonCamera;
-import org.photonvision.SimVisionSystem;
+import edu.wpi.first.math.geometry.Translation3d;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.subsystems.DistanceConverter;
 
-public class PoseEstimator {
-    private PhotonCamera cam = new PhotonCamera(Constants.kCamName);
+/** Add your docs here. */
+public class PoseEstimator extends SubsystemBase{
 
-    public void update(double leftDist, double rightDist) {
-    }m_poseEstimator.update<gyro.getRotation2d,leftDist,rightDist>;
+    private Camera camera = new Camera();
+    private DistanceConverter dc = new DistanceConverter();
 
-    res=cam.getLatestResult(); {
-    if(res.hasTargets())}
+    public Translation3d aprilTagToCenterField(int id) {
+        
+        double id1x = dc.inchesToMeters(610.77);
+        double id1y = dc.inchesToMeters(42.19);
+        double id2x = dc.inchesToMeters(610.77);
+        double id2y = dc.inchesToMeters(108.19);
+        double id3x = dc.inchesToMeters(610.77);
+        double id3y = dc.inchesToMeters(174.19);
+        double id4x = dc.inchesToMeters(636.96);
+        double id4y = dc.inchesToMeters(265.74);
+        double id5x = dc.inchesToMeters(14.25);
+        double id5y = dc.inchesToMeters(265.74);
+        double id6x = dc.inchesToMeters(40.45);
+        double id6y = dc.inchesToMeters(174.19);
+        double id7x = dc.inchesToMeters(40.45);
+        double id7y = dc.inchesToMeters(108.19);
+        double id8x = dc.inchesToMeters(40.45);
+        double id8y = dc.inchesToMeters(42.19);
+        
+        switch(id) {
+            case 1:
+                return new Translation3d(id1x, id1y, 0);
+            case 2:
+                return new Translation3d(id2x, id2y, 0);
+            case 3:
+                return new Translation3d(id3x, id3y, 0);
+            case 4:
+                return new Translation3d(id4x, id4y, 0);
+            case 5:
+                return new Translation3d(id5x, id5y, 0);
+            case 6:
+                return new Translation3d(id6x, id6y, 0);
+            case 7:
+                return new Translation3d(id7x, id7y, 0);
+            case 8:
+                return new Translation3d(id8x, id8y, 0);
+        }
+        return null;
 
-    {
-        Object res;
-        var imageCaptureTime = (res).getTimestampSeconds();
-        var camToTargetTrans = res.getBestTarget().getBestCameraToTarget();
-        var camPose = Constants.kFarTargetPose.transformBy(camToTargetTrans.inverse());
-        DifferentialDrivePoseEstimator m_poseEstimator;
-        m_poseEstimator.addVisionMeasurement(
-                camPose.transformBy(Constants.kCameraToRobot).toPose2d(), imageCaptureTime);
-
-        double camDiagFOV = 75.0; // degrees
-        double camPitch = 15.0; // degrees
-        double camHeightOffGround = 0.85; // meters
-        double maxLEDRange = 20; // meters
-        int camResolutionWidth = 640; // pixels
-        int camResolutionHeight = 480; // pixels
-        double minTargetArea = 10; // square pixels
-
-        SimVisionSystem simVision = new SimVisionSystem(
-                Constants.kCamName,
-                camDiagFOV,
-                Constants.kCameraToRobot,
-                maxLEDRange,
-                camResolutionWidth,
-                camResolutionHeight,
-                minTargetArea);
     }
-
-    public void DrivetrainSim(){
-        SimVisionSystem simVision;
-        simVision.addSimVisionTarget(Constants.kFarTarget);
-    }
-
-}}
+}
