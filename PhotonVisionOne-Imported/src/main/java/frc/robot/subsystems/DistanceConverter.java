@@ -9,10 +9,10 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class DistanceConverter extends SubsystemBase {
   /** Creates a new DistanceConverter. */
 
-  private double FEET_TO_INCHES = 1 / 12;
-  private double INCHES_TO_FEET = 12;
-  private double METERS_TO_FEET = 1 / 3.28084;
-  private double FEET_TO_METERS = 3.28084;
+  private double FEET_TO_INCHES = 12;
+  private double INCHES_TO_FEET = 1 / 12.0;
+  private double METERS_TO_FEET = 3.28084;
+  private double FEET_TO_METERS = 1 / 3.28084;
 
   public DistanceConverter() {}
 

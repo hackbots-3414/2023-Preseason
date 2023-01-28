@@ -31,7 +31,7 @@ public class PhotonCamera extends CommandBase {
     boolean hasTargets = result.hasTargets();
     if (hasTargets == true) {
       done = true;
-      System.out.println("----------------\n\n\n!!!!!!Done is true\n\n\n\n----------------------");
+      //System.out.println("----------------\n\n\n!!!!!!Done is true\n\n\n\n----------------------");
     }
   }
 
