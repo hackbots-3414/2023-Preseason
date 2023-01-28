@@ -68,7 +68,10 @@ public class Camera extends SubsystemBase {
     Translation3d targetTranslation = pose.getTranslation();
     return targetTranslation;
   }
-
+  public Translation3d getTranslation3d(int id) {
+    PhotonTrackedTarget target = getTargetByID(id);
+    return getTranslation3d(target);
+  }
   public Transform3d getTransform3d(int id) {
     PhotonTrackedTarget target = getTargetByID(id);
     if (target == null) {
