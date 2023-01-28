@@ -6,8 +6,13 @@ package frc.robot;
 
 import org.photonvision.SimVisionTarget;
 
+import edu.wpi.first.math.geometry.Pose3d;
+import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.geometry.Transform3d;
+import edu.wpi.first.math.geometry.Translation3d;
 import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
+import edu.wpi.first.math.util.Units;
+import frc.robot.subsystems.DistanceConverter;
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants. This class should not be used for any other purpose. All constants should be declared
@@ -86,8 +91,57 @@ public final class Constants {
     public static final int kDriverControllerPort = 0;
   }
 
-public static String kCamName;
+
+
+public String kCamName;
 public static Transform3d kCameraToRobot;
-public static SimVisionTarget kFarTarget;
-public static Object kFarTargetPose;
+public SimVisionTarget kFarTarget;
+public Object kFarTargetPose;
+
+public static class Targets {
+  private static DistanceConverter dc = new DistanceConverter();
+
+  private static double id1x = dc.inchesToMeters(610.77);
+  private static double id1y = dc.inchesToMeters(42.19);
+  private static double id1z = dc.inchesToMeters(18.22);
+
+  private static double id2x = dc.inchesToMeters(610.77);
+  private static double id2y = dc.inchesToMeters(108.19);
+  private static double id2z = dc.inchesToMeters(18.22);
+
+  private static double id3x = dc.inchesToMeters(610.77);
+  private static double id3y = dc.inchesToMeters(174.19);
+  private static double id3z = dc.inchesToMeters(18.22);
+
+  private static double id4x = dc.inchesToMeters(636.96);
+  private static double id4y = dc.inchesToMeters(265.74);
+  private static double id4z = dc.inchesToMeters(27.38);
+
+  private static double id5x = dc.inchesToMeters(14.25);
+  private static double id5y = dc.inchesToMeters(265.74);
+  private static double id5z = dc.inchesToMeters(27.38);
+
+  private static double id6x = dc.inchesToMeters(40.45);
+  private static double id6y = dc.inchesToMeters(174.19);
+  private static double id6z = dc.inchesToMeters(18.22);
+  
+  private static double id7x = dc.inchesToMeters(40.45);
+  private static double id7y = dc.inchesToMeters(108.19);
+  private static double id7z = dc.inchesToMeters(18.22);
+
+  private static double id8x = dc.inchesToMeters(40.45);
+  private static double id8y = dc.inchesToMeters(42.19);
+  private static double id8z = dc.inchesToMeters(18.22);
+
+  public static Pose3d target1 = new Pose3d(new Translation3d(id1x, id1y, id1z), new Rotation3d(0.0, 0.0, Units.degreesToRadians(180)));
+  public static Pose3d target2 = new Pose3d(new Translation3d(id2x, id2y, id2z), new Rotation3d(0.0, 0.0, Units.degreesToRadians(180)));
+  public static Pose3d target3 = new Pose3d(new Translation3d(id3x, id3y, id3z), new Rotation3d(0.0, 0.0, Units.degreesToRadians(180)));
+  public static Pose3d target4 = new Pose3d(new Translation3d(id4x, id4y, id4z), new Rotation3d(0.0, 0.0, Units.degreesToRadians(180)));
+  public static Pose3d target5 = new Pose3d(new Translation3d(id5x, id5y, id5z), new Rotation3d(0.0, 0.0, Units.degreesToRadians(0)));
+  public static Pose3d target6 = new Pose3d(new Translation3d(id6x, id6y, id6z), new Rotation3d(0.0, 0.0, Units.degreesToRadians(0)));
+  public static Pose3d target7 = new Pose3d(new Translation3d(id7x, id7y, id7z), new Rotation3d(0.0, 0.0, Units.degreesToRadians(0)));
+  public static Pose3d target8 = new Pose3d(new Translation3d(id8x, id8y, id8z), new Rotation3d(0.0, 0.0, Units.degreesToRadians(0)));
+  
+}
+
 }

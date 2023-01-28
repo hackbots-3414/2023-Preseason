@@ -4,13 +4,8 @@
 
 package frc.robot.commands;
 
-import javax.swing.TransferHandler.TransferSupport;
-
-import edu.wpi.first.math.geometry.Translation3d;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Camera;
 import frc.robot.subsystems.DriveTrain;
-import frc.robot.subsystems.PoseEstimator;
 
 
 /**
@@ -18,11 +13,9 @@ import frc.robot.subsystems.PoseEstimator;
  */
 public class TargetDistance extends CommandBase {
   private boolean done;
-  private Camera photonvision;
   private DriveTrain driveTrain;
 
-  public TargetDistance(DriveTrain driveTrain, Camera photonvision) {
-    this.photonvision = photonvision;
+  public TargetDistance(DriveTrain driveTrain) {
     this.driveTrain = driveTrain;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(driveTrain);
@@ -39,9 +32,6 @@ public class TargetDistance extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    PoseEstimator pe = new PoseEstimator(photonvision);
-    Translation3d pose = pe.RobotToField(4);
-    System.out.println(pose.toString());
     done = true;
   }
 

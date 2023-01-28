@@ -1,5 +1,7 @@
 package frc.robot.subsystems;
 
+import org.photonvision.targeting.PhotonPipelineResult;
+
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.StatorCurrentLimitConfiguration;
@@ -12,14 +14,23 @@ import com.kauailabs.navx.frc.AHRS;
 // import org.slf4j.LoggerFactory;
 
 import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Pose3d;
+import edu.wpi.first.math.geometry.Transform3d;
+import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.wpilibj.SPI.Port;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.RobotConstants;
+import org.photonvision.PhotonCamera;
+import edu.wpi.first.math.estimator.DifferentialDrivePoseEstimator;
+import edu.wpi.first.math.geometry.Pose2d;
+
+
 
 public class DriveTrain extends SubsystemBase {
 
@@ -27,7 +38,7 @@ public class DriveTrain extends SubsystemBase {
 
     private EncoderOffsets encoderOffsets = new EncoderOffsets();
 
-    //private AHRS ahrs = new AHRS(Port.kMXP);
+    private AHRS ahrs = new AHRS(Port.kMXP);
 
     private WPI_TalonFX backLeft;
     private WPI_TalonFX backRight;
@@ -39,9 +50,12 @@ public class DriveTrain extends SubsystemBase {
 
     private boolean wantLow = true;
 
+    private DifferentialDriveKinematics m_kinematics = new DifferentialDriveKinematics(RobotConstants.kTrackWidthMeters);
+
+    private DifferentialDrivePoseEstimator m_poseEstimator = new DifferentialDrivePoseEstimator(m_kinematics, ahrs.getRotation2d(), 0.0, 0.0, new Pose2d());
+
+    private PhotonCamera camera = new PhotonCamera("Front_Camera");
     
-
-
     private SupplyCurrentLimitConfiguration frontSupplyLimit = new SupplyCurrentLimitConfiguration(false,
             DriveConstants.driveLowCurrentLimit, DriveConstants.driveLowCurrentLimit,
             DriveConstants.triggerThresholdTime);
@@ -232,10 +246,6 @@ public class DriveTrain extends SubsystemBase {
         tankDrive(0, 0);
     }
 
-    public Pose2d getPose() {
-        return m_odometry.getPoseMeters();
-    }
-
     public void resetOdometry(Pose2d pose) {
         resetEncoders();
         //m_odometry.resetPosition(ahrs.getRotation2d(), 0, 0, pose);
@@ -262,5 +272,53 @@ public class DriveTrain extends SubsystemBase {
             this.backRight = backRight.getSelectedSensorPosition();
         }
     };
+
+    public void update(double leftDist, double rightDist) {
+        m_poseEstimator.update(ahrs.getRotation2d(),  leftDist, rightDist);
+
+        PhotonPipelineResult res = camera.getLatestResult();
+        if (res.hasTargets()) {
+            double imageCaptureTime = res.getTimestampSeconds();
+            Transform3d camToTargetTrans = res.getBestTarget().getBestCameraToTarget();
+            int id = res.getBestTarget().getFiducialId();
+            Pose3d originalPose;
+            switch(id) {
+                case 1:
+                    originalPose = Constants.Targets.target1;
+                    break;
+                case 2:
+                    originalPose = Constants.Targets.target2;
+                    break;
+                case 3:
+                    originalPose = Constants.Targets.target3;
+                    break;
+                case 4:
+                    originalPose = Constants.Targets.target4;
+                    break;
+                case 5:
+                    originalPose = Constants.Targets.target5;
+                    break;
+                case 6:
+                    originalPose = Constants.Targets.target6;
+                    break;
+                case 7:
+                    originalPose = Constants.Targets.target7;
+                    break;
+                case 8:
+                    originalPose = Constants.Targets.target8;
+                    break;
+                default:
+                    return; // it will NEVER get here, no worries.
+            }
+
+            Pose3d camPose = originalPose.transformBy(camToTargetTrans.inverse());
+            m_poseEstimator.addVisionMeasurement(camPose.transformBy(Constants.kCameraToRobot).toPose2d(), imageCaptureTime);
+
+        }
+    }
+
+    public Pose2d getPose() {
+        return m_poseEstimator.getEstimatedPosition();
+    }
 
 }

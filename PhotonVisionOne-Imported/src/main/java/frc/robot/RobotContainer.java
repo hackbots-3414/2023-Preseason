@@ -8,7 +8,7 @@ package frc.robot;
 // import edu.wpi.first.wpilibj.XboxController;
 // import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.commands.PhotonCamera;
+import edu.wpi.first.wpilibj2.command.PrintCommand;
 import frc.robot.commands.TargetDistance;
 import frc.robot.subsystems.Camera;
 import frc.robot.subsystems.DriveTrain;
@@ -21,15 +21,13 @@ import frc.robot.subsystems.DriveTrain;
  */
 public class RobotContainer {
   private DriveTrain drive;
-  private Camera photonvision;
   //SendableChooser<Command> m_chooser = new SendableChooser<>();
   // The robot's subsystems and commands are defined here...
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     drive = new DriveTrain();
-    photonvision = new Camera();
-    drive.setDefaultCommand(new TargetDistance(drive, photonvision));
+    drive.setDefaultCommand(new TargetDistance(drive));
     // Configure the button bindings
     //configureButtonBindings();
   }
@@ -48,6 +46,6 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return new PhotonCamera(new Camera());
+    return new PrintCommand("hello world");
   }
 }
