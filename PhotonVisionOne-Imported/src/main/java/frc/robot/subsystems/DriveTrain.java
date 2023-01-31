@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 import org.photonvision.targeting.PhotonPipelineResult;
+import org.photonvision.targeting.PhotonTrackedTarget;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
@@ -17,7 +18,6 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
-import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.wpilibj.SPI.Port;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -27,10 +27,8 @@ import frc.robot.Constants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.RobotConstants;
 import org.photonvision.PhotonCamera;
+
 import edu.wpi.first.math.estimator.DifferentialDrivePoseEstimator;
-import edu.wpi.first.math.geometry.Pose2d;
-
-
 
 public class DriveTrain extends SubsystemBase {
 
@@ -38,20 +36,19 @@ public class DriveTrain extends SubsystemBase {
 
     private EncoderOffsets encoderOffsets = new EncoderOffsets();
 
-    private AHRS ahrs = new AHRS(Port.kMXP);
+    
 
     private WPI_TalonFX backLeft;
     private WPI_TalonFX backRight;
     private WPI_TalonFX frontLeft;
     private WPI_TalonFX frontRight;
     private DifferentialDrive differentialDrive;
-    private DifferentialDriveOdometry m_odometry;
     private boolean controlsReversed = false;
 
     private boolean wantLow = true;
 
+    private AHRS ahrs = new AHRS(Port.kMXP);
     private DifferentialDriveKinematics m_kinematics = new DifferentialDriveKinematics(RobotConstants.kTrackWidthMeters);
-
     private DifferentialDrivePoseEstimator m_poseEstimator = new DifferentialDrivePoseEstimator(m_kinematics, ahrs.getRotation2d(), 0.0, 0.0, new Pose2d());
 
     private PhotonCamera camera = new PhotonCamera("Front_Camera");
@@ -61,6 +58,8 @@ public class DriveTrain extends SubsystemBase {
             DriveConstants.triggerThresholdTime);
 
     public DriveTrain() {
+        
+        
         frontLeft = createTalonFX(DriveConstants.kLeftMotorFrontPort, TalonFXInvertType.Clockwise);
         backLeft = createTalonFX(DriveConstants.kLeftMotorRearPort, TalonFXInvertType.Clockwise);
         frontRight = createTalonFX(DriveConstants.kRightMotorFrontPort, TalonFXInvertType.CounterClockwise);
@@ -150,7 +149,7 @@ public class DriveTrain extends SubsystemBase {
     @Override
     public void periodic() {
         differentialDrive.feed();
-       // m_odometry.update(ahrs.getRotation2d(), getLeftEncoderDistance(), getRightEncoderDistance());
+        m_poseEstimator.update(ahrs.getRotation2d(), getLeftEncoderDistance(), getRightEncoderDistance());
         super.periodic();
     }
 
@@ -278,43 +277,49 @@ public class DriveTrain extends SubsystemBase {
 
         PhotonPipelineResult res = camera.getLatestResult();
         if (res.hasTargets()) {
-            double imageCaptureTime = res.getTimestampSeconds();
-            Transform3d camToTargetTrans = res.getBestTarget().getBestCameraToTarget();
-            int id = res.getBestTarget().getFiducialId();
-            Pose3d originalPose;
-            switch(id) {
-                case 1:
-                    originalPose = Constants.Targets.target1;
-                    break;
-                case 2:
-                    originalPose = Constants.Targets.target2;
-                    break;
-                case 3:
-                    originalPose = Constants.Targets.target3;
-                    break;
-                case 4:
-                    originalPose = Constants.Targets.target4;
-                    break;
-                case 5:
-                    originalPose = Constants.Targets.target5;
-                    break;
-                case 6:
-                    originalPose = Constants.Targets.target6;
-                    break;
-                case 7:
-                    originalPose = Constants.Targets.target7;
-                    break;
-                case 8:
-                    originalPose = Constants.Targets.target8;
-                    break;
-                default:
-                    return; // it will NEVER get here, no worries.
+            System.out.println("I see a target!");
+            int ids = res.targets.size();
+            for (int id_num = 0;id_num < ids;id_num ++) {
+                PhotonTrackedTarget target = res.targets.get(id_num);
+                double imageCaptureTime = res.getTimestampSeconds();
+                Transform3d camToTargetTrans = target.getBestCameraToTarget();
+                int id = target.getFiducialId();
+                Pose3d originalPose;
+                switch(id) {
+                    case 1:
+                        originalPose = Constants.Targets.target1;
+                        break;
+                    case 2:
+                        originalPose = Constants.Targets.target2;
+                        break;
+                    case 3:
+                        originalPose = Constants.Targets.target3;
+                        break;
+                    case 4:
+                        originalPose = Constants.Targets.target4;
+                        break;
+                    case 5:
+                        originalPose = Constants.Targets.target5;
+                        break;
+                    case 6:
+                        originalPose = Constants.Targets.target6;
+                        break;
+                    case 7:
+                        originalPose = Constants.Targets.target7;
+                        break;
+                    case 8:
+                        originalPose = Constants.Targets.target8;
+                        break;
+                    default:
+                        return; // it will NEVER get here, no worries.
+                }
+
+                Pose3d camPose = originalPose.transformBy(camToTargetTrans.inverse());
+                m_poseEstimator.addVisionMeasurement(camPose.transformBy(Constants.kCameraToRobot).toPose2d(), imageCaptureTime);
             }
 
-            Pose3d camPose = originalPose.transformBy(camToTargetTrans.inverse());
-            m_poseEstimator.addVisionMeasurement(camPose.transformBy(Constants.kCameraToRobot).toPose2d(), imageCaptureTime);
-
         }
+            
     }
 
     public Pose2d getPose() {

@@ -21,6 +21,7 @@ import frc.robot.subsystems.DriveTrain;
  */
 public class RobotContainer {
   private DriveTrain drive;
+  private static RobotContainer m_robotContainer = new RobotContainer();
   //SendableChooser<Command> m_chooser = new SendableChooser<>();
   // The robot's subsystems and commands are defined here...
 
@@ -30,7 +31,12 @@ public class RobotContainer {
     drive.setDefaultCommand(new TargetDistance(drive));
     // Configure the button bindings
     //configureButtonBindings();
+    
   }
+
+  public static RobotContainer getInstance() {
+    return m_robotContainer;
+}
 
   /**
    * Use this method to define your button->command mappings. Buttons can be created by
