@@ -17,28 +17,37 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.geometry.Transform3d;
+import edu.wpi.first.math.geometry.Translation3d;
 import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.wpilibj.SPI.Port;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.RobotConstants;
 
+import java.io.IOException;
 import java.util.Optional;
 
 import org.photonvision.EstimatedRobotPose;
 import org.photonvision.PhotonCamera;
 import org.photonvision.PhotonPoseEstimator;
+import org.photonvision.PhotonPoseEstimator.PoseStrategy;
 
+import edu.wpi.first.apriltag.AprilTagFieldLayout;
+import edu.wpi.first.apriltag.AprilTagFields;
 import edu.wpi.first.math.estimator.DifferentialDrivePoseEstimator;
 
 public class DriveTrain extends SubsystemBase {
 
     // private static final Logger LOG = LoggerFactory.getLogger(DriveTrain.class);
+
+    private PhotonCamera photonCamera;
 
     private EncoderOffsets encoderOffsets = new EncoderOffsets();
 
@@ -62,6 +71,8 @@ public class DriveTrain extends SubsystemBase {
     private SupplyCurrentLimitConfiguration frontSupplyLimit = new SupplyCurrentLimitConfiguration(false,
             DriveConstants.driveLowCurrentLimit, DriveConstants.driveLowCurrentLimit,
             DriveConstants.triggerThresholdTime);
+    
+    final Field2d m_fieldSim = new Field2d();
 
     public DriveTrain() {
         
@@ -84,9 +95,25 @@ public class DriveTrain extends SubsystemBase {
         differentialDrive.setMaxOutput(1.0);
 
        // m_odometry = new DifferentialDriveOdometry(ahrs.getRotation2d(), 0, 0);
-       photonPoseEstimator =
+
+       AprilTagFieldLayout atfl;
+    try {
+        atfl = new AprilTagFieldLayout(AprilTagFields.k2023ChargedUp.m_resourceFile);
+        photonPoseEstimator =
        new PhotonPoseEstimator(
-               atfl, PoseStrategy.CLOSEST_TO_REFERENCE_POSE, photonCamera, VisionConstants.robotToCam);
+               atfl, PoseStrategy.CLOSEST_TO_REFERENCE_POSE, photonCamera, new Transform3d(
+                       new Translation3d(0.5, 0.0, 0.5),
+                       new Rotation3d(
+                               0, 0,
+                               0)));
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        
+        e.printStackTrace();
+    }
+            //atfl.loadFromResource(AprilTagFields.k2023ChargedUp.m_resourceFile);
+
+       
     }
 
     private WPI_TalonFX createTalonFX(int deviceID, TalonFXInvertType direction) {
@@ -240,7 +267,7 @@ public class DriveTrain extends SubsystemBase {
             m_fieldSim.getObject("Cam Est Pos").setPose(new Pose2d(-100, -100, new Rotation2d()));
         }
 
-        m_fieldSim.getObject("Actual Pos").setPose(m_drivetrainSimulator.getPose());
+        m_fieldSim.getObject("Actual Pos").setPose(getPose());
         m_fieldSim.setRobotPose(m_poseEstimator.getEstimatedPosition());
     }
 
