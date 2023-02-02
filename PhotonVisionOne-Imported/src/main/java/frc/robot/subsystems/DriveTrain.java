@@ -16,6 +16,7 @@ import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Pose3d;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
@@ -26,7 +27,12 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.RobotConstants;
+
+import java.util.Optional;
+
+import org.photonvision.EstimatedRobotPose;
 import org.photonvision.PhotonCamera;
+import org.photonvision.PhotonPoseEstimator;
 
 import edu.wpi.first.math.estimator.DifferentialDrivePoseEstimator;
 
@@ -36,7 +42,7 @@ public class DriveTrain extends SubsystemBase {
 
     private EncoderOffsets encoderOffsets = new EncoderOffsets();
 
-    
+    private PhotonPoseEstimator photonPoseEstimator;
 
     private WPI_TalonFX backLeft;
     private WPI_TalonFX backRight;
@@ -78,6 +84,9 @@ public class DriveTrain extends SubsystemBase {
         differentialDrive.setMaxOutput(1.0);
 
        // m_odometry = new DifferentialDriveOdometry(ahrs.getRotation2d(), 0, 0);
+       photonPoseEstimator =
+       new PhotonPoseEstimator(
+               atfl, PoseStrategy.CLOSEST_TO_REFERENCE_POSE, photonCamera, VisionConstants.robotToCam);
     }
 
     private WPI_TalonFX createTalonFX(int deviceID, TalonFXInvertType direction) {
@@ -149,6 +158,8 @@ public class DriveTrain extends SubsystemBase {
     @Override
     public void periodic() {
         differentialDrive.feed();
+        backLeft.feed();
+        backRight.feed();
         m_poseEstimator.update(ahrs.getRotation2d(), getLeftEncoderDistance(), getRightEncoderDistance());
         super.periodic();
     }
@@ -205,6 +216,39 @@ public class DriveTrain extends SubsystemBase {
     public void resetEncoders() {
         encoderOffsets.setOffsets(frontLeft, backLeft, frontRight, backRight);
     }
+
+    public Optional<EstimatedRobotPose> getEstimatedGlobalPose(Pose2d prevEstimatedRobotPose) {
+        photonPoseEstimator.setReferencePose(prevEstimatedRobotPose);
+        return photonPoseEstimator.update();
+    }
+
+    public void updateOdometry() {
+        m_poseEstimator.update(
+                ahrs.getRotation2d(), getLeftEncoderDistance(), getRightEncoderDistance());
+        // Also apply vision measurements. We use 0.3 seconds in the past as an example
+        // -- on
+        // a real robot, this must be calculated based either on latency or timestamps.
+        Optional<EstimatedRobotPose> result = getEstimatedGlobalPose(m_poseEstimator.getEstimatedPosition());
+
+        if (result.isPresent()) {
+            EstimatedRobotPose camPose = result.get();
+            m_poseEstimator.addVisionMeasurement(
+                    camPose.estimatedPose.toPose2d(), camPose.timestampSeconds);
+            m_fieldSim.getObject("Cam Est Pos").setPose(camPose.estimatedPose.toPose2d());
+        } else {
+            // move it way off the screen to make it disappear
+            m_fieldSim.getObject("Cam Est Pos").setPose(new Pose2d(-100, -100, new Rotation2d()));
+        }
+
+        m_fieldSim.getObject("Actual Pos").setPose(m_drivetrainSimulator.getPose());
+        m_fieldSim.setRobotPose(m_poseEstimator.getEstimatedPosition());
+    }
+
+
+
+
+
+
 
     public void arcadeDrive(double throttle, double steering) {
         // LOG.trace("Throttle = {}, Steering = {}, ControlsReversed = {}", throttle,
