@@ -33,6 +33,7 @@ public class TargetDistance extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    driveTrain.updateOdometry();
     Pose2d pose = driveTrain.getPose();
     System.out.println(pose);
   }

@@ -22,6 +22,7 @@ import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.math.geometry.Translation3d;
 import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
+import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.SPI.Port;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
@@ -47,7 +48,7 @@ public class DriveTrain extends SubsystemBase {
 
     // private static final Logger LOG = LoggerFactory.getLogger(DriveTrain.class);
 
-    private PhotonCamera photonCamera;
+    //private PhotonCamera photonCamera;
 
     private EncoderOffsets encoderOffsets = new EncoderOffsets();
 
@@ -98,10 +99,10 @@ public class DriveTrain extends SubsystemBase {
 
        AprilTagFieldLayout atfl;
     try {
-        atfl = new AprilTagFieldLayout(AprilTagFields.k2023ChargedUp.m_resourceFile);
+        //atfl = new AprilTagFieldLayout(Filesystem.getDeployDirectory() + "/frc2023.fmap");
         photonPoseEstimator =
        new PhotonPoseEstimator(
-               atfl, PoseStrategy.CLOSEST_TO_REFERENCE_POSE, photonCamera, new Transform3d(
+               AprilTagFieldLayout.loadFromResource(AprilTagFields.k2023ChargedUp.m_resourceFile), PoseStrategy.CLOSEST_TO_REFERENCE_POSE, camera, new Transform3d(
                        new Translation3d(0.5, 0.0, 0.5),
                        new Rotation3d(
                                0, 0,
@@ -258,11 +259,13 @@ public class DriveTrain extends SubsystemBase {
         Optional<EstimatedRobotPose> result = getEstimatedGlobalPose(m_poseEstimator.getEstimatedPosition());
 
         if (result.isPresent()) {
+            System.out.println("Found AprilTag");
             EstimatedRobotPose camPose = result.get();
             m_poseEstimator.addVisionMeasurement(
                     camPose.estimatedPose.toPose2d(), camPose.timestampSeconds);
             m_fieldSim.getObject("Cam Est Pos").setPose(camPose.estimatedPose.toPose2d());
         } else {
+            System.out.println("No AprilTag");
             // move it way off the screen to make it disappear
             m_fieldSim.getObject("Cam Est Pos").setPose(new Pose2d(-100, -100, new Rotation2d()));
         }
@@ -270,11 +273,6 @@ public class DriveTrain extends SubsystemBase {
         m_fieldSim.getObject("Actual Pos").setPose(getPose());
         m_fieldSim.setRobotPose(m_poseEstimator.getEstimatedPosition());
     }
-
-
-
-
-
 
 
     public void arcadeDrive(double throttle, double steering) {
