@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RamseteCommand;
 //import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.commands.DefaultTeleopCommand;
+import frc.robot.commands.DriveTurn;
 //import frc.robot.commands.DriveStraight;
 import frc.robot.subsystem.DriveTrain;
 //import frc.robot.commands.DriveTurn;
@@ -32,7 +33,7 @@ public class RobotContainer {
   private XboxController controller = new XboxController(0);
   private DriveTrain drvTrain = new DriveTrain();
 //  private DriveStraight drive_command = new DriveStraight(drvTrain, -200000, -0.3);
-//  private DriveTurn auton_command = new DriveTurn(drvTrain, 90, 0.5);
+  private DriveTurn auton_command = new DriveTurn(drvTrain, 90, 0.5);
   /*private SequentialCommandGroup auton_command = new SequentialCommandGroup(
                                                     new DriveStraight(drvTrain, 180000, 0.35), 
                                                     new DriveTurn(drvTrain, -80, -0.35),
@@ -71,8 +72,8 @@ public class RobotContainer {
    *
    * @return the command to run in autonomous
    */
-  public Command getAutonomousCommand(Trajectory trajectory) {
-    drvTrain.resetOdometry(trajectory.getInitialPose());
+  public Command getAutonomousCommand(/*Trajectory trajectory*/) {
+    /*drvTrain.resetOdometry(trajectory.getInitialPose());
     RamseteCommand ramsetecommand = new RamseteCommand(
     trajectory,
     drvTrain::getPose,
@@ -87,8 +88,8 @@ public class RobotContainer {
 
     
 
-    return ramsetecommand;
-    //return auton_command;
+    return ramsetecommand;*/
+    return auton_command;
   }
 
   public XboxController getGamePad() {
