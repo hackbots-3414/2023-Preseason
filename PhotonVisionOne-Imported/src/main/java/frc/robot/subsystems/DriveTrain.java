@@ -103,7 +103,7 @@ public class DriveTrain extends SubsystemBase {
         photonPoseEstimator =
        new PhotonPoseEstimator(
                AprilTagFieldLayout.loadFromResource(AprilTagFields.k2023ChargedUp.m_resourceFile), PoseStrategy.CLOSEST_TO_REFERENCE_POSE, camera, new Transform3d(
-                       new Translation3d(0.5, 0.0, 0.5),
+                       new Translation3d(.09, 0, 1.055),
                        new Rotation3d(
                                0, 0,
                                0)));
