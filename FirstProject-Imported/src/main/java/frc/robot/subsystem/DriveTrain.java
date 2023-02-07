@@ -12,6 +12,7 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.math.trajectory.constraint.DifferentialDriveVoltageConstraint;
+import edu.wpi.first.wpilibj.SerialPort.Port;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -25,7 +26,7 @@ public class DriveTrain extends SubsystemBase {
   
   private final DifferentialDriveOdometry m_odometry;
 
-  private AHRS my_ahrs = new AHRS();
+  private AHRS my_ahrs = new AHRS(Port.kUSB);
 
   private WPI_TalonFX left_front_motor = new WPI_TalonFX(Constants.LF_MOTOR);
   private WPI_TalonFX right_front_motor = new WPI_TalonFX(Constants.RF_MOTOR);
@@ -64,7 +65,9 @@ public class DriveTrain extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
     left_front_motor.feed();
-    right_back_motor.feed(); 
+    right_front_motor.feed();
+    left_back_motor.feed();
+    right_back_motor.feed();
     // Update the odometry in the periodic block
     m_odometry.update(
     my_ahrs.getRotation2d(), left_front_motor.getSelectedSensorPosition(), right_front_motor.getSelectedSensorPosition());
