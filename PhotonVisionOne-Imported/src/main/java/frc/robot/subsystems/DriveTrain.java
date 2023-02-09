@@ -62,7 +62,7 @@ public class DriveTrain extends SubsystemBase {
 
     private boolean wantLow = true;
 
-    private AHRS ahrs = new AHRS(Port.kUSB2);
+    private AHRS ahrs = new AHRS(Port.kUSB1);
     private DifferentialDriveKinematics m_kinematics = new DifferentialDriveKinematics(RobotConstants.kTrackWidthMeters);
     private DifferentialDrivePoseEstimator m_poseEstimator = new DifferentialDrivePoseEstimator(m_kinematics, ahrs.getRotation2d(), 0.0, 0.0, new Pose2d());
 
@@ -345,7 +345,7 @@ public class DriveTrain extends SubsystemBase {
 
         PhotonPipelineResult res = camera.getLatestResult();
         if (res.hasTargets()) {
-            System.out.println("I see a target!");
+            //System.out.println("I see a target!");
             int ids = res.targets.size();
             for (int id_num = 0;id_num < ids;id_num ++) {
                 PhotonTrackedTarget target = res.targets.get(id_num);
