@@ -75,8 +75,6 @@ public class DriveTrain extends SubsystemBase {
     final Field2d m_fieldSim = new Field2d();
 
     public DriveTrain() {
-        
-        
         frontLeft = createTalonFX(DriveConstants.kLeftMotorFrontPort, TalonFXInvertType.Clockwise);
         backLeft = createTalonFX(DriveConstants.kLeftMotorRearPort, TalonFXInvertType.Clockwise);
         frontRight = createTalonFX(DriveConstants.kRightMotorFrontPort, TalonFXInvertType.CounterClockwise);
@@ -188,6 +186,7 @@ public class DriveTrain extends SubsystemBase {
         backLeft.feed();
         backRight.feed();
         m_poseEstimator.update(ahrs.getRotation2d(), getLeftEncoderDistance(), getRightEncoderDistance());
+        SmartDashboard.putNumber("LatencyMillis", camera.getLatestResult().getLatencyMillis());
         super.periodic();
     }
 
