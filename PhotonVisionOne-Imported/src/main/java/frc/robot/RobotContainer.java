@@ -4,11 +4,13 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.XboxController;
 // import edu.wpi.first.wpilibj.GenericHID;
 // import edu.wpi.first.wpilibj.XboxController;
 // import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
+import frc.robot.commands.DefaultTeleop;
 import frc.robot.commands.TargetDistance;
 import frc.robot.subsystems.Camera;
 import frc.robot.subsystems.DriveTrain;
@@ -22,13 +24,14 @@ import frc.robot.subsystems.DriveTrain;
 public class RobotContainer {
   private DriveTrain drive;
   private static RobotContainer m_robotContainer = new RobotContainer();
+  XboxController controller = new XboxController(0);
   //SendableChooser<Command> m_chooser = new SendableChooser<>();
   // The robot's subsystems and commands are defined here...
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     drive = new DriveTrain();
-    drive.setDefaultCommand(new TargetDistance(drive));
+    drive.setDefaultCommand(new DefaultTeleop(drive));
     // Configure the button bindings
     //configureButtonBindings();
     
@@ -36,7 +39,7 @@ public class RobotContainer {
 
   public static RobotContainer getInstance() {
     return m_robotContainer;
-}
+  }
 
   /**
    * Use this method to define your button->command mappings. Buttons can be created by
@@ -53,5 +56,11 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     return new PrintCommand("hello world");
+  }
+
+
+
+  public XboxController getGamePad() {
+    return controller;
   }
 }
