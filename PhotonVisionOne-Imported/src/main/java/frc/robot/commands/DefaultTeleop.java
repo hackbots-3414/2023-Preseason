@@ -4,7 +4,9 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.DriveTrain;
 
@@ -26,8 +28,18 @@ public class DefaultTeleop extends CommandBase {
   public void execute() {
     double xSpeed = RobotContainer.getInstance().getGamePad().getLeftY();
     double zRotation = RobotContainer.getInstance().getGamePad().getRightX();
+    //zRotation *= zRotation; // square the value so that there is more finite control.
+    double speed = Constants.RAMP_SPEED;
 
-    drvtrain.arcadeDrive(0 - xSpeed, 0-zRotation);
+    // if (xSpeed > 0.5) {
+    //   xSpeed = speed;
+    // } else if (xSpeed < -0.5) {
+    //   xSpeed = 0 - speed;
+    // } else {
+    //   xSpeed = 0;
+    // }
+
+    drvtrain.arcadeDrive(xSpeed, zRotation);
   }
 
   // Called once the command ends or is interrupted.

@@ -297,15 +297,23 @@ public class DriveTrain extends SubsystemBase {
     }
 
     public void resetHeading() {
-        // LOG.info("Reseting Heading...");
-        // ahrs.reset();
+        ahrs.reset();
     }
 
     public double getHeading() {
-        //double angle = ahrs.getYaw();
+        double angle = ahrs.getYaw();
         // LOG.info("NavX Heading: {}", angle);
-        //return angle;
-        return 0;
+        return angle;
+    }
+
+    public double getTilt() {
+        double angle = ahrs.getPitch();
+        return angle;
+    }
+
+    public double getRoll() {
+        double angle = ahrs.getRoll();
+        return angle;
     }
 
     public void stopDriving() {

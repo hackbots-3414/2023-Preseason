@@ -23,6 +23,8 @@ import frc.robot.subsystems.DistanceConverter;
  */
 public final class Constants {
 
+  public final static double RAMP_SPEED = 0.18;
+
   public final static int LF_MOTOR = 10,
                           LB_MOTOR = 11,
                           RF_MOTOR = 13,
