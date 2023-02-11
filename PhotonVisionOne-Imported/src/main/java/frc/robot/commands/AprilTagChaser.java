@@ -50,9 +50,9 @@ public class AprilTagChaser extends CommandBase {
     } else if (currentDistance > 2.3) {
       driveTrain.arcadeDrive(.18, turnSpeed);
     } else if (currentDistance < 1.7) {
-      driveTrain.arcadeDrive(-.18, turnSpeed);
+      driveTrain.arcadeDrive(-.18, turnSpeed / 3.0);
     } else if (turnSpeed != 0) {
-      driveTrain.arcadeDrive(0, turnSpeed);
+      driveTrain.arcadeDrive(0, turnSpeed / 3.0);
     } else {
       driveTrain.arcadeDrive(0,0);
     }

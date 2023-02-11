@@ -28,17 +28,23 @@ public class DefaultTeleop extends CommandBase {
   public void execute() {
     double xSpeed = RobotContainer.getInstance().getGamePad().getLeftY();
     double zRotation = RobotContainer.getInstance().getGamePad().getRightX();
-    //zRotation *= zRotation; // square the value so that there is more finite control.
     double speed = Constants.RAMP_SPEED;
 
-    // if (xSpeed > 0.5) {
-    //   xSpeed = speed;
-    // } else if (xSpeed < -0.5) {
-    //   xSpeed = 0 - speed;
-    // } else {
-    //   xSpeed = 0;
-    // }
+    if (xSpeed > 0.5) {
+      xSpeed = speed;
+    } else if (xSpeed < -0.5) {
+      xSpeed = 0 - speed;
+    } else {
+      xSpeed = 0;
+    }
 
+    if (zRotation > 0.5) {
+      zRotation = speed;
+    } else if (zRotation < -0.5) {
+      zRotation = 0 - speed;
+    } else {
+      zRotation = 0;
+    }
     drvtrain.arcadeDrive(0 - xSpeed, 0 - zRotation);
   }
 
