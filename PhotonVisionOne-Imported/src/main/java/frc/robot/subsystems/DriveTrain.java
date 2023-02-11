@@ -273,9 +273,13 @@ public class DriveTrain extends SubsystemBase {
     }
 
 
-    public void arcadeDrive(double throttle, double steering) {
+    public void arcadeDrive(double throttle, double steering, boolean square) {
         // LOG.trace("Throttle = {}, Steering = {}, ControlsReversed = {}", throttle,
         // steering, controlsReversed);
+        differentialDrive.arcadeDrive(throttle, steering, square);
+    }
+
+    public void arcadeDrive(double throttle, double steering){
         differentialDrive.arcadeDrive(throttle, steering, false);
     }
 
