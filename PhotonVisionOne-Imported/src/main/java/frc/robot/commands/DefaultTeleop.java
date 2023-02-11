@@ -39,7 +39,7 @@ public class DefaultTeleop extends CommandBase {
     //   xSpeed = 0;
     // }
 
-    drvtrain.arcadeDrive(xSpeed, zRotation);
+    drvtrain.arcadeDrive(0 - xSpeed, 0 - zRotation);
   }
 
   // Called once the command ends or is interrupted.
