@@ -38,13 +38,6 @@ public class DefaultTeleop extends CommandBase {
       xSpeed = 0;
     }
 
-    if (zRotation > 0.5) {
-      zRotation = speed;
-    } else if (zRotation < -0.5) {
-      zRotation = 0 - speed;
-    } else {
-      zRotation = 0;
-    }
     drvtrain.arcadeDrive(0 - xSpeed, 0 - zRotation);
   }
 
