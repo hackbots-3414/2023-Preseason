@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.SelectCommand;
+import frc.robot.subsystems.Pixycam;
+
 import java.util.Map;
 
 /**
@@ -18,6 +20,8 @@ import java.util.Map;
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
+
+  private Pixycam pixy = new Pixycam();
   // The enum used as keys for selecting the command to run.
   private enum CommandSelector {
     ONE,
