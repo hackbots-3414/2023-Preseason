@@ -31,15 +31,15 @@ public class DefaultTeleop extends CommandBase {
     //zRotation *= zRotation; // square the value so that there is more finite control.
     double speed = Constants.RAMP_SPEED;
 
-    // if (xSpeed > 0.5) {
-    //   xSpeed = speed;
-    // } else if (xSpeed < -0.5) {
-    //   xSpeed = 0 - speed;
-    // } else {
-    //   xSpeed = 0;
-    // }
+    if (xSpeed > 0.5) {
+      xSpeed = speed;
+    } else if (xSpeed < -0.5) {
+      xSpeed = 0 - speed;
+    } else {
+      xSpeed = 0;
+    }
 
-    drvtrain.arcadeDrive(0 - xSpeed, 0 - zRotation, true);
+    drvtrain.arcadeDrive(0 - xSpeed, 0 - zRotation);
   }
 
   // Called once the command ends or is interrupted.

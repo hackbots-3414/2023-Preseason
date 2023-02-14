@@ -26,17 +26,29 @@ public class Balance extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double angle = drvtrain.getTilt();
+    double angle = drvtrain.getRoll();
+    double speed1 = Constants.RAMP_SPEED;
     System.out.println("Pitch: " + angle + "\nYaw: " + drvtrain.getHeading() + "\nRoll: " + drvtrain.getRoll());
-    if (angle < 0 - 10) {
+
+    if (angle < 0 - 2) {
       // Drive forwards
       System.out.println("Drive Forwards!");
-    } else if (angle > 10) {
+      drvtrain.arcadeDrive(0 - speed1 * 1/angle, 0);
+    } else if (angle > 2) {
       // Drive backwards
       System.out.println("Drive backwards");
-    } else {
+      drvtrain.arcadeDrive(speed1 * 1/angle, 0);
+      
+    }else {
       // We're level
       System.out.println("LEVEL!!! :)");
+      drvtrain.setBrakeMode();
+        try {
+          wait(5000, 0);
+        } catch (InterruptedException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        }
       done = true;
     }
   }
@@ -48,6 +60,7 @@ public class Balance extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+    drvtrain.setCoastMode();
     return done;
   }
 }
