@@ -28,7 +28,6 @@ public class DefaultTeleop extends CommandBase {
   public void execute() {
     double xSpeed = RobotContainer.getInstance().getGamePad().getLeftY();
     double zRotation = RobotContainer.getInstance().getGamePad().getRightX();
-    //zRotation *= zRotation; // square the value so that there is more finite control.
     double speed = Constants.RAMP_SPEED;
 
     if (xSpeed > 0.5) {
