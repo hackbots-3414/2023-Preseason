@@ -187,6 +187,7 @@ public class DriveTrain extends SubsystemBase {
         backRight.feed();
         m_poseEstimator.update(ahrs.getRotation2d(), getLeftEncoderDistance(), getRightEncoderDistance());
         SmartDashboard.putNumber("LatencyMillis", camera.getLatestResult().getLatencyMillis());
+        SmartDashboard.putNumber("Tilt: ", getTilt());
         super.periodic();
     }
 
@@ -311,12 +312,8 @@ public class DriveTrain extends SubsystemBase {
     }
 
     public double getTilt() {
-        double angle = ahrs.getPitch();
-        return angle;
-    }
-
-    public double getRoll() {
         double angle = ahrs.getRoll();
+        //SmartDashboard.putNumber("Tilt: ", angle);
         return angle;
     }
 

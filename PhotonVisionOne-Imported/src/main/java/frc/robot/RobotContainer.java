@@ -5,6 +5,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 // import edu.wpi.first.wpilibj.GenericHID;
 // import edu.wpi.first.wpilibj.XboxController;
 // import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -14,6 +15,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.AprilTagChaser;
 import frc.robot.commands.Balance;
 import frc.robot.commands.DefaultTeleop;
+import frc.robot.commands.PIDBalance;
 import frc.robot.commands.PhotonCamera;
 import frc.robot.commands.TargetDistance;
 import frc.robot.subsystems.Camera;
@@ -39,11 +41,14 @@ public class RobotContainer {
     drive.resetEncoders();
     drive.resetHeading();
     drive.setDefaultCommand(new DefaultTeleop(drive));
+    SmartDashboard.putData(new PIDBalance(drive));
     // Configure the button bindings
     configureButtonBindings();
     
   }
-
+  public DriveTrain getDriveTrain(){
+    return drive;
+  }
   private void configureButtonBindings() {
     JoystickButton balance = new JoystickButton(controller, XboxController.Button.kB.value);
     balance.onTrue(new Balance(drive));

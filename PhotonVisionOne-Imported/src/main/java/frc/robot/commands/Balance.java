@@ -26,9 +26,9 @@ public class Balance extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double angle = drvtrain.getRoll();
+    double angle = drvtrain.getTilt();
     double speed1 = Constants.RAMP_SPEED;
-    System.out.println("Pitch: " + angle + "\nYaw: " + drvtrain.getHeading() + "\nRoll: " + drvtrain.getRoll());
+    System.out.println("Tilt: " + angle);
 
     if (angle < 0 - 2) {
       // Drive forwards
