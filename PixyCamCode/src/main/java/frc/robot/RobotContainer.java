@@ -9,7 +9,10 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.SelectCommand;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.PixyCommand;
 import frc.robot.subsystems.Pixycam;
+import frc.robot.commands.PixyCommand;
 
 import java.util.Map;
 
@@ -20,7 +23,7 @@ import java.util.Map;
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-
+  XboxController controller = new XboxController(0);
   private Pixycam pixy = new Pixycam();
   // The enum used as keys for selecting the command to run.
   private enum CommandSelector {
@@ -59,7 +62,10 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then calling passing it to a
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {}
+  private void configureButtonBindings() {
+    JoystickButton BButton = new JoystickButton(controller, XboxController.Button.kB.value);
+    BButton.onTrue(new PixyCommand(pixy));
+  }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.

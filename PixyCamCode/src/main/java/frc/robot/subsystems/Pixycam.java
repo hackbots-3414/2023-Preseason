@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import io.github.pseudoresonance.pixy2api.Pixy2;
 import io.github.pseudoresonance.pixy2api.Pixy2CCC;
+import io.github.pseudoresonance.pixy2api.Pixy2Video;
 import io.github.pseudoresonance.pixy2api.Pixy2CCC.Block;
 import io.github.pseudoresonance.pixy2api.links.SPILink;
 
@@ -22,13 +23,14 @@ public class Pixycam extends SubsystemBase {
     System.out.println("PixyCam ");
   }
   public Block getBiggestBlock() {
-		// Gets the number of "blocks", identified targets, that match signature 1 on the Pixy2,
+		// Gets the number of "blocks", identified targets, that match signature 1 or signature 2 on the Pixy2,
 		// does not wait for new data if none is available,
 		// and limits the number of returned blocks to 25, for a slight increase in efficiency
 		int blockCount = pixy.getCCC().getBlocks(false, Pixy2CCC.CCC_SIG1 | Pixy2CCC.CCC_SIG2, 4);
 		System.out.println("Found " + blockCount + " blocks!"); // Reports number of blocks found
 		if (blockCount <= 0) {
 			return null; // If blocks were not found, stop processing
+			
 		}
     ArrayList<Block> blocks = pixy.getCCC().getBlockCache(); // Gets a list of all blocks found by the Pixy2
 		Block largestBlock = null;
@@ -37,16 +39,19 @@ public class Pixycam extends SubsystemBase {
 				largestBlock = block;
 			} else if (block.getWidth() > largestBlock.getWidth()) {
 				largestBlock = block;
+
 			}
+		
 		}
-		System.out.println("largestBlock: " + largestBlock.getSignature());
+		
+		
     return largestBlock;
   }
+
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
     getBiggestBlock();
-
-  }
+   }
 }
